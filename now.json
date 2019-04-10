@@ -1,6 +1,6 @@
 {
   "name": "pkgstats",
-  "version": 1,
+  "version": 2,
   "alias": ["pkgstats.com", "www.pkgstats.com", "api.pkgstats.com"],
   "builds": [
     { "src": "*.js", "use": "@now/node" }
