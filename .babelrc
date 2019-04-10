@@ -10,6 +10,13 @@
     ]
   ],
   "plugins": [
+    [
+      "styled-components",
+      {
+        "ssr": true,
+        "displayName": true
+      }
+    ],
     ["module-resolver", {
       "root": ["./src"],
       "extensions": [".js", ".jsx", ".es", ".es6", ".mjs", ".ts", ".tsx"],

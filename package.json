@@ -4,21 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next ./src",
-    "build": "next build ./src",
-    "start": "next start ./src",
+    "dev": "node server.js",
+    "build": "NODE_ENV=production next build src",
+    "start": "NODE_ENV=production node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "next": "^8.0.4",
+    "next-redux-wrapper": "^3.0.0-alpha.2",
+    "next-routes": "^1.4.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.1",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
-    "babel-plugin-module-resolver": "^3.2.0"
+    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-plugin-styled-components": "^1.10.0",
+    "redux-logger": "^3.0.6"
   },
   "repository": {
     "type": "git",

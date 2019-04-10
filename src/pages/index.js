@@ -1,5 +1,5 @@
-function Home() {
+function Index() {
   return <div>Welcome to Next.js!</div>;
 }
 
-export default Home;
+export default Index;
