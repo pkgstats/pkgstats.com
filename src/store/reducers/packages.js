@@ -33,6 +33,7 @@ const packages = (state = initialState, action) => {
 
     case FETCH_USER_PACKAGES_SUCCESS:
       return Object.assign({}, state, {
+        fetching: false,
         items: [
           ...state.items,
           ...action.response.objects,

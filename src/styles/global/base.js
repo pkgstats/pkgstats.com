@@ -22,6 +22,7 @@ const base = `
     display: flex;
     flex-direction: column;
     justify-content: stretch;
+    min-height: 100vh;
   }
 
   a {
@@ -35,6 +36,10 @@ const base = `
   h5,
   h6 {
     font-weight: 400;
+  }
+
+  .site-wrapper {
+    flex: 1;
   }
 `;
 

@@ -11,7 +11,7 @@ export const fetchUserPackages = (username) => {
       username,
     });
 
-    NPMService.getUserPackages(username)
+    return NPMService.getUserPackages(username)
       .then(response => {
         dispatch({
           type: FETCH_USER_PACKAGES_SUCCESS,

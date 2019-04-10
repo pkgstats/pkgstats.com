@@ -12,10 +12,9 @@ class MyApp extends App {
       req,
     } = ctx;
 
-    let pageProps = {};
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps({ ctx });
-    }
+    let pageProps = Component.getInitialProps
+      ? await Component.getInitialProps(ctx)
+      : {};
 
     return {
       pageProps,

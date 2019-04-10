@@ -1,6 +1,7 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import SiteFooter from 'components/site-footer/SiteFooter';
 import SiteHeader from 'components/site-header/SiteHeader';
 
 export default class MyDocument extends Document {
@@ -24,6 +25,7 @@ export default class MyDocument extends Document {
             <Main />
             <NextScript />
           </div>
+          <SiteFooter />
         </body>
       </html>
     );

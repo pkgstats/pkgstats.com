@@ -11,7 +11,7 @@ export const fetchUser = (username) => {
       username,
     });
 
-    NPMService.getUser(username)
+    return NPMService.getUser(username)
       .then(response => {
         dispatch({
           type: FETCH_USER_PROFILE_SUCCESS,

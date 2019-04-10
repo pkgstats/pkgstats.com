@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { Link } from '../../../routes';
 
 const Header = styled.header`
-  dislay: flex;
+  display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 2rem;
 
   .site-header__logo__link {
@@ -15,6 +16,16 @@ const Header = styled.header`
     font-size: 2rem;
     margin: 0;
   }
+
+  .site-header__nav a {
+    display: inline-block;
+    font-size: 1.6rem;
+    text-decoration: none;
+  }
+
+  .site-header__nav a + a {
+    margin-left: 2rem;
+  }
 `;
 
 export default () => (
@@ -22,7 +33,7 @@ export default () => (
     <div className="site-header__logo">
       <Link to="/">
         <a className="site-header__logo__link">
-          <h1 className="site-header__logo__type">PkgStats</h1>
+          <h1 className="site-header__logo__type">Pkg Stats</h1>
         </a>
       </Link>
     </div>

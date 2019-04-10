@@ -5,11 +5,29 @@ const routes = require('./routes');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
+
+const NPMService = require('./src/store/services/NPMService');
+const npm = require('./services/npm');
+
 const app = nextJS({ dev, dir: './src' });
 const handler = routes.getRequestHandler(app);
 
 app.prepare().then(() => {
   const server = express();
+
+  server.use((req, res, next) => {
+    const {
+      hostname,
+      protocol,
+    } = req;
+
+    NPMService.origin = `${protocol}://${hostname}:${port}/npm`;
+
+    next();
+  });
+
+  // NPM routes
+  server.use('/npm', npm);
 
   // Static assets
   server.use('/static', express.static(path.join(__dirname, 'src', 'static')));
