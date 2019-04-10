@@ -1,0 +1,18 @@
+{
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "modules": "commonjs"
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./src"],
+      "extensions": [".js", ".jsx", ".es", ".es6", ".mjs", ".ts", ".tsx"],
+    }]
+  ]
+}

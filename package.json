@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "next ./src",
+    "build": "next build ./src",
+    "start": "next start ./src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -14,7 +17,9 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^3.2.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ryanhefner/pkgstats.git"
