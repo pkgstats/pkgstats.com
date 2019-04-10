@@ -1,0 +1,28 @@
+{
+  "name": "pkgstats",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "next": "^8.0.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.0.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanhefner/pkgstats.git"
+  },
+  "author": "Ryan Hefner <hi@ryanhefner.com> (https://www.ryanhefner.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanhefner/pkgstats/issues"
+  },
+  "homepage": "https://pkgstats.com"
+}
