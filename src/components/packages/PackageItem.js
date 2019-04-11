@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'components/base/Link';
 import Router from 'components/base/Router';
+import NPMService from 'store/services/NPMService';
 import fecha from 'fecha';
 
 const Package = styled.div`
@@ -36,7 +37,7 @@ const Package = styled.div`
   }
 
   .package-item__author {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin: 0;
   }
 
@@ -46,6 +47,7 @@ const Package = styled.div`
 
   .package-item__version {
     display: inline-block;
+    font-family: var(--font-family-mono);
     font-size: 1.2rem;
     border: 1px solid #333;
     border-radius: 0.2rem;
@@ -64,6 +66,22 @@ const Package = styled.div`
 
   .package-item__graph-holder {
     flex: 1;
+  }
+
+  .package-item__downloads {
+    font-family: var(--font-family-mono);
+    font-size: 1.8rem;
+
+  }
+
+  .package-item__downloads__count {
+    margin: 0 2rem;
+  }
+
+  .package-item__label {
+    font-size: 1rem;
+    color: #999;
+    margin: 0 2rem 0.5rem;
   }
 
   .package-item__links {
@@ -94,7 +112,30 @@ class PackageItem extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      downloads: null,
+      error: null,
+    };
+
     this.onItemClick = this.onItemClick.bind(this);
+  }
+
+  componentDidMount() {
+    const {
+      pkg,
+    } = this.props;
+
+    NPMService.getDownloads(pkg.package.name)
+      .then(downloads => {
+        this.setState({
+          downloads,
+        });
+      })
+      .catch(error => {
+        this.setState({
+          error,
+        });
+      });
   }
 
   onItemClick(evt) {
@@ -126,6 +167,29 @@ class PackageItem extends Component {
     return links;
   }
 
+  renderDownloads() {
+    const {
+      downloads,
+    } = this.state;
+
+    if (!downloads) {
+      return null;
+    }
+
+    const totalDownloads = downloads.downloads
+      .map(item => item.downloads)
+      .reduce((acc, cur) => {
+        return acc + cur;
+      }, 0);
+
+    return (
+      <div className="package-item__downloads">
+        <p className="package-item__label">Downloads</p>
+        <p className="package-item__downloads__count">{totalDownloads.toLocaleString()}</p>
+      </div>
+    );
+  }
+
   render() {
     const {
       pkg,
@@ -152,7 +216,7 @@ class PackageItem extends Component {
             </div>
           </div>
           <div className="package-item__graph-holder">
-
+            {this.renderDownloads()}
           </div>
           <div className="package-item__links">
             {this.renderLinks()}

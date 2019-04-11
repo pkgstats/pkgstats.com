@@ -4,7 +4,7 @@
 // const apiOrigin = 'https://api.npmjs.org';
 
 // let _origin = 'https://pkgstats.com/npm';
-let _origin = 'http://192.168.1.198:3000/npm';
+let _origin = 'http://192.168.1.32:3000/npm';
 
 class NPMService {
   static get origin() {
@@ -72,9 +72,8 @@ class NPMService {
     return this.makeRequest(`/search?text=${text}&size=${size}`);
   }
 
-  static getDownloads(packages, timeframe = 'last-month') {
-    // return this.makeRequest(`${apiOrigin}/downloads/point/${timeframe}/${packages}`);
-    return this.makeRequest(`/downloads/${timeframe}/${packages}`);
+  static getDownloads(packages, type = 'range', timeframe = 'last-month') {
+    return this.makeRequest(`/downloads/${type}/${timeframe}/${packages}`);
   }
 }
 
