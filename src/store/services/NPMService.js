@@ -67,9 +67,9 @@ class NPMService {
     return this.search(`author:${username}`);
   }
 
-  static search(text) {
+  static search(text, size = 50) {
     // return this.makeRequest(`${registryOrigin}/-/v1/search?text=${text}&size=${size}&from=${from}&quality=${quality}&popularity=${popularity}&maintenance=${maintenance}`);
-    return this.makeRequest(`/search?text=${text}`);
+    return this.makeRequest(`/search?text=${text}&size=${size}`);
   }
 
   static getDownloads(packages, timeframe = 'last-month') {

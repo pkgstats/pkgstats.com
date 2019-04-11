@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Link from 'components/base/Link';
+import Router from 'components/base/Router';
 import fecha from 'fecha';
 
 const Package = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-
-  min-height: 25vh;
-
   a {
     text-decoration: none;
+  }
+
+  .package-item__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    background-color: var(--color-black);
+    transition: background-color 0.2s ease-in-out;
+    min-height: 25rem;
+  }
+
+  .package-item__link:hover {
+    background-color: #111;
   }
 
   .package-item__header-info {
@@ -58,11 +67,12 @@ const Package = styled.div`
   }
 
   .package-item__links {
-    padding: 1rem 2rem;
+    padding: 1rem 2rem 3rem;
     display: flex;
+    justify-content: stretch;
 
     a {
-      flex-basis: 33.3%;
+      flex: 1;
       text-align: center;
     }
   }
@@ -81,6 +91,20 @@ const Package = styled.div`
 `;
 
 class PackageItem extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onItemClick = this.onItemClick.bind(this);
+  }
+
+  onItemClick(evt) {
+    const {
+      pkg,
+    } = this.props;
+
+    Router.pushRoute(`/pkg/${pkg.package.name}`);
+  }
+
   renderLinks() {
     const {
       pkg,
@@ -109,28 +133,30 @@ class PackageItem extends Component {
 
     return (
       <Package>
-        <div className="package-item__header-info">
-          <div className="package-item__column">
-            <h3 className="package-item__name">{pkg.package.name}</h3>
-            <p className="package-item__author">
-              <a
-                href={`https://npmjs.com/~${pkg.package.author.username}`}
-                className="package-item__author-link"
-              >{pkg.package.author.name}</a>
-            </p>
+        <div className="package-item__link" onClick={this.onItemClick}>
+          <div className="package-item__header-info">
+            <div className="package-item__column">
+              <h3 className="package-item__name">{pkg.package.name}</h3>
+              <p className="package-item__author">
+                <a
+                  href={`https://npmjs.com/~${pkg.package.author.username}`}
+                  className="package-item__author-link"
+                >{pkg.package.author.name}</a>
+              </p>
+            </div>
+            <div className="package-item__column">
+              <p className="package-item__version">v{pkg.package.version}</p>
+              <p className="package-item__date">
+                {fecha.format(new Date(pkg.package.date), 'shortDate')}
+              </p>
+            </div>
           </div>
-          <div className="package-item__column">
-            <p className="package-item__version">v{pkg.package.version}</p>
-            <p className="package-item__date">
-              {fecha.format(new Date(pkg.package.date), 'shortDate')}
-            </p>
-          </div>
-        </div>
-        <div className="package-item__graph-holder">
+          <div className="package-item__graph-holder">
 
-        </div>
-        <div className="package-item__links">
-          {this.renderLinks()}
+          </div>
+          <div className="package-item__links">
+            {this.renderLinks()}
+          </div>
         </div>
       </Package>
     );

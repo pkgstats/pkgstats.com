@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from '../../../routes';
+import Link from 'components/base/Link';
 
 const Header = styled.header`
   display: flex;
