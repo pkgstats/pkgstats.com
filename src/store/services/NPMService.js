@@ -4,7 +4,7 @@
 // const apiOrigin = 'https://api.npmjs.org';
 
 // let _origin = 'https://pkgstats.com/npm';
-let _origin = 'http://192.168.1.32:3000/npm';
+let _origin = 'http://192.168.1.198:3000/npm';
 
 class NPMService {
   static get origin() {

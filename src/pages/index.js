@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PackageGrid from 'components/packages/PackageGrid';
 import { fetchUserPackages } from 'store/actions/PackageActions';
 
 class Index extends Component {
@@ -13,8 +14,6 @@ class Index extends Component {
       packages,
     } = this.props;
 
-    console.debug(packages);
-
     return packages.items.map(item => (
       <div
         className="package-item"
@@ -26,10 +25,13 @@ class Index extends Component {
   }
 
   render() {
+    const {
+      packages,
+    } = this.props;
 
     return (
       <main className="app-view app-view--home">
-        {this.renderPackages()}
+        <PackageGrid items={packages.items} />
       </main>
     );
   }

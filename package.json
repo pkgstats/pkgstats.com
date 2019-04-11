@@ -12,11 +12,13 @@
   "dependencies": {
     "es6-promise": "^4.2.6",
     "express": "^4.16.4",
+    "fecha": "^3.0.2",
     "isomorphic-fetch": "^2.2.1",
     "next": "^8.0.4",
     "next-redux-wrapper": "^3.0.0-alpha.2",
     "next-routes": "^1.4.2",
     "npm-user": "^4.1.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.1",

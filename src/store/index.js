@@ -2,6 +2,7 @@ import { compose, createStore, applyMiddleware, combineReducers } from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import ApiService from './services/ApiService';
+import NPMService from './services/NPMService';
 import defaultReducers from './reducers';
 import { initialState as initialStateAuth } from './reducers/auth';
 import { initialState as initialStatePackages } from './reducers/packages';
@@ -59,7 +60,15 @@ export default function configureStore(initialState = {}, {
     ...reducers,
   }), state, enhancer);
 
-  // ApiService.store = store;
+  ApiService.store = store;
+
+  if (typeof window !== 'undefined') {
+    const {
+      origin,
+    } = window.location;
+
+    NPMService.origin = `${origin}/npm`;
+  }
 
   return store;
 }
