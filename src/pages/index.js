@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PackageGrid from 'components/packages/PackageGrid';
-import { fetchUserPackages } from 'store/actions/PackageActions';
+import { searchPackages } from 'store/actions/PackageActions';
 
 class Index extends Component {
   static async getInitialProps({ store }) {
-    await store.dispatch(fetchUserPackages('ryanhefner'));
+    await store.dispatch(searchPackages('react'));
   }
 
   renderPackages() {
@@ -50,7 +50,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     actions: bindActionCreators({
-      fetchUserPackages,
+      searchPackages,
     }, dispatch),
   };
 };
