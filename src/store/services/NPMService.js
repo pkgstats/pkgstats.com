@@ -67,9 +67,26 @@ class NPMService {
     return this.search(`maintainer:${username}`);
   }
 
-  static search(text, size = 50) {
-    // return this.makeRequest(`${registryOrigin}/-/v1/search?text=${text}&size=${size}&from=${from}&quality=${quality}&popularity=${popularity}&maintenance=${maintenance}`);
-    return this.makeRequest(`/search?text=${text}&size=${size}`);
+  static search(text = '', {size = 50, skip = 0, quality = null, popularity = null, maintenance = null} = {}) {
+    let params = `?size=${size}&from=${skip}`;
+
+    if (text !== '') {
+      params += `&text=${text}`;
+    }
+
+    if (quality !== null) {
+      params += `&quality=${quality}`;
+    }
+
+    if (popularity !== null) {
+      params += `&popularity=${popularity}`;
+    }
+
+    if (maintenance !== null) {
+      params += `&maintenance=${maintenance}`;
+    }
+
+    return this.makeRequest(`/search?${params}`);
   }
 
   static getDownloads(packages, type = 'range', timeframe = 'last-month') {
