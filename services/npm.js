@@ -26,15 +26,15 @@ router.get('/users/:username', async (req, res) => {
   res.json(user);
 });
 
-router.get('/downloads/:timeframeType/:timeframe/:packages*', async (req, res) => {
+router.get('/downloads/:type/:timeframe/:packages*', async (req, res) => {
   try {
     const {
       packages,
       timeframe,
-      timeframeType
+      type,
     } = req.params;
 
-    const url = `${apiOrigin}/downloads/${timeframeType}/${timeframe}/${packages}`;
+    const url = `${apiOrigin}/downloads/${type}/${timeframe}/${packages}${req.params[0] ? `/${req.params[0]}` : ''}`;
     const response = await fetch(url);
     const json = await response.json();
 
