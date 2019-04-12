@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Sparklines, SparklinesLine } from 'react-sparklines';
 import Link from 'components/base/Link';
 import Router from 'components/base/Router';
 import NPMService from 'store/services/NPMService';
@@ -17,7 +18,7 @@ const Package = styled.div`
     justify-content: stretch;
     background-color: var(--color-black);
     transition: background-color 0.2s ease-in-out;
-    min-height: 25rem;
+    height: 23rem;
   }
 
   .package-item__link:hover {
@@ -34,6 +35,7 @@ const Package = styled.div`
     font-size: 1.4rem;
     margin: 0;
     margin-bottom: 0.7rem;
+    padding-right: 2rem;
   }
 
   .package-item__author {
@@ -66,16 +68,18 @@ const Package = styled.div`
 
   .package-item__graph-holder {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
   .package-item__downloads {
     font-family: var(--font-family-mono);
     font-size: 1.8rem;
-
   }
 
   .package-item__downloads__count {
-    margin: 0 2rem;
+    margin: 0 2rem 1rem;
   }
 
   .package-item__label {
@@ -85,13 +89,13 @@ const Package = styled.div`
   }
 
   .package-item__links {
-    padding: 1rem 2rem 3rem;
+    // background-color: #333;
+    padding: 1.5rem 2.6rem 1.5rem 2rem;
     display: flex;
-    justify-content: stretch;
+    justify-content: flex-end;
 
-    a {
-      flex: 1;
-      text-align: center;
+    a + a {
+      margin-left: 1rem;
     }
   }
 
@@ -103,7 +107,7 @@ const Package = styled.div`
     flex-basis: 25%;
   }
 
-  @media all and (min-width: 1440px) {
+  @media all and (min-width: 1920px) {
     flex-basis: 20%;
   }
 `;
@@ -172,7 +176,7 @@ class PackageItem extends Component {
       downloads,
     } = this.state;
 
-    if (!downloads) {
+    if (!downloads || !(downloads.downloads || Array.isArray(downloads.downloads))) {
       return null;
     }
 
@@ -182,10 +186,17 @@ class PackageItem extends Component {
         return acc + cur;
       }, 0);
 
+    const graphData = downloads.downloads.map(item => item.downloads);
+
     return (
       <div className="package-item__downloads">
         <p className="package-item__label">Downloads</p>
         <p className="package-item__downloads__count">{totalDownloads.toLocaleString()}</p>
+        <div className="package-item__graph">
+          <Sparklines data={graphData} height={25}>
+            <SparklinesLine color="#333" style={{ fill: 'none' }} />
+          </Sparklines>
+        </div>
       </div>
     );
   }
@@ -200,13 +211,20 @@ class PackageItem extends Component {
         <div className="package-item__link" onClick={this.onItemClick}>
           <div className="package-item__header-info">
             <div className="package-item__column">
-              <h3 className="package-item__name">{pkg.package.name}</h3>
-              <p className="package-item__author">
-                <a
-                  href={`https://npmjs.com/~${pkg.package.author.username}`}
-                  className="package-item__author-link"
-                >{pkg.package.author.name}</a>
-              </p>
+              <Link to={`/pkg/${pkg.package.name}`}>
+                <a>
+                  <h3 className="package-item__name">{pkg.package.name}</h3>
+                </a>
+              </Link>
+              {!!(pkg.package.publisher && pkg.package.publisher.username) && (
+                <p className="package-item__author">
+                  <Link to={`/@${pkg.package.publisher.username}`}>
+                    <a className="package-item__author-link">
+                      {pkg.package.author ? pkg.package.author.name : pkg.package.publisher.username}
+                    </a>
+                  </Link>
+                </p>
+              )}
             </div>
             <div className="package-item__column">
               <p className="package-item__version">v{pkg.package.version}</p>

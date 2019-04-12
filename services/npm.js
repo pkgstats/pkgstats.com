@@ -26,7 +26,7 @@ router.get('/users/:username', async (req, res) => {
   res.json(user);
 });
 
-router.get('/downloads/:timeframeType/:timeframe/:packages', async (req, res) => {
+router.get('/downloads/:timeframeType/:timeframe/:packages*', async (req, res) => {
   try {
     const {
       packages,

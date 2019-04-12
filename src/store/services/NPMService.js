@@ -4,7 +4,7 @@
 // const apiOrigin = 'https://api.npmjs.org';
 
 // let _origin = 'https://pkgstats.com/npm';
-let _origin = 'http://192.168.1.32:3000/npm';
+let _origin = 'http://192.168.1.198:3000/npm';
 
 class NPMService {
   static get origin() {
@@ -64,7 +64,7 @@ class NPMService {
   }
 
   static getUserPackages(username) {
-    return this.search(`author:${username}`);
+    return this.search(`maintainer:${username}`);
   }
 
   static search(text, size = 50) {
