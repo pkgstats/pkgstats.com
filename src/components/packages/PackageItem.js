@@ -84,6 +84,7 @@ const Package = styled.div`
 
   .package-item__label {
     font-size: 1rem;
+    // text-transform: uppercase;
     color: #999;
     margin: 0 2rem 0.5rem;
   }
@@ -143,6 +144,7 @@ class PackageItem extends Component {
   }
 
   onItemClick(evt) {
+
     const {
       pkg,
     } = this.props;
@@ -208,7 +210,7 @@ class PackageItem extends Component {
 
     return (
       <Package>
-        <div className="package-item__link" onClick={this.onItemClick}>
+        <div className="package-item__link">
           <div className="package-item__header-info">
             <div className="package-item__column">
               <Link to={`/pkg/${pkg.package.name}`}>
