@@ -213,14 +213,14 @@ class PackageItem extends Component {
         <div className="package-item__link">
           <div className="package-item__header-info">
             <div className="package-item__column">
-              <Link to={`/pkg/${pkg.package.name}`}>
+              <Link route={`/pkg/${pkg.package.name}`}>
                 <a>
                   <h3 className="package-item__name">{pkg.package.name}</h3>
                 </a>
               </Link>
               {!!(pkg.package.publisher && pkg.package.publisher.username) && (
                 <p className="package-item__author">
-                  <Link to={`/@${pkg.package.publisher.username}`}>
+                  <Link route={`/@${pkg.package.publisher.username}`}>
                     <a className="package-item__author-link">
                       {pkg.package.author ? pkg.package.author.name : pkg.package.publisher.username}
                     </a>

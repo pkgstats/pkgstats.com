@@ -2,26 +2,13 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PackageGrid from 'components/packages/PackageGrid';
-import { searchPackages } from 'store/actions/PackageActions';
+import { searchNpm } from 'store/actions/SearchNpmActions';
 
 class Index extends Component {
   static async getInitialProps({ store }) {
-    await store.dispatch(searchPackages('react'));
-  }
-
-  renderPackages() {
-    const {
-      packages,
-    } = this.props;
-
-    return packages.items.map(item => (
-      <div
-        className="package-item"
-        key={`package-item-${item.package.name}`}
-      >
-        <h3 className="package-item__name">{item.package.name}</h3>
-      </div>
-    ));
+    await store.dispatch(searchNpm('react', {
+      popularity: 1
+    }));
   }
 
   render() {
@@ -31,7 +18,7 @@ class Index extends Component {
 
     return (
       <main className="app-view app-view--home">
-        <PackageGrid items={packages.items} />
+        <PackageGrid items={packages} />
       </main>
     );
   }
@@ -39,8 +26,14 @@ class Index extends Component {
 
 const mapStateToProps = (state, props) => {
   const {
-    packages,
+    searches,
   } = state;
+
+  const searchKey = 'popularity:1-text:react';
+
+  const packages = searches.hasOwnProperty(searchKey)
+    ? searches[searchKey].objects
+    : [];
 
   return {
     packages,
@@ -50,7 +43,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     actions: bindActionCreators({
-      searchPackages,
+      searchNpm,
     }, dispatch),
   };
 };

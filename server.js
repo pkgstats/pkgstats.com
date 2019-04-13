@@ -23,7 +23,7 @@ app.prepare().then(() => {
 
     NPMService.origin = `${protocol}://${hostname}:${port}/npm`;
 
-    console.debug(NPMService.origin);
+    // console.debug(NPMService.origin);
 
     next();
   });

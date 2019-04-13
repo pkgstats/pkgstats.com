@@ -1,8 +1,3 @@
-// const npmUser = require('npm-user');
-
-// const registryOrigin = 'https://registry.npmjs.org';
-// const apiOrigin = 'https://api.npmjs.org';
-
 // let _origin = 'https://pkgstats.com/npm';
 let _origin = 'http://192.168.1.198:3000/npm';
 
@@ -56,10 +51,6 @@ class NPMService {
   }
 
   static getUser(username) {
-    // return Promise.reject(null);
-
-    // return npmUser(username);
-
     return this.makeRequest(`/users/${username}`);
   }
 
@@ -67,8 +58,24 @@ class NPMService {
     return this.search(`maintainer:${username}`);
   }
 
-  static search(text = '', {size = 50, skip = 0, quality = null, popularity = null, maintenance = null} = {}) {
-    let params = `?size=${size}&from=${skip}`;
+  static search(text = '', options = {}) {
+    const requestOptions = Object.assign({}, {
+      size: 50,
+      skip: 0,
+      quality: null,
+      popularity: null,
+      maintenance: null,
+    }, options);
+
+    const {
+      size,
+      skip,
+      quality,
+      popularity,
+      maintenance,
+    } = requestOptions;
+
+    let params = `size=${size}&from=${skip}`;
 
     if (text !== '') {
       params += `&text=${text}`;
