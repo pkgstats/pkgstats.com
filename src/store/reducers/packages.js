@@ -1,49 +1,46 @@
 import {
-  FETCH_USER_PACKAGES_REQUEST,
-  FETCH_USER_PACKAGES_SUCCESS,
-  FETCH_USER_PACKAGES_ERROR,
-  SEARCH_PACKAGES_REQUEST,
-  SEARCH_PACKAGES_SUCCESS,
-  SEARCH_PACKAGES_ERROR,
+  FETCH_PACKAGE_REQUEST,
+  FETCH_PACKAGE_SUCCESS,
+  FETCH_PACKAGE_ERROR,
 } from '../actions/PackageActions';
 
-export const initialState = {
+export const initialStatePackage = {
   fetching: false,
   error: null,
-  items: [],
 };
 
-const pkg = (state = {}, action) => {
+const pkg = (state = initialStatePackage, action) => {
   switch (action.type) {
-    default:
-      return state;
-  }
-};
-
-const packages = (state = initialState, action) => {
-  switch (action.type) {
-    case FETCH_USER_PACKAGES_REQUEST:
-    case SEARCH_PACKAGES_REQUEST:
+    case FETCH_PACKAGE_REQUEST:
       return Object.assign({}, state, {
         fetching: true,
         error: null,
       });
 
-    case FETCH_USER_PACKAGES_ERROR:
-    case SEARCH_PACKAGES_ERROR:
+    case FETCH_PACKAGE_ERROR:
       return Object.assign({}, state, {
         fetching: false,
         error: action.error,
       });
 
-    case FETCH_USER_PACKAGES_SUCCESS:
-    case SEARCH_PACKAGES_SUCCESS:
+    case FETCH_PACKAGE_SUCCESS:
       return Object.assign({}, state, {
         fetching: false,
-        items: [
-          ...state.items,
-          ...action.response.objects,
-        ],
+        ...action.response,
+      });
+
+    default:
+      return state;
+  }
+};
+
+const packages = (state = {}, action) => {
+  switch (action.type) {
+    case FETCH_PACKAGE_REQUEST:
+    case FETCH_PACKAGE_ERROR:
+    case FETCH_PACKAGE_SUCCESS:
+      return Object.assign({}, state, {
+        [action.pkg]: pkg(state[action.pkg], action),
       });
 
     default:

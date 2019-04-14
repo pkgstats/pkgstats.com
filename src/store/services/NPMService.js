@@ -44,10 +44,10 @@ class NPMService {
 
   static getPackage(pkg, version = null) {
     if (version) {
-      return this.makeRequest(`${registryOrigin}/${pkg}/${version}`);
+      return this.makeRequest(`/pkg/${pkg}/${version}`);
     }
 
-    return this.makeRequest(`${registryOrigin}/${pkg}`);
+    return this.makeRequest(`/pkg/${pkg}`);
   }
 
   static getUser(username) {

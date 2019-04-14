@@ -41,6 +41,10 @@ const base = `
   .site-wrapper {
     flex: 1;
   }
+
+  .app-view {
+    margin-top: 6.3rem;
+  }
 `;
 
 export default base;

@@ -1,31 +1,23 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 import PackageGrid from 'components/packages/PackageGrid';
-import { searchPackages } from 'store/actions/PackageActions';
+import { searchNpm } from 'store/actions/SearchNpmActions';
 
 class User extends Component {
   static async getInitialProps({ query, store }) {
-      const {
-        username,
-      } = query;
-
-      await store.dispatch(searchPackages(`maintainer:${username}`));
-  }
-
-  renderPackages() {
     const {
-      packages,
-    } = this.props;
+      username,
+    } = query;
 
-    return packages.items.map(item => (
-      <div
-        className="package-item"
-        key={`package-item-${item.package.name}`}
-      >
-        <h3 className="package-item__name">{item.package.name}</h3>
-      </div>
-    ));
+    const {
+      searches,
+    } = store.getState();
+
+    if (!searches[`text:maintainer:${username}`]) {
+      await store.dispatch(searchNpm(`maintainer:${username}`));
+    }
   }
 
   render() {
@@ -35,7 +27,7 @@ class User extends Component {
 
     return (
       <main className="app-view app-view--home">
-        <PackageGrid items={packages.items} />
+        <PackageGrid items={packages} />
       </main>
     );
   }
@@ -43,8 +35,18 @@ class User extends Component {
 
 const mapStateToProps = (state, props) => {
   const {
-    packages,
+    searches,
   } = state;
+
+  const {
+    router,
+  } = props;
+
+  const searchKey = `text:maintainer:${router.query.username}`;
+
+  const packages = searches.hasOwnProperty(searchKey)
+    ? searches[searchKey].objects
+    : [];
 
   return {
     packages,
@@ -54,12 +56,12 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     actions: bindActionCreators({
-      searchPackages,
+      searchNpm,
     }, dispatch),
   };
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(User);
+)(User));

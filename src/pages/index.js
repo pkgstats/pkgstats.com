@@ -6,9 +6,15 @@ import { searchNpm } from 'store/actions/SearchNpmActions';
 
 class Index extends Component {
   static async getInitialProps({ store }) {
-    await store.dispatch(searchNpm('react', {
-      popularity: 1
-    }));
+    const {
+      searches,
+    } = store.getState();
+
+    if (!searches['popularity:1-text:react']) {
+      await store.dispatch(searchNpm('react', {
+        popularity: 1
+      }));
+    }
   }
 
   render() {

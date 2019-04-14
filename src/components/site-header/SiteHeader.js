@@ -5,6 +5,11 @@ import Router from 'components/base/Router';
 import GlobalSearch from './GlobalSearch';
 
 const Header = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-black);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,12 +47,12 @@ class SiteHeader extends Component {
 
     console.debug('onSearchChange', text);
 
-    if (text !== '') {
-      Router.pushRoute(`/?search=${text}`);
-      return;
-    }
+    // if (text !== '') {
+    //   Router.pushRoute(`/?search=${text}`);
+    //   return;
+    // }
 
-    Router.pushRoute('/');
+    // Router.pushRoute('/');
   }
 
   render() {

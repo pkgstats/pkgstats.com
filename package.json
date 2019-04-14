@@ -10,6 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "chart.js": "^2.8.0",
     "es6-promise": "^4.2.6",
     "express": "^4.16.4",
     "fecha": "^3.0.2",

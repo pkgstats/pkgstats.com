@@ -1,81 +1,30 @@
 import NPMService from '../services/NPMService';
 
-export const FETCH_USER_PACKAGES_REQUEST = 'FETCH_USER_PACKAGES_REQUEST';
-export const FETCH_USER_PACKAGES_SUCCESS = 'FETCH_USER_PACKAGES_SUCCESS';
-export const FETCH_USER_PACKAGES_ERROR = 'FETCH_USER_PACKAGES_ERROR';
+export const FETCH_PACKAGE_REQUEST = 'FETCH_PACKAGE_REQUEST';
+export const FETCH_PACKAGE_SUCCESS = 'FETCH_PACKAGE_SUCCESS';
+export const FETCH_PACKAGE_ERROR = 'FETCH_PACKAGE_ERROR';
 
-export const SEARCH_PACKAGES_REQUEST = 'SEARCH_PACKAGES_REQUEST';
-export const SEARCH_PACKAGES_SUCCESS = 'SEARCH_PACKAGES_SUCCESS';
-export const SEARCH_PACKAGES_ERROR = 'SEARCH_PACKAGES_ERROR';
-
-
-export const fetchUserPackages = (username) => {
+export const fetchPackage = (pkg) => {
   return (dispatch, getState) => {
     dispatch({
-      type: FETCH_USER_PACKAGES_REQUEST,
-      username,
+      type: FETCH_PACKAGE_REQUEST,
+      pkg,
     });
 
-    return NPMService.getUserPackages(username)
+    return NPMService.getPackage(pkg)
       .then(response => {
         dispatch({
-          type: FETCH_USER_PACKAGES_SUCCESS,
+          type: FETCH_PACKAGE_SUCCESS,
           response,
-          username,
+          pkg,
         });
       })
       .catch(error => {
         dispatch({
-          type: FETCH_USER_PACKAGES_ERROR,
+          type: FETCH_PACKAGE_ERROR,
           error,
-          username,
+          pkg,
         });
       });
-  };
-};
-
-export const searchPackages = (text = '', {size = 50, skip = 0, quality = null, popularity = null, maintenance = null} = {}) => {
-  return (dispatch, getState) => {
-    dispatch({
-      type: SEARCH_PACKAGES_REQUEST,
-      text,
-      size,
-      skip,
-      quality,
-      popularity,
-      maintenance,
-    });
-
-    return NPMService.search(text, {
-      size,
-      skip,
-      quality,
-      popularity,
-      maintenance,
-    })
-      .then(response => {
-        dispatch({
-          type: SEARCH_PACKAGES_SUCCESS,
-          response,
-          text,
-          size,
-          skip,
-          quality,
-          popularity,
-          maintenance,
-        });
-      })
-      .catch(error => {
-        dispatch({
-          type: SEARCH_PACKAGES_ERROR,
-          error,
-          text,
-          size,
-          skip,
-          quality,
-          popularity,
-          maintenance,
-        });
-      });
-  };
-};
+  }
+}
