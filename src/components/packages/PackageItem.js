@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
 import Link from 'components/base/Link';
 import Router from 'components/base/Router';
-import NPMService from 'store/services/NPMService';
+import { fetchDownloads } from 'store/actions/DownloadsActions';
 import fecha from 'fecha';
 
 const Package = styled.div`
@@ -117,34 +119,22 @@ class PackageItem extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      downloads: null,
-      error: null,
-    };
-
     this.onItemClick = this.onItemClick.bind(this);
   }
 
   componentDidMount() {
     const {
+      actions,
+      downloads,
       pkg,
     } = this.props;
 
-    NPMService.getDownloads(pkg.package.name)
-      .then(downloads => {
-        this.setState({
-          downloads,
-        });
-      })
-      .catch(error => {
-        this.setState({
-          error,
-        });
-      });
+    if (!downloads) {
+      actions.fetchDownloads(pkg.package.name);
+    }
   }
 
   onItemClick(evt) {
-
     const {
       pkg,
     } = this.props;
@@ -176,19 +166,19 @@ class PackageItem extends Component {
   renderDownloads() {
     const {
       downloads,
-    } = this.state;
+    } = this.props;
 
-    if (!downloads || !(downloads.downloads || Array.isArray(downloads.downloads))) {
+    if (!downloads || !downloads.response) {
       return null;
     }
 
-    const totalDownloads = downloads.downloads
+    const totalDownloads = downloads.response.downloads
       .map(item => item.downloads)
       .reduce((acc, cur) => {
         return acc + cur;
       }, 0);
 
-    const graphData = downloads.downloads.map(item => item.downloads);
+    const graphData = downloads.response.downloads.map(item => item.downloads);
 
     return (
       <div className="package-item__downloads">
@@ -247,4 +237,31 @@ class PackageItem extends Component {
   }
 }
 
-export default PackageItem;
+const mapStateToProps = (state, props) => {
+  const {
+    pkg,
+  } = props;
+
+  const {
+    downloads: downloadsState,
+  } = state;
+
+  const downloads = downloadsState[`packages:${pkg.package.name}:type:range:timeframe:last-month`];
+
+  return {
+    downloads,
+  };
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    actions: bindActionCreators({
+      fetchDownloads,
+    }, dispatch),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PackageItem);

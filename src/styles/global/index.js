@@ -12,7 +12,9 @@ export const Vars = createGlobalStyle`${vars}`;
 
 export default () => (
   <Fragment>
+    {/*
     <Fonts />
+    */}
     <Vars />
     <Reset />
     <Base />
