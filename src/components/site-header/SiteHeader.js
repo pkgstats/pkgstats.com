@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 import styled from 'styled-components';
 import Link from 'components/base/Link';
 import Router from 'components/base/Router';
@@ -13,10 +15,13 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
 
   .site-header__logo__link {
+    display: block;
     text-decoration: none;
+    padding: 2rem;
+    background-color: var(--color-white);
+    color: var(--color-black);
   }
 
   .site-header__logo__type {
@@ -36,26 +41,56 @@ const Header = styled.header`
   }
 `;
 
+const checkUser = (value) => {
+  return /@(.*)/.exec(value);
+};
+
+const checkPackage = (value) => {
+  return /pkg:(.*)/.exec(value);
+};
+
 class SiteHeader extends Component {
   constructor(props) {
     super(props);
 
+    this.searchTimeout = null;
     this.onSearchChange = this.onSearchChange.bind(this);
   }
 
+  setRoute(route) {
+    Router.pushRoute(route);
+  }
+
   onSearchChange(text = '') {
+    clearTimeout(this.searchTimeout);
 
-    console.debug('onSearchChange', text);
+    this.searchTimeout = setTimeout(() => {
+      if (text !== '') {
+        const packageCheck = checkPackage(text);
+        if (packageCheck) {
+          this.setRoute(`/pkg:${packageCheck[1]}`);
+          return;
+        }
 
-    // if (text !== '') {
-    //   Router.pushRoute(`/?search=${text}`);
-    //   return;
-    // }
+        const userCheck = checkUser(text);
+        if (userCheck) {
+          this.setRoute(`/@${userCheck[1]}`);
+          return;
+        }
 
-    // Router.pushRoute('/');
+        this.setRoute(`/?search=${text}`);
+        return;
+      }
+
+      this.setRoute('/');
+    }, 500);
   }
 
   render() {
+    const {
+      search,
+    } = this.props;
+
     return (
       <Header>
         <div className="site-header__logo">
@@ -65,6 +100,7 @@ class SiteHeader extends Component {
             </a>
           </Link>
         </div>
+        {/*
         <div className="site-header__nav">
           <nav>
             <Link route="/@ryanhefner">
@@ -78,10 +114,38 @@ class SiteHeader extends Component {
             </Link>
           </nav>
         </div>
-        <GlobalSearch onChange={this.onSearchChange} />
+        */}
+        <GlobalSearch
+          search={search}
+          onChange={this.onSearchChange}
+        />
       </Header>
     );
   }
 }
 
-export default SiteHeader;
+const mapStateToProps = (state, props) => {
+  const {
+    router,
+  } = props;
+
+  const userCheck = checkUser(router.asPath.substring(1));
+  const packageCheck = checkPackage(router.asPath.substring(1));
+
+  console.log(router);
+
+  const search = router.query.search
+    ? router.query.search
+    : router.pathname !== '/'
+      ? (userCheck && `@${userCheck[1]}`) || (packageCheck && `pkg:${packageCheck[1]}`)
+      : '';
+
+  return {
+    search,
+  };
+}
+
+export default withRouter(connect(
+  mapStateToProps,
+  null
+)(SiteHeader));

@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 import PackageGrid from 'components/packages/PackageGrid';
 import { searchNpm } from 'store/actions/SearchNpmActions';
 
 class Index extends Component {
-  static async getInitialProps({ store }) {
+  static async getInitialProps({ query, store }) {
     const {
       searches,
     } = store.getState();
 
-    if (!searches['popularity:1-text:react']) {
-      await store.dispatch(searchNpm('react', {
+    const searchTerm = query.search || 'react';
+
+    if (!searches[`popularity:1-text:${searchTerm}`]) {
+      await store.dispatch(searchNpm(searchTerm, {
         popularity: 1
       }));
     }
@@ -35,7 +38,12 @@ const mapStateToProps = (state, props) => {
     searches,
   } = state;
 
-  const searchKey = 'popularity:1-text:react';
+  const {
+    router,
+  } = props;
+
+  const search = router.query.search || 'react';
+  const searchKey = `popularity:1-text:${search}`;
 
   const packages = searches.hasOwnProperty(searchKey)
     ? searches[searchKey].objects
@@ -43,6 +51,7 @@ const mapStateToProps = (state, props) => {
 
   return {
     packages,
+    search,
   };
 };
 
@@ -54,7 +63,7 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Index);
+)(Index));

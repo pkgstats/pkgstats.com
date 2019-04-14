@@ -43,7 +43,7 @@ const base = `
   }
 
   .app-view {
-    margin-top: 6.3rem;
+    margin-top: 6rem;
   }
 `;
 

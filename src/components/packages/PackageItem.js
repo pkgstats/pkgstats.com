@@ -139,7 +139,7 @@ class PackageItem extends Component {
       pkg,
     } = this.props;
 
-    Router.pushRoute(`/pkg/${pkg.package.name}`);
+    Router.pushRoute(`/pkg:${pkg.package.name}`);
   }
 
   renderLinks() {
@@ -203,7 +203,7 @@ class PackageItem extends Component {
         <div className="package-item__link">
           <div className="package-item__header-info">
             <div className="package-item__column">
-              <Link route={`/pkg/${pkg.package.name}`}>
+              <Link route={`/pkg:${pkg.package.name}`}>
                 <a>
                   <h3 className="package-item__name">{pkg.package.name}</h3>
                 </a>
