@@ -19,7 +19,7 @@ const Header = styled.header`
   .site-header__logo__link {
     display: block;
     text-decoration: none;
-    padding: 2rem;
+    padding: 1rem;
     background-color: var(--color-white);
     color: var(--color-black);
   }
@@ -38,6 +38,12 @@ const Header = styled.header`
 
   .site-header__nav a + a {
     margin-left: 2rem;
+  }
+
+  @media all and (min-width: 768px) {
+    .site-header__logo__link {
+      padding: 2rem;
+    }
   }
 `;
 
