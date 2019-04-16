@@ -10,6 +10,8 @@ import { fetchDownloads } from 'store/actions/DownloadsActions';
 import fecha from 'fecha';
 
 const Package = styled.div`
+  width: 100%;
+
   a {
     text-decoration: none;
   }
@@ -104,14 +106,17 @@ const Package = styled.div`
 
   @media all and (min-width: 768px) {
     flex-basis: 33.3%;
+    width: 33.3%;
   }
 
   @media all and (min-width: 1024px) {
     flex-basis: 25%;
+    width: 25%;
   }
 
   @media all and (min-width: 1920px) {
     flex-basis: 20%;
+    width: 20%;
   }
 `;
 
