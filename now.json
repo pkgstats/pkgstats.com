@@ -1,8 +1,12 @@
 {
   "name": "pkgstats",
   "version": 2,
-  "alias": ["pkgstats.com", "www.pkgstats.com", "api.pkgstats.com"],
+  "alias": ["pkgstats.com", "www.pkgstats.com"],
   "builds": [
-    { "src": "server.js", "use": "@now/node" }
+    {
+      "src": "package.json",
+      "use": "@now/next",
+      "config": { "maxLambdaSize": "10mb" }
+    }
   ]
 }
