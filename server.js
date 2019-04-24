@@ -15,6 +15,9 @@ const handler = routes.getRequestHandler(app);
 app.prepare().then(() => {
   const server = express();
 
+  // Static assets
+  server.use('/static', express.static(path.join(__dirname, 'src', 'static')));
+
   server.use((req, res, next) => {
     const {
       hostname,
@@ -30,9 +33,6 @@ app.prepare().then(() => {
 
   // NPM routes
   server.use('/npm', npm);
-
-  // Static assets
-  server.use('/static', express.static(path.join(__dirname, 'src', 'static')));
 
   // Routes
   server.use(handler);
