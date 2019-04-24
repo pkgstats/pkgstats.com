@@ -100,7 +100,7 @@ class Pkg extends Component {
       pkgDownloads,
     } = this.props;
 
-    if (!pkgDownloads) {
+    if (!pkgDownloads || !pkgDownloads.response) {
       return null;
     }
 
@@ -130,6 +130,10 @@ class Pkg extends Component {
       pkg,
     } = this.props;
 
+    if (!pkg || !pkg.keywords) {
+      return null;
+    }
+
     return pkg.keywords.map(keyword => (
       <Link route={`/keyword/${keyword}`} key={`package-keywords-${pkg.name}-${keyword}`}>
         <a>{keyword}</a>
@@ -141,6 +145,10 @@ class Pkg extends Component {
     const {
       pkg,
     } = this.props;
+
+    if (!pkg || !pkg.maintainers) {
+      return null;
+    }
 
     return pkg.maintainers.map(maintainer => (
       <Link route={`/@${maintainer.name}`} key={`package-maintainers-${pkg.name}-${maintainer.name}`}>
@@ -161,9 +169,11 @@ class Pkg extends Component {
           <div className="header-info__basic">
             <h1 className="header-info__name">{pkg.name}</h1>
           </div>
-          <div className="header-info__status">
-            <h2 className="header-info__version">{`v${pkg['dist-tags'].latest}`}</h2>
-          </div>
+          {pkg['dist-tags'] && (
+            <div className="header-info__status">
+              <h2 className="header-info__version">{`v${pkg['dist-tags'].latest}`}</h2>
+            </div>
+          )}
         </HeaderInfo>
         <InfoSection>
           <p className="info__desc">{pkg.description}</p>
