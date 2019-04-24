@@ -1,12 +1,17 @@
 {
   "name": "pkgstats",
   "version": 2,
-  "alias": ["pkgstats.com", "www.pkgstats.com"],
+  "github": {
+    "enabled": true
+  },
   "builds": [
     {
-      "src": "package.json",
-      "use": "@now/next",
-      "config": { "maxLambdaSize": "10mb" }
+      "src": "server.js",
+      "use": "@now/node-server",
+      "config": { "maxLambdaSize": "20mb" }
     }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "server.js" }
   ]
 }
