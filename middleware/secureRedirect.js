@@ -8,8 +8,8 @@ module.exports = (req, res, next) => {
   const host = req.get('host');
   const redirect = proto !== 'https' || hosts.indexOf(host) > -1;
   const redirectTo = (hosts.indexOf(host) > -1)
-    ? `https://www.${host}${req.path}`
-    : `https://${host}${req.path}`;
+    ? `https://www.${host}`
+    : `https://${host}`;
 
   if (redirect) {
     res.redirect(301, `${redirectTo}${req.originalUrl}`);
