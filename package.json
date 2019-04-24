@@ -26,13 +26,13 @@
     "react-redux": "^7.0.2",
     "react-sparklines": "^1.7.0",
     "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "^3.2.0",
-    "babel-plugin-styled-components": "^1.10.0",
-    "redux-logger": "^3.0.6"
+    "babel-plugin-styled-components": "^1.10.0"
   },
   "repository": {
     "type": "git",
