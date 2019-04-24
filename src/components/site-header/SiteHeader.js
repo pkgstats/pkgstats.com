@@ -68,7 +68,9 @@ class SiteHeader extends Component {
   }
 
   onSearchChange(text = '') {
-    clearTimeout(this.searchTimeout);
+    if (this.searchTimeout) {
+      clearTimeout(this.searchTimeout);
+    }
 
     this.searchTimeout = setTimeout(() => {
       if (text !== '') {
@@ -89,7 +91,7 @@ class SiteHeader extends Component {
       }
 
       this.setRoute('/');
-    }, 500);
+    }, 1000);
   }
 
   render() {
