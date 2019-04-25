@@ -9,6 +9,7 @@ const SearchInput = styled.input`
   border-radius: 0;
   margin: 0;
   padding: 1rem 2rem;
+  height: 6rem;
 
   flex: 1;
   font-family: var(--font-family-mono);

@@ -15,13 +15,17 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 6rem;
 
   .site-header__logo__link {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-decoration: none;
     padding: 1rem;
     background-color: var(--color-white);
     color: var(--color-black);
+    height: 6rem;
   }
 
   .site-header__logo__type {
@@ -43,6 +47,10 @@ const Header = styled.header`
   @media all and (min-width: 768px) {
     .site-header__logo__link {
       padding: 2rem;
+
+      br {
+        display: none;
+      }
     }
   }
 `;
@@ -129,7 +137,7 @@ class SiteHeader extends Component {
         <div className="site-header__logo">
           <Link route="/">
             <a className="site-header__logo__link">
-              <h1 className="site-header__logo__type">pkg stats</h1>
+              <h1 className="site-header__logo__type">pkg <br />stats</h1>
             </a>
           </Link>
         </div>
