@@ -226,7 +226,7 @@ class PackageItem extends Component {
             <div className="package-item__column">
               <p className="package-item__version">v{pkg.package.version}</p>
               <p className="package-item__date">
-                {fecha.format(new Date(pkg.package.date), 'shortDate')}
+                {!!(pkg.package && pkg.package.date) ? fecha.format(new Date(pkg.package.date), 'shortDate') : ''}
               </p>
             </div>
           </div>
