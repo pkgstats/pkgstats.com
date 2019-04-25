@@ -51,15 +51,17 @@ class PackageGraph extends Component {
 
     const ctx = this.chartRef.current.getContext('2d');
     this.chart = new Chart(ctx, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels,
         datasets: [
           {
             // backgroundColor: gradientColor(this.chartRef, ctx, data),
             // color: tickColor,
+            borderColor: '#666',
             data,
             label,
+            lineTension: 0,
           },
         ],
       },

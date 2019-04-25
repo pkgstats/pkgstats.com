@@ -191,7 +191,7 @@ class PackageItem extends Component {
         <p className="package-item__downloads__count">{totalDownloads.toLocaleString()}</p>
         <div className="package-item__graph">
           <Sparklines data={graphData} height={25}>
-            <SparklinesLine color="#333" style={{ fill: 'none' }} />
+            <SparklinesLine color="#666" style={{ fill: 'none' }} />
           </Sparklines>
         </div>
       </div>
