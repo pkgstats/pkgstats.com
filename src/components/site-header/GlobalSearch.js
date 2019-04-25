@@ -35,14 +35,6 @@ class GlobalSearch extends Component {
     this.onInputChange = this.onInputChange.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    // if (this.props.search !== this.state.text) {
-    //   this.setState({
-    //     text: this.props.search,
-    //   });
-    // }
-  }
-
   onInputChange(evt)  {
     this.setState({
       [evt.target.name]: evt.target.value,
@@ -53,6 +45,10 @@ class GlobalSearch extends Component {
 
   render() {
     const {
+      forwardedRef,
+    } = this.props;
+
+    const {
       text,
     } = this.state;
 
@@ -61,6 +57,7 @@ class GlobalSearch extends Component {
         type="text"
         name="text"
         placeholder="Search packages | pkg:[package-name] | @[username]"
+        ref={forwardedRef}
         value={text}
         onChange={this.onInputChange}
       />

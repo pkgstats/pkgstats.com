@@ -59,8 +59,33 @@ class SiteHeader extends Component {
   constructor(props) {
     super(props);
 
+    this.searchInput = null;
+
+    this.setSearchInput = element => {
+      this.searchInput = element;
+    };
+
     this.searchTimeout = null;
     this.onSearchChange = this.onSearchChange.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const {
+      router,
+    } = this.props;
+
+    const {
+      query,
+      asPath,
+    } = router;
+
+    const queryValue = query && query.search
+      ? query.search
+      : asPath.substring(1);
+
+    if (this.searchInput.value !== queryValue) {
+      this.searchInput.value = queryValue;
+    }
   }
 
   setRoute(route) {
@@ -124,6 +149,7 @@ class SiteHeader extends Component {
         </div>
         */}
         <GlobalSearch
+          forwardedRef={this.setSearchInput}
           search={search}
           onChange={this.onSearchChange}
         />
@@ -139,8 +165,6 @@ const mapStateToProps = (state, props) => {
 
   const userCheck = checkUser(router.asPath.substring(1));
   const packageCheck = checkPackage(router.asPath.substring(1));
-
-  console.log(router);
 
   const search = router.query.search
     ? router.query.search
