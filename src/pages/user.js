@@ -20,6 +20,28 @@ class User extends Component {
     }
   }
 
+  constructor(props) {
+    super(props);
+
+    this.onFetchMore = this.onFetchMore.bind(this);
+  }
+
+  onFetchMore() {
+    const {
+      actions,
+      packages,
+      router,
+    } = this.props;
+
+    if (packages.fetching || !packages.objects || !packages.objects.length) {
+      return;
+    }
+
+    actions.searchNpm(`maintainer:${router.query.username}`, {
+      skip: packages.objects.length,
+    });
+  }
+
   render() {
     const {
       packages,
@@ -27,7 +49,11 @@ class User extends Component {
 
     return (
       <main className="app-view app-view--home">
-        <PackageGrid items={packages} />
+        <PackageGrid
+          items={packages.objects}
+          total={packages.total}
+          onFetchMore={this.onFetchMore}
+        />
       </main>
     );
   }
@@ -45,8 +71,8 @@ const mapStateToProps = (state, props) => {
   const searchKey = `text:maintainer:${router.query.username}`;
 
   const packages = searches.hasOwnProperty(searchKey)
-    ? searches[searchKey].objects
-    : [];
+    ? searches[searchKey]
+    : { fetching: true, objects: [], total: 0 };
 
   return {
     packages,

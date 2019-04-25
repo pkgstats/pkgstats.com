@@ -15,9 +15,32 @@ class Index extends Component {
 
     if (!searches[`popularity:1-text:${searchTerm}`]) {
       await store.dispatch(searchNpm(searchTerm, {
-        popularity: 1
+        popularity: 1,
       }));
     }
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.onFetchMore = this.onFetchMore.bind(this);
+  }
+
+  onFetchMore() {
+    const {
+      actions,
+      packages,
+      search,
+    } = this.props;
+
+    if (packages.fetching || !packages.objects || !packages.objects.length) {
+      return;
+    }
+
+    actions.searchNpm(search, {
+      popularity: 1,
+      skip: packages.objects.length,
+    });
   }
 
   render() {
@@ -27,7 +50,11 @@ class Index extends Component {
 
     return (
       <main className="app-view app-view--home">
-        <PackageGrid items={packages} />
+        <PackageGrid
+          items={packages.objects}
+          total={packages.total}
+          onFetchMore={this.onFetchMore}
+        />
       </main>
     );
   }
@@ -46,8 +73,8 @@ const mapStateToProps = (state, props) => {
   const searchKey = `popularity:1-text:${search}`;
 
   const packages = searches.hasOwnProperty(searchKey)
-    ? searches[searchKey].objects
-    : [];
+    ? searches[searchKey]
+    : { fetching: true, objects: [], total: 0 };
 
   return {
     packages,
