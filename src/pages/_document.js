@@ -28,11 +28,6 @@ export default class MyDocument extends Document {
     } finally {
       sheet.seal();
     }
-
-    // const sheet = new ServerStyleSheet();
-    // const page = renderPage(App => props => sheet.collectStyles(<App {...props} />));
-    // const styleTags = sheet.getStyleElement();
-    // return { ...page, styleTags };
   }
 
   render() {

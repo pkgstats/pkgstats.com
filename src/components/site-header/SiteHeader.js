@@ -35,16 +35,6 @@ const Header = styled.header`
     margin: 0;
   }
 
-  .site-header__nav a {
-    display: inline-block;
-    font-size: 1.6rem;
-    text-decoration: none;
-  }
-
-  .site-header__nav a + a {
-    margin-left: 2rem;
-  }
-
   @media all and (min-width: 768px) {
     .site-header__logo__link {
       padding: 2rem;
@@ -192,21 +182,6 @@ class SiteHeader extends Component {
             </a>
           </Link>
         </div>
-        {/*
-        <div className="site-header__nav">
-          <nav>
-            <Link route="/@ryanhefner">
-              <a>Users</a>
-            </Link>
-            <Link route="/pkg/react-contentful">
-              <a>Packages</a>
-            </Link>
-            <Link route="/org/playnice">
-              <a>Organizations</a>
-            </Link>
-          </nav>
-        </div>
-        */}
         <GlobalSearch
           forwardedRef={this.setSearchInput}
           search={search}
