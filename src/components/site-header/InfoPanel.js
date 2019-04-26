@@ -126,6 +126,7 @@ const CloseButton = styled.button`
   height: 3rem;
   background-color: #fff;
   border-radius: 50%;
+  z-index: 2;
 
   &::before,
   &::after {
