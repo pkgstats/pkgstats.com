@@ -120,8 +120,8 @@ const CloseButton = styled.button`
   padding: 0;
 
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 1.3rem;
+  right: 1.3rem;
   width: 3rem;
   height: 3rem;
   background-color: #fff;
