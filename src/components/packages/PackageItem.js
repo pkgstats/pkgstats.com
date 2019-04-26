@@ -114,7 +114,7 @@ const Package = styled.div`
     width: 25%;
   }
 
-  @media all and (min-width: 1920px) {
+  @media all and (min-width: 1919px) {
     flex-basis: 20%;
     width: 20%;
   }

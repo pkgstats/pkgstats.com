@@ -38,6 +38,10 @@ const base = `
     font-weight: 400;
   }
 
+  code {
+    font-family: var(--font-family-mono);
+  }
+
   .site-wrapper {
     flex: 1;
   }

@@ -4,6 +4,7 @@ import { withRouter } from 'next/router';
 import styled from 'styled-components';
 import Link from 'components/base/Link';
 import Router from 'components/base/Router';
+import InfoPanel from './InfoPanel';
 import GlobalSearch from './GlobalSearch';
 
 const Header = styled.header`
@@ -55,6 +56,34 @@ const Header = styled.header`
   }
 `;
 
+const InfoButton = styled.button`
+  appearance: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #000;
+  background-color: #999;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  margin-right: 2rem;
+  margin-left: 2rem;
+  transition: background-color 0.2s ease-in-out;
+
+  &:active,
+  &:hover {
+    background-color: #fff;
+  }
+`;
+
 const checkUser = (value) => {
   return /@(.*)/.exec(value);
 };
@@ -67,6 +96,10 @@ class SiteHeader extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      showPanel: false,
+    };
+
     this.searchInput = null;
 
     this.setSearchInput = element => {
@@ -75,6 +108,8 @@ class SiteHeader extends Component {
 
     this.searchTimeout = null;
     this.onSearchChange = this.onSearchChange.bind(this);
+    this.onInfoButtonClick = this.onInfoButtonClick.bind(this);
+    this.onPanelDismiss = this.onPanelDismiss.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -127,10 +162,26 @@ class SiteHeader extends Component {
     }, 1000);
   }
 
+  onInfoButtonClick() {
+    this.setState({
+      showPanel: true,
+    });
+  }
+
+  onPanelDismiss() {
+    this.setState({
+      showPanel: false,
+    });
+  }
+
   render() {
     const {
       search,
     } = this.props;
+
+    const {
+      showPanel,
+    } = this.state;
 
     return (
       <Header>
@@ -161,6 +212,8 @@ class SiteHeader extends Component {
           search={search}
           onChange={this.onSearchChange}
         />
+        <InfoButton onClick={this.onInfoButtonClick}>?</InfoButton>
+        <InfoPanel show={showPanel} onDismiss={this.onPanelDismiss} />
       </Header>
     );
   }

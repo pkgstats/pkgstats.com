@@ -1,8 +1,18 @@
 {
-  "name": "pkgstats",
+  "name": "pkgstats.com",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanhefner/pkgstats.git"
+  },
+  "author": "Ryan Hefner <hi@ryanhefner.com> (https://www.ryanhefner.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanhefner/pkgstats/issues"
+  },
+  "homepage": "https://pkgstats.com",
+  "main": "server.js",
   "scripts": {
     "dev": "node server.js",
     "build": "NODE_ENV=production next build src",
@@ -11,6 +21,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@ibm/plex": "^1.4.1",
     "chart.js": "^2.8.0",
     "es6-promise": "^4.2.6",
     "express": "^4.16.4",
@@ -34,15 +45,5 @@
   "devDependencies": {
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.10.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ryanhefner/pkgstats.git"
-  },
-  "author": "Ryan Hefner <hi@ryanhefner.com> (https://www.ryanhefner.com)",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ryanhefner/pkgstats/issues"
-  },
-  "homepage": "https://pkgstats.com"
+  }
 }
