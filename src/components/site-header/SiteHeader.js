@@ -68,7 +68,7 @@ const InfoButton = styled.button`
   align-items: center;
   font-size: 1.6rem;
   font-weight: 600;
-  font-style: italic;
+  // font-style: italic;
   color: #000;
   background-color: #999;
   width: 2.5rem;
