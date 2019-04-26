@@ -181,7 +181,7 @@ class InfoPanel extends Component {
             <p>
               This site was built by <a href="https://www.ryanhefner.com" target="_blank" rel="noreferrer noopener">Ryan Hefner</a>.
               If you’re interested in other things I’m working on, follow me on
-              Twitter or checkout the open source projects I’ve been publishing
+              Twitter or check out the open source projects I’ve been publishing
               on GitHub.
             </p>
             <p>
