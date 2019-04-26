@@ -107,7 +107,7 @@ const ScrollArea = styled.div`
   flex: 1;
   overflow-x: hidden;
   overflow-y: scroll;
-  --webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
   padding: 6rem 2rem 2rem;
 `;
 
