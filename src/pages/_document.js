@@ -2,6 +2,9 @@ import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
+// Fonts
+import 'styles/fonts.scss';
+
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet()
@@ -36,9 +39,8 @@ export default class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
-          <link rel="stylesheet" href="/static/css/fonts.css" />
           {this.props.styles}
-          <link rel="icon" type="image/png" href="/static/favicon.png" />
+          <link rel="icon" type="image/png" href="/favicon.ico" />
         </Head>
         <body>
           <Main />

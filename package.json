@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@ibm/plex": "^1.4.1",
+    "@zeit/next-sass": "^1.0.1",
     "chart.js": "^2.8.0",
     "es6-promise": "^4.2.6",
     "express": "^4.16.4",
@@ -30,6 +31,7 @@
     "next": "^8.0.4",
     "next-redux-wrapper": "^3.0.0-alpha.2",
     "next-routes": "^1.4.2",
+    "node-sass": "^4.11.0",
     "npm-user": "^4.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

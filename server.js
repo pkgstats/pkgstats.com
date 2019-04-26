@@ -22,21 +22,24 @@ app.prepare().then(() => {
     server.use(secureRedirect);
   }
 
+  // Favicon
+  server.use('/favicon.ico', express.static(path.join(__dirname, 'src', 'static', 'images', 'favicon.ico')));
+
   // Static assets
   server.use('/static', express.static(path.join(__dirname, 'src', 'static')));
 
-  server.use((req, res, next) => {
-    const {
-      hostname,
-      protocol,
-    } = req;
+  // server.use((req, res, next) => {
+  //   const {
+  //     hostname,
+  //     protocol,
+  //   } = req;
 
-    NPMService.origin = `${protocol}://${hostname}:${port}/npm`;
+  //   NPMService.origin = `${protocol}://${hostname}:${port}/npm`;
 
-    // console.debug(NPMService.origin);
+  //   // console.debug(NPMService.origin);
 
-    next();
-  });
+  //   next();
+  // });
 
   // NPM routes
   server.use('/npm', npm);

@@ -1,5 +1,5 @@
 let _origin = process.env.NODE_ENV !== 'production'
-  ? 'http://192.168.1.198:3000/npm'
+  ? 'http://192.168.1.32:3000/npm'
   : 'https://www.pkgstats.com/npm';
 
 class NPMService {

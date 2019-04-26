@@ -127,7 +127,7 @@ class SiteHeader extends Component {
       : asPath.substring(1);
 
     if (this.searchInput.value !== queryValue) {
-      this.searchInput.value = queryValue;
+      this.searchInput.value = queryValue || '';
     }
   }
 
@@ -230,7 +230,11 @@ const mapStateToProps = (state, props) => {
   const search = router.query.search
     ? router.query.search
     : router.pathname !== '/'
-      ? (userCheck && `@${userCheck[1]}`) || (packageCheck && `pkg:${packageCheck[1]}`)
+      ? userCheck
+        ? `@${userCheck[1]}`
+        : packageCheck
+          ? `pkg:${packageCheck[1]}`
+          : ''
       : '';
 
   return {
