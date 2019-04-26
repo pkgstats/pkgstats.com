@@ -43,7 +43,7 @@ const Panel = styled.div`
   }
 
   img {
-    max-height: 4.5rem;
+    max-height: 3rem;
     max-width: 100%;
   }
 
