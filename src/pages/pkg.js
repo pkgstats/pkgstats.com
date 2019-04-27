@@ -11,6 +11,8 @@ import PackageGrid from 'components/packages/PackageGrid';
 import { fetchDownloads } from 'store/actions/DownloadsActions';
 import { fetchPackage } from 'store/actions/PackageActions';
 
+const uriTransformer = require('react-markdown').uriTransformer;
+
 const HeaderInfo = styled.header`
   display: flex;
   justify-content: space-between;
@@ -191,6 +193,31 @@ class Pkg extends Component {
     }
   }
 
+  constructor(props) {
+    super(props);
+
+    this.parseTransformLinkUri = this.parseTransformLinkUri.bind(this);
+  }
+
+  parseTransformLinkUri(uri) {
+    uri = uriTransformer(uri);
+    const slashIndex = uri.indexOf('\/\/');
+
+    if (slashIndex >= 0 && slashIndex <= 6) {
+      return uri;
+    }
+
+    const {
+      pkg,
+    } = this.props;
+
+    const readmeOrigin = pkg.homepage.indexOf('#') > -1
+      ? pkg.homepage.substring(0, pkg.homepage.indexOf('#'))
+      : pkg.homepage;
+
+    return `${readmeOrigin}/blob/master/${uri}${uri.indexOf('?') !== -1 ? '&ref=pkgstats.com' : '?ref=pkgstats.com'}`;
+  }
+
   renderPackageGraph() {
     const {
       pkgDownloads,
@@ -301,7 +328,9 @@ class Pkg extends Component {
               <ReactMarkdown
                 className="details__readme__src"
                 source={pkg.readme}
+                linkTarget="_blank"
                 escapeHtml={false}
+                transformLinkUri={this.parseTransformLinkUri}
               />
             </div>
           </div>
