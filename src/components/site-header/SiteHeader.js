@@ -119,6 +119,12 @@ class SiteHeader extends Component {
     if (this.searchInput.value !== queryValue) {
       this.searchInput.value = queryValue || '';
     }
+
+    if (this.state.showPanel && asPath !== prevProps.router.asPath) {
+      this.setState({
+        showPanel: false,
+      });
+    }
   }
 
   setRoute(route) {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Link from 'components/base/Link';
 
 const Panel = styled.div`
   position: fixed;
@@ -230,7 +231,7 @@ class InfoPanel extends Component {
                 <h4>Typeface</h4>
                 <p>
                   <code>
-                    <a href="https://github.com/IBM/plex" target="_blank" rel="noreferrer noopener">IBM Plex</a>
+                    <Link route="/pkg:@ibm/plex">@ibm/plex</Link>
                   </code>
                 </p>
               </li>
@@ -238,7 +239,9 @@ class InfoPanel extends Component {
                 <h4>Server</h4>
                 <p>
                   <code>
-                    next / express / next-routes
+                    <Link route="/pkg:next">next</Link>
+                    &nbsp;/ <Link route="/pkg:express">express</Link>
+                    &nbsp;/ <Link route="/pkg:next-routes">next-routes</Link>
                   </code>
                 </p>
               </li>
@@ -246,7 +249,8 @@ class InfoPanel extends Component {
                 <h4>Framework</h4>
                 <p>
                   <code>
-                    react / react-dom
+                    <Link route="/pkg:react">react</Link>
+                    &nbsp;/ <Link route="/pkg:react-dom">react-dom</Link>
                   </code>
                 </p>
               </li>
@@ -254,7 +258,7 @@ class InfoPanel extends Component {
                 <h4>Types</h4>
                 <p>
                   <code>
-                    prop-types
+                    <Link route="/pkg:prop-types">prop-types</Link>
                   </code>
                 </p>
               </li>
@@ -262,7 +266,11 @@ class InfoPanel extends Component {
                 <h4>Data Store</h4>
                 <p>
                   <code>
-                    redux / react-redux / next-redux-wrapper / redux-thunk / redux-logger
+                    <Link route="/pkg:redux">redux</Link>
+                    &nbsp;/ <Link route="/pkg:react-redux">react-redux</Link>
+                    &nbsp;/ <Link route="/pkg:next-redux-wrapper">next-redux-wrapper</Link>
+                    &nbsp;/ <Link route="/pkg:redux-thunk">redux-thunk</Link>
+                    &nbsp;/ <Link route="/pkg:redux-logger">redux-logger</Link>
                   </code>
                 </p>
               </li>
@@ -270,7 +278,7 @@ class InfoPanel extends Component {
                 <h4>CSS / Styling</h4>
                 <p>
                   <code>
-                    styled-components
+                    <Link route="/pkg:styled-components">styled-components</Link>
                   </code>
                 </p>
               </li>
@@ -278,7 +286,7 @@ class InfoPanel extends Component {
                 <h4>Charts</h4>
                 <p>
                   <code>
-                    chart.js
+                    <Link route="/pkg:chart.js">chart.js</Link>
                   </code>
                 </p>
               </li>
@@ -286,7 +294,7 @@ class InfoPanel extends Component {
                 <h4>Date formatting</h4>
                 <p>
                   <code>
-                    fecha
+                    <Link route="/pkg:fecha">fecha</Link>
                   </code>
                 </p>
               </li>
@@ -294,7 +302,7 @@ class InfoPanel extends Component {
                 <h4>Infinite scrolling</h4>
                 <p>
                   <code>
-                    react-scroll-trigger
+                    <Link route="/pkg:react-scroll-trigger">react-scroll-trigger</Link>
                   </code>
                 </p>
               </li>
@@ -302,7 +310,7 @@ class InfoPanel extends Component {
                 <h4>Sparklines</h4>
                 <p>
                   <code>
-                    react-sparklines
+                    <Link route="/pkg:react-sparklines">react-sparklines</Link>
                   </code>
                 </p>
               </li>
@@ -310,7 +318,7 @@ class InfoPanel extends Component {
                 <h4>User data</h4>
                 <p>
                   <code>
-                    npm-user
+                    <Link route="/pkg:npm-user">npm-user</Link>
                   </code>
                 </p>
               </li>
@@ -318,7 +326,8 @@ class InfoPanel extends Component {
                 <h4>Compiling</h4>
                 <p>
                   <code>
-                    babel-plugin-module-resolver / babel-plugin-styled-components
+                    <Link route="/pkg:babel-plugin-module-resolver">babel-plugin-module-resolver</Link>
+                    &nbsp;/ <Link route="/pkg:babel-plugin-styled-components">babel-plugin-styled-components</Link>
                   </code>
                 </p>
               </li>
@@ -326,7 +335,8 @@ class InfoPanel extends Component {
                 <h4>Odds &amp; Ends</h4>
                 <p>
                   <code>
-                    es6-promise / isomorphic-fetch
+                    <Link route="/pkg:es6-promise">es6-promise</Link>
+                    &nbsp;/ <Link route="/pkg:isomorphic-fetch">isomorphic-fetch</Link>
                   </code>
                 </p>
               </li>
