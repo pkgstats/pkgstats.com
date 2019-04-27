@@ -125,6 +125,7 @@ const DetailsSection = styled.section`
     .maintainer-link__image {
       width: 5rem;
       margin-right: 1.5rem;
+      border-radius: 0.2rem;
     }
 
     .maintainer-link + .maintainer-link {

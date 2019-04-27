@@ -217,7 +217,7 @@ class PackageItem extends Component {
                 <p className="package-item__author">
                   <Link route={`/@${pkg.package.publisher.username}`}>
                     <a className="package-item__author-link">
-                      {pkg.package.author ? pkg.package.author.name : pkg.package.publisher.username}
+                      {pkg.package.publisher.username}
                     </a>
                   </Link>
                 </p>
