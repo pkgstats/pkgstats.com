@@ -180,7 +180,19 @@ class InfoPanel extends Component {
           <section>
             <h3>About</h3>
             <p>
-              This site was built by <a href="https://www.ryanhefner.com" target="_blank" rel="noreferrer noopener">Ryan Hefner</a>.
+              Hi, 👋, I’m <Link route="/@ryanhefner"><a>Ryan Hefner</a></Link>&nbsp;
+              and I built this site for me, and you! The goal of this site was to
+              provide an easy way for me to check the stats on my npm packages,
+              both for prioritizing issues and updates, and to give me a little
+              kick in the pants to keep up on stuff.
+            </p>
+            <p>
+              As I was building it, I realized that I was actually using the tool
+              to build the tool, and figured I might as well put this out there
+              and hopefully others will find it to be a fast and useful way to
+              search and browse npm packages as I have.
+            </p>
+            <p>
               If you’re interested in other things I’m working on, follow me on
               Twitter or check out the open source projects I’ve been publishing
               on GitHub.
@@ -194,6 +206,10 @@ class InfoPanel extends Component {
             <ul>
               <li>
                 <h4>Twitter</h4>
+                <p><code><a href="https://twitter.com/pkgstats" target="_blank" rel="noreferrer noopener">@PkgStats</a></code></p>
+              </li>
+              <li>
+                <h4>Twitter</h4>
                 <p><code><a href="https://twitter.com/ryanhefner" target="_blank" rel="noreferrer noopener">@ryanhefner</a></code></p>
               </li>
               <li>
@@ -201,8 +217,8 @@ class InfoPanel extends Component {
                 <p><code><a href="https://github.com/ryanhefner" target="_blank" rel="noreferrer noopener">ryanhefner</a></code></p>
               </li>
               <li>
-                <h4>Twitter</h4>
-                <p><code><a href="https://twitter.com/pkgstats" target="_blank" rel="noreferrer noopener">@PkgStats</a></code></p>
+                <h4>Site</h4>
+                <p><code><a href="https://www.ryanhefner.com" target="_blank" rel="noreferrer noopener">ryanhefner.com</a></code></p>
               </li>
             </ul>
           </section>
