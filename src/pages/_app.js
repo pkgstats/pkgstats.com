@@ -8,6 +8,9 @@ import SiteFooter from 'components/site-footer/SiteFooter';
 import configureStore from 'store';
 import GlobalStyles from 'styles/global';
 
+// Fonts
+// import "styles/fonts.scss";
+
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const {
