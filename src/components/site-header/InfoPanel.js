@@ -208,7 +208,7 @@ class InfoPanel extends Component {
           </section>
           <section>
             <h3>Sponsor</h3>
-            <a href="https://optimizetoolset.com" target="_blank" rel="noreferrer noopener"><img src="/static/images/optimize-toolset.png" /></a>
+            <a href="https://optimizetoolset.com?ref=pkgstats.com" target="_blank" rel="noreferrer noopener"><img src="/static/images/optimize-toolset.png" /></a>
             <p>
               I’ve always been into building performant and accessible sites, but
               lately I’ve been taking it extremely seriously. So much so that
@@ -216,7 +216,7 @@ class InfoPanel extends Component {
               that I build to make sure that I’m making an attempt
               to offer the best experience to those who visit them. If you’re into
               performant, accessible and SEO friendly sites, you might like it to.
-              You can check it out at <a href="https://optimizetoolset.com" target="_blank" rel="noreferrer noopener">Optimize Toolset</a>.
+              You can check it out at <a href="https://optimizetoolset.com?ref=pkgstats.com" target="_blank" rel="noreferrer noopener">Optimize Toolset</a>.
             </p>
           </section>
           <section>
@@ -283,6 +283,14 @@ class InfoPanel extends Component {
                 </p>
               </li>
               <li>
+                <h4>Avatars</h4>
+                <p>
+                  <code>
+                    <Link route="/pkg:gravatar"><a>gravatar</a></Link>
+                  </code>
+                </p>
+              </li>
+              <li>
                 <h4>Charts</h4>
                 <p>
                   <code>
@@ -303,6 +311,14 @@ class InfoPanel extends Component {
                 <p>
                   <code>
                     <Link route="/pkg:react-scroll-trigger"><a>react-scroll-trigger</a></Link>
+                  </code>
+                </p>
+              </li>
+              <li>
+                <h4>Markdown rendering</h4>
+                <p>
+                  <code>
+                    <Link route="/pkg:react-markdown"><a>react-markdown</a></Link>
                   </code>
                 </p>
               </li>

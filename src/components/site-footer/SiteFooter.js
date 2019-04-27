@@ -5,7 +5,7 @@ const Footer = styled.footer`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 2rem 3rem;
 
   font-size: 1.4rem;
 

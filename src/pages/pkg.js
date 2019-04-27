@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 import styled from 'styled-components';
+import gravatar from 'gravatar';
+import ReactMarkdown from 'react-markdown/with-html';
 import Link from 'components/base/Link';
 import PackageGraph from 'components/packages/PackageGraph';
 import PackageGrid from 'components/packages/PackageGrid';
@@ -70,7 +72,100 @@ const GraphHolder = styled.div`
 `;
 
 const DetailsSection = styled.section`
+  padding: 5rem 2rem;
 
+  .details__header {
+    font-size: 1.8rem;
+    border-top: 0.3rem solid #222;
+    padding-top: 2rem;
+  }
+
+  .details__section + .details__section {
+    margin-top: 5rem;
+  }
+
+  .details__readme__src {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.4rem;
+    line-height: 1.7;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      margin: 5rem 0 3rem;
+    }
+
+    h2 {
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #333;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #333;
+      margin: 5rem 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .details__maintainers {
+    .maintainer-link {
+      display: flex;
+      align-items: center;
+      font-size: 1.6rem;
+      text-decoration: none;
+    }
+
+    .maintainer-link__image {
+      width: 5rem;
+      margin-right: 1.5rem;
+    }
+
+    .maintainer-link + .maintainer-link {
+      margin-top: 2rem;
+    }
+  }
+
+  .details__keywords {
+    a {
+      display: inline-block;
+      font-size: 1.4rem;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin-right: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #222;
+      border-radius: 0.2rem;
+      transition: border-color 0.2s ease-in-out;
+    }
+
+    a:active,
+    a:hover {
+      border-color: #666;
+    }
+  }
+
+  @media all and (min-width: 768px) {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    .details--main {
+      flex-basis: 70%;
+      width: 70%;
+    }
+
+    .details--side {
+      flex-basis: 28%;
+      width: 28%;
+    }
+  }
 `;
 
 
@@ -135,7 +230,7 @@ class Pkg extends Component {
     }
 
     return pkg.keywords.map(keyword => (
-      <Link route={`/keyword/${keyword}`} key={`package-keywords-${pkg.name}-${keyword}`}>
+      <Link route={`/?search=${keyword}`} key={`package-keywords-${pkg.name}-${keyword}`}>
         <a>{keyword}</a>
       </Link>
     ));
@@ -151,8 +246,14 @@ class Pkg extends Component {
     }
 
     return pkg.maintainers.map(maintainer => (
-      <Link route={`/@${maintainer.name}`} key={`package-maintainers-${pkg.name}-${maintainer.name}`}>
-        <a>{maintainer.name}</a>
+      <Link
+        route={`/@${maintainer.name}`}
+        key={`package-maintainers-${pkg.name}-${maintainer.name}`}
+      >
+        <a className="maintainer-link">
+          {maintainer.email && <img className="maintainer-link__image" src={gravatar.url(maintainer.email)} />}
+          <span className="maintainer-link__name">{maintainer.name}</span>
+        </a>
       </Link>
     ));
   }
@@ -183,11 +284,25 @@ class Pkg extends Component {
           {this.renderPackageGraph()}
         </GraphSection>
         <DetailsSection>
-          <div className="header-info__maintainers">
-            {this.renderMaintainers()}
+          <div className="details--side">
+            <div className="details__section details__maintainers">
+              <h3 className="details__header">Maintainers</h3>
+              {this.renderMaintainers()}
+            </div>
+            <div className="details__section details__keywords">
+              <h3 className="details__header">Keywords</h3>
+              {this.renderKeywords()}
+            </div>
           </div>
-          <div className="package-view__keywords">
-            {this.renderKeywords()}
+          <div className="details--main">
+            <div className="details__readme">
+              <h3 className="details__header">Readme</h3>
+              <ReactMarkdown
+                className="details__readme__src"
+                source={pkg.readme}
+                escapeHtml={false}
+              />
+            </div>
           </div>
         </DetailsSection>
       </main>
