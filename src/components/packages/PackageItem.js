@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
 import Link from 'components/base/Link';
 import Router from 'components/base/Router';
 import { fetchDownloads } from 'store/actions/DownloadsActions';
-import fecha from 'fecha';
+
+dayjs.extend(relativeTime);
 
 const Package = styled.div`
   width: 100%;
@@ -27,6 +30,12 @@ const Package = styled.div`
 
   .package-item__link:hover {
     background-color: #111;
+  }
+
+  .package-item__column {
+    &--right {
+      text-align: right;
+    }
   }
 
   .package-item__header-info {
@@ -223,10 +232,14 @@ class PackageItem extends Component {
                 </p>
               )}
             </div>
-            <div className="package-item__column">
+            <div className="package-item__column package-item__column--right">
               <p className="package-item__version">v{pkg.package.version}</p>
               <p className="package-item__date">
-                {!!(pkg.package && pkg.package.date) ? fecha.format(new Date(pkg.package.date), 'shortDate') : ''}
+                {!!(pkg.package && pkg.package.date) && (
+                  <time dateTime={pkg.package.date}>
+                    {dayjs().to(dayjs(pkg.package.date))}
+                  </time>
+                )}
               </p>
             </div>
           </div>

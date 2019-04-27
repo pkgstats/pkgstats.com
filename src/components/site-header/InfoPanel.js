@@ -302,7 +302,7 @@ class InfoPanel extends Component {
                 <h4>Date formatting</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:fecha"><a>fecha</a></Link>
+                    <Link route="/pkg:dayjs"><a>dayjs</a></Link>
                   </code>
                 </p>
               </li>
