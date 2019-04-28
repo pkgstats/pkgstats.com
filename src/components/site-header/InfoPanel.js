@@ -231,7 +231,7 @@ class InfoPanel extends Component {
               I’ve been building a tool to help me optimize and monitor the sites
               that I build to make sure that I’m making an attempt
               to offer the best experience to those who visit them. If you’re into
-              performant, accessible and SEO friendly sites, you might like it to.
+              performant, accessible and SEO friendly sites, you might like it too!
               You can check it out at <a href="https://optimizetoolset.com?ref=pkgstats.com" target="_blank" rel="noreferrer noopener">Optimize Toolset</a>.
             </p>
           </section>
@@ -335,6 +335,14 @@ class InfoPanel extends Component {
                 <p>
                   <code>
                     <Link route="/pkg:react-markdown"><a>react-markdown</a></Link>
+                  </code>
+                </p>
+              </li>
+              <li>
+                <h4>Repository url parsing</h4>
+                <p>
+                  <code>
+                    <Link route="/pkg:@hutson/parse-repository-url"><a>@hutson/parse-repository-url</a></Link>
                   </code>
                 </p>
               </li>
