@@ -298,7 +298,7 @@ class Pkg extends Component {
         <Head>
           <title>{`${pkg.name} on PkgStats - npm package discovery and stats viewer.`}</title>
           <meta name="description" content={pkg.description} />
-          <meta name="keywords" content={pkg.keywords.join(', ')} />
+          {pkg.keywords && <meta name="keywords" content={pkg.keywords.join(', ')} />}
         </Head>
         <HeaderInfo>
           <div className="header-info__basic">
