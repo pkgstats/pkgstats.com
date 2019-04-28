@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import Head from 'next/head';
 import { withRouter } from 'next/router';
 import styled from 'styled-components';
 import gravatar from 'gravatar';
@@ -294,6 +295,11 @@ class Pkg extends Component {
 
     return (
       <main className="app-view app-view--user">
+        <Head>
+          <title>{`${pkg.name} on PkgStats - npm package discovery and stats viewer.`}</title>
+          <meta name="description" content={pkg.description} />
+          <meta name="keywords" content={pkg.keywords.join(', ')} />
+        </Head>
         <HeaderInfo>
           <div className="header-info__basic">
             <h1 className="header-info__name">{pkg.name}</h1>

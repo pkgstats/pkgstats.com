@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import Head from 'next/head';
 import { withRouter } from 'next/router';
 import PackageGrid from 'components/packages/PackageGrid';
 import { searchNpm } from 'store/actions/SearchNpmActions';
@@ -50,6 +51,11 @@ class Index extends Component {
 
     return (
       <main className="app-view app-view--home">
+        <Head>
+          <title>PkgStats - npm package discovery and stats viewer.</title>
+          <meta name="description" content="Quickly browse and discover the best packages on npm for your next project or application." />
+          <meta name="keywords" content="npm, packages, repository, discovery, statistics, browse, search" />
+        </Head>
         <PackageGrid
           items={packages.objects}
           total={packages.total}

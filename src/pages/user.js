@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import Head from 'next/head';
 import { withRouter } from 'next/router';
 import PackageGrid from 'components/packages/PackageGrid';
 import { searchNpm } from 'store/actions/SearchNpmActions';
@@ -45,10 +46,14 @@ class User extends Component {
   render() {
     const {
       packages,
+      router,
     } = this.props;
 
     return (
       <main className="app-view app-view--home">
+        <Head>
+          <title>{`${router.query.username}’s packages on PkgStats - npm package discovery and stats viewer.`}</title>
+        </Head>
         <PackageGrid
           items={packages.objects}
           total={packages.total}
