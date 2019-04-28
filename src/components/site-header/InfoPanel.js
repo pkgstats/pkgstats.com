@@ -169,7 +169,7 @@ class InfoPanel extends Component {
               </li>
               <li>
                 <h4>Package details</h4>
-                <p><code>pgk:[package-name]</code></p>
+                <p><code>pkg:[package-name]</code></p>
               </li>
               <li>
                 <h4>User packages</h4>
