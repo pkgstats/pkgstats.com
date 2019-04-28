@@ -49,6 +49,18 @@ class Index extends Component {
       packages,
     } = this.props;
 
+    const pkgStats = `%c
+           __              __        __
+    ____  / /______ ______/ /_____ _/ /______
+   / __ \\/ //_/ __ \`/ ___/ __/ __ \`/ __/ ___/
+  / /_/ / ,< / /_/ (__  ) /_/ /_/ / /_(__  )
+ / .___/_/|_|\\__, /____/\\__/\\__,_/\\__/____/
+/_/         /____/
+`;
+    console.log(pkgStats, 'font-family:monospace;');
+    console.log(`%c— npm package discovery and stats viewer.`, 'font-family:monospace;');
+    console.log(`%cWelcome, 👋, you’re our kind of people.`, 'font-family:monospace;');
+
     return (
       <main className="app-view app-view--home">
         <Head>
