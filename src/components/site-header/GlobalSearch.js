@@ -19,6 +19,34 @@ const SearchInput = styled.input`
   height: 6rem;
   transition: background-color 0.2s ease-in-out;
 
+  // &::-webkit-search-cancel-button {
+  //   position: relative;
+  //   -webkit-appearance: none;
+  //   height: 2rem;
+  //   width: 2rem;
+  //   border-radius: 2rem;
+  //   background: white;
+
+  //   &::before,
+  //   &::after {
+  //     content: '';
+  //     background-color: black;
+  //     position: absolute;
+  //     top: 50%;
+  //     left: 50%;
+  //     width: 0.2rem;
+  //     height: 1.5rem;
+  //   }
+
+  //   &::before {
+  //     transform: rotate(-45deg);
+  //   }
+
+  //   &::after {
+  //     transform: rotate(45deg);
+  //   }
+  // }
+
   &:focus {
     outline: none;
     background-color: #111;
@@ -55,7 +83,7 @@ class GlobalSearch extends Component {
 
     return (
       <SearchInput
-        type="text"
+        type="search"
         name="text"
         placeholder="Search packages | pkg:[package-name] | @[username]"
         ref={forwardedRef}
