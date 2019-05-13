@@ -18,11 +18,15 @@ const base = `
     box-sizing: border-box;
   }
 
-  body {
+  body,
+  #__next {
+    min-height: 100vh;
+  }
+
+  #__next {
     display: flex;
     flex-direction: column;
     justify-content: stretch;
-    min-height: 100vh;
   }
 
   a {
@@ -44,9 +48,14 @@ const base = `
 
   .site-wrapper {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
   }
 
   .app-view {
+    flex: 1;
+    display: flex;
     margin-top: 6rem;
   }
 `;

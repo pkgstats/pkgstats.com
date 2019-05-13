@@ -3,8 +3,23 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
+import styled from 'styled-components';
 import PackageGrid from 'components/packages/PackageGrid';
 import { searchNpm } from 'store/actions/SearchNpmActions';
+
+const EmptyResults = styled.p`
+  font-size: 1.6rem;
+  text-align: center;
+  color: #999;
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+
+  em {
+    font-style: normal;
+    color: white;
+  }
+`;
 
 class Index extends Component {
   static async getInitialProps({ query, store }) {
@@ -24,7 +39,34 @@ class Index extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      consoleLogged: false,
+    };
+
     this.onFetchMore = this.onFetchMore.bind(this);
+  }
+
+  logConsole() {
+    if (this.state.consoleLogged) {
+      return;
+    }
+
+    const pkgStats = `%c
+           __              __        __
+    ____  / /______ ______/ /_____ _/ /______
+   / __ \\/ //_/ __ \`/ ___/ __/ __ \`/ __/ ___/
+  / /_/ / ,< / /_/ (__  ) /_/ /_/ / /_(__  )
+ / .___/_/|_|\\__, /____/\\__/\\__,_/\\__/____/
+/_/         /____/
+`;
+    console.log(pkgStats, 'font-family:monospace;');
+    console.log(`%c— npm package discovery and stats viewer.`, 'font-family:monospace;');
+    console.log(`%cWelcome, 👋, you’re our kind of people.`, 'font-family:monospace;');
+    console.log(`%cIf you like this, you might like my other app, https://optimizetoolset.com.`, 'font-family:monospace;');
+
+    this.setState({
+      consoleLogged: true,
+    });
   }
 
   onFetchMore() {
@@ -47,19 +89,10 @@ class Index extends Component {
   render() {
     const {
       packages,
+      search,
     } = this.props;
 
-    const pkgStats = `%c
-           __              __        __
-    ____  / /______ ______/ /_____ _/ /______
-   / __ \\/ //_/ __ \`/ ___/ __/ __ \`/ __/ ___/
-  / /_/ / ,< / /_/ (__  ) /_/ /_/ / /_(__  )
- / .___/_/|_|\\__, /____/\\__/\\__,_/\\__/____/
-/_/         /____/
-`;
-    console.log(pkgStats, 'font-family:monospace;');
-    console.log(`%c— npm package discovery and stats viewer.`, 'font-family:monospace;');
-    console.log(`%cWelcome, 👋, you’re our kind of people.`, 'font-family:monospace;');
+    this.logConsole();
 
     return (
       <main className="app-view app-view--home">
@@ -68,11 +101,19 @@ class Index extends Component {
           <meta name="description" content="Quickly browse and discover the best packages on npm for your next project or application." />
           <meta name="keywords" content="npm, packages, repository, discovery, statistics, browse, search" />
         </Head>
-        <PackageGrid
-          items={packages.objects}
-          total={packages.total}
-          onFetchMore={this.onFetchMore}
-        />
+        {!!packages.objects.length && (
+          <PackageGrid
+            items={packages.objects}
+            total={packages.total}
+            onFetchMore={this.onFetchMore}
+          />
+        )}
+        {!!(!packages.fetching && !packages.objects.length) && (
+          <EmptyResults>
+            <span>No results found for: </span>
+            <em>{search}</em>
+          </EmptyResults>
+        )}
       </main>
     );
   }

@@ -40,9 +40,7 @@ class MyApp extends App {
         <Provider store={store}>
           <div className="site-wrapper">
             <SiteHeader />
-            <Component
-              {...pageProps}
-            />
+            <Component {...pageProps} />
           </div>
           <SiteFooter />
         </Provider>
