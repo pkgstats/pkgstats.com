@@ -3,8 +3,28 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
+import styled from 'styled-components';
 import PackageGrid from 'components/packages/PackageGrid';
 import { searchNpm } from 'store/actions/SearchNpmActions';
+
+const ViewWrapper = styled.main`
+  flex-direction: row;
+  justify-content: ${props => props.packages.objects.length ? 'flex-start' : 'center'};
+  align-items: ${props => props.packages.objects.length ? 'flex-start' : 'center'};
+  width: 100%;
+`;
+
+const EmptyResults = styled.p`
+  font-size: 1.6rem;
+  text-align: center;
+  color: #999;
+  width: 100%;
+
+  em {
+    font-style: normal;
+    color: white;
+  }
+`;
 
 class User extends Component {
   static async getInitialProps({ query, store }) {
@@ -50,16 +70,24 @@ class User extends Component {
     } = this.props;
 
     return (
-      <main className="app-view app-view--home">
+      <ViewWrapper className="app-view app-view--home" packages={packages}>
         <Head>
           <title>{`${router.query.username}’s packages on PkgStats - npm package discovery and stats viewer.`}</title>
         </Head>
-        <PackageGrid
-          items={packages.objects}
-          total={packages.total}
-          onFetchMore={this.onFetchMore}
-        />
-      </main>
+        {!!packages.objects.length && (
+          <PackageGrid
+            items={packages.objects}
+            total={packages.total}
+            onFetchMore={this.onFetchMore}
+          />
+        )}
+        {!!(!packages.fetching && !packages.objects.length) && (
+          <EmptyResults>
+            <span>No packages found for user: </span>
+            <em>{router.query.username}</em>
+          </EmptyResults>
+        )}
+      </ViewWrapper>
     );
   }
 }

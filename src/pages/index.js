@@ -7,12 +7,16 @@ import styled from 'styled-components';
 import PackageGrid from 'components/packages/PackageGrid';
 import { searchNpm } from 'store/actions/SearchNpmActions';
 
+const ViewWrapper = styled.main`
+  flex-direction: row;
+  justify-content: ${props => props.packages.objects.length ? 'stretch' : 'center'};
+  align-items: ${props => props.packages.objects.length ? 'flex-start' : 'center'};
+`;
+
 const EmptyResults = styled.p`
   font-size: 1.6rem;
   text-align: center;
   color: #999;
-  justify-self: center;
-  align-self: center;
   width: 100%;
 
   em {
@@ -95,7 +99,7 @@ class Index extends Component {
     this.logConsole();
 
     return (
-      <main className="app-view app-view--home">
+      <ViewWrapper className="app-view app-view--home" packages={packages}>
         <Head>
           <title>PkgStats - npm package discovery and stats viewer.</title>
           <meta name="description" content="Quickly browse and discover the best packages on npm for your next project or application." />
@@ -114,7 +118,7 @@ class Index extends Component {
             <em>{search}</em>
           </EmptyResults>
         )}
-      </main>
+      </ViewWrapper>
     );
   }
 }

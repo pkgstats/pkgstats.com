@@ -56,6 +56,7 @@ const base = `
   .app-view {
     flex: 1;
     display: flex;
+    flex-direction: column;
     margin-top: 6rem;
   }
 `;

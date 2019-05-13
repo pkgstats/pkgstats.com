@@ -7,6 +7,7 @@ import PackageLoadingItem from './PackageLoadingItem';
 const Grid = styled.div`
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 `;
 
 export default ({
