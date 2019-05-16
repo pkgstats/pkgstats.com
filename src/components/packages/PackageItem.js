@@ -58,6 +58,11 @@ const Package = styled.div`
 
   .package-item__author-link {
     color: #bbb;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: white;
+    }
   }
 
   .package-item__version {
@@ -96,7 +101,7 @@ const Package = styled.div`
   }
 
   .package-item__label {
-    font-size: 1rem;
+    font-size: 1.1rem;
     // text-transform: uppercase;
     color: #999;
     margin: 0 2rem 0.5rem;
@@ -176,6 +181,8 @@ class PackageItem extends Component {
   constructor(props) {
     super(props);
 
+    this.linkItem = React.createRef();
+
     this.onItemClick = this.onItemClick.bind(this);
   }
 
@@ -195,6 +202,13 @@ class PackageItem extends Component {
     const {
       pkg,
     } = this.props;
+
+    const linkTarget = evt.target;
+    console.debug(evt.target, linkTarget.classList.contains('package-link'), linkTarget.classList.contains('package-item__aurhor-link'));
+
+    if (linkTarget.classList.contains('package-link') || linkTarget.classList.contains('package-item__author-link')) {
+      return true;
+    }
 
     Router.pushRoute(`/pkg:${pkg.package.name}`);
   }
@@ -277,7 +291,7 @@ class PackageItem extends Component {
 
     return (
       <Package>
-        <div className="package-item__link">
+        <div className="package-item__link" ref={this.linkItem}>
           <div className="package-item__header-info">
             <div className="package-item__column">
               <Link route={`/pkg:${pkg.package.name}`}>
