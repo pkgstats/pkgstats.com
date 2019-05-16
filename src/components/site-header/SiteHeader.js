@@ -17,6 +17,7 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   height: 6rem;
+  z-index: 100;
 
   .site-header__logo__link {
     display: flex;
