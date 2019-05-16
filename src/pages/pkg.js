@@ -54,7 +54,6 @@ const InfoSection = styled.section`
     border: 1px solid #222;
     border-radius: 0.2rem;
     transition: border-color 0.2s ease-in-out;
-    z-index: 10;
 
     &::before {
       content: "Copied!";
@@ -67,7 +66,7 @@ const InfoSection = styled.section`
       opacity: 0;
       height: 100%;
       transition: opacity 0.3s ease-in-out;
-      z-index: 1;
+      z-index: 0;
     }
 
     &[data-copied="true"] {

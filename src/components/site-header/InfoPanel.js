@@ -9,7 +9,7 @@ const Panel = styled.div`
   left: ${props => props.show ? '0%' : '110%'};
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 2147483647;
 
   display: flex;
   flex-direction: column;
