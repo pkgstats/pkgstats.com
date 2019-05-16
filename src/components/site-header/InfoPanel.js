@@ -178,6 +178,19 @@ class InfoPanel extends Component {
             </ul>
           </section>
           <section>
+            <h3>Sponsor</h3>
+            <a href="https://optimizetoolset.com?ref=pkgstats.com" target="_blank" rel="noreferrer noopener"><img src="/static/images/optimize-toolset.png" /></a>
+            <p>
+              I’ve always been into building performant and accessible sites, but
+              lately I’ve been taking it extremely seriously. So much so that
+              I’ve been building a tool to help me optimize and monitor the sites
+              that I build to make sure that I’m making an attempt
+              to offer the best experience to those who visit them. If you’re into
+              performant, accessible and SEO friendly sites, you might like it too!
+              You can check it out at <a href="https://optimizetoolset.com?ref=pkgstats.com" target="_blank" rel="noreferrer noopener">Optimize Toolset</a>.
+            </p>
+          </section>
+          <section>
             <h3>About</h3>
             <p>
               Hi, 👋, I’m <Link route="/@ryanhefner"><a>Ryan Hefner</a></Link>&nbsp;
@@ -221,19 +234,6 @@ class InfoPanel extends Component {
                 <p><code><a href="https://www.ryanhefner.com" target="_blank" rel="noreferrer noopener">ryanhefner.com</a></code></p>
               </li>
             </ul>
-          </section>
-          <section>
-            <h3>Sponsor</h3>
-            <a href="https://optimizetoolset.com?ref=pkgstats.com" target="_blank" rel="noreferrer noopener"><img src="/static/images/optimize-toolset.png" /></a>
-            <p>
-              I’ve always been into building performant and accessible sites, but
-              lately I’ve been taking it extremely seriously. So much so that
-              I’ve been building a tool to help me optimize and monitor the sites
-              that I build to make sure that I’m making an attempt
-              to offer the best experience to those who visit them. If you’re into
-              performant, accessible and SEO friendly sites, you might like it too!
-              You can check it out at <a href="https://optimizetoolset.com?ref=pkgstats.com" target="_blank" rel="noreferrer noopener">Optimize Toolset</a>.
-            </p>
           </section>
           <section>
             <h3>Open Software &amp; Tools</h3>

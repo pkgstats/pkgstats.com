@@ -8,6 +8,7 @@ import gravatar from 'gravatar';
 import ReactMarkdown from 'react-markdown/with-html';
 import parseRepositoryURL from '@hutson/parse-repository-url';
 import Link from 'components/base/Link';
+import CopyButton from 'components/packages/CopyButton';
 import PackageGraph from 'components/packages/PackageGraph';
 import PackageGrid from 'components/packages/PackageGrid';
 import { fetchDownloads } from 'store/actions/DownloadsActions';
@@ -41,14 +42,61 @@ const InfoSection = styled.section`
     font-size: 1.8rem;
   }
 
+  .info__install__button {
+    appearance: none;
+    border: 0;
+    background: black;
+    margin: 0;
+
+    position: relative;
+    color: white;
+    padding: 1rem 2rem;
+    border: 1px solid #222;
+    border-radius: 0.2rem;
+    transition: border-color 0.2s ease-in-out;
+    z-index: 10;
+
+    &::before {
+      content: "Copied!";
+      position: absolute;
+      font-size: 1.3rem;
+      background-color: #111;
+      padding: 1rem;
+      top: 0;
+      left: calc(100% + 0.2rem);
+      opacity: 0;
+      height: 100%;
+      transition: opacity 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    &[data-copied="true"] {
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      border-color: #333;
+    }
+  }
+
   .info__install {
     font-family: var(--font-family-mono);
     font-size: 1.6rem;
+    line-height: 1;
   }
 
   @media all and (min-width: 768px) {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    .info__install__button {
+      &::before {
+        left: -7rem;
+      }
+    }
   }
 `;
 
@@ -407,7 +455,9 @@ class Pkg extends Component {
         </HeaderInfo>
         <InfoSection>
           <p className="info__desc">{pkg.description}</p>
-          <p className="info__install">{`npm i ${pkg.name}`}</p>
+          <CopyButton className="info__install__button" target="#install-script">
+            <span id="install-script" className="info__install">{`npm i ${pkg.name}`}</span>
+          </CopyButton>
         </InfoSection>
         <GraphSection>
           {this.renderPackageGraph()}
