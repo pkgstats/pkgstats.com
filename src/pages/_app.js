@@ -39,8 +39,8 @@ class MyApp extends App {
         <GlobalStyles />
         <Provider store={store}>
           <div className="site-wrapper">
-            <SiteHeader />
             <Component {...pageProps} />
+            <SiteHeader />
           </div>
           <SiteFooter />
         </Provider>
