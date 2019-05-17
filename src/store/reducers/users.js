@@ -14,7 +14,7 @@ const user = (state = {}, action) => {
   switch (action.type) {
     case FETCH_USER_PROFILE_SUCCESS:
       return Object.assign({}, state, {
-        ...response,
+        ...action.response,
       });
 
     default:

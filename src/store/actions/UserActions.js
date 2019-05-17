@@ -15,7 +15,7 @@ export const fetchUser = (username) => {
       .then(response => {
         dispatch({
           type: FETCH_USER_PROFILE_SUCCESS,
-          respones,
+          response,
           username,
         });
       })

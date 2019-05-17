@@ -382,6 +382,9 @@ class InfoPanel extends Component {
               </li>
             </ul>
           </section>
+          <section>
+            <p>{`© ${(new Date()).getFullYear()} – Ryan Hefner`}</p>
+          </section>
         </ScrollArea>
       </Panel>
     );

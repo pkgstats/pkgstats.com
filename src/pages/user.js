@@ -5,10 +5,13 @@ import Head from 'next/head';
 import { withRouter } from 'next/router';
 import styled from 'styled-components';
 import PackageGrid from 'components/packages/PackageGrid';
+import UserInfo from 'components/users/UserInfo';
 import { searchNpm } from 'store/actions/SearchNpmActions';
+import { fetchUser } from 'store/actions/UserActions';
 
 const ViewWrapper = styled.main`
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: ${props => props.packages.objects.length ? 'flex-start' : 'center'};
   align-items: ${props => props.packages.objects.length ? 'flex-start' : 'center'};
   width: 100%;
@@ -34,10 +37,15 @@ class User extends Component {
 
     const {
       searches,
+      users,
     } = store.getState();
 
     if (!searches[`text:maintainer:${username}`]) {
       await store.dispatch(searchNpm(`maintainer:${username}`));
+    }
+
+    if (!users[username]) {
+      await store.dispatch(fetchUser(username));
     }
   }
 
@@ -67,6 +75,7 @@ class User extends Component {
     const {
       packages,
       router,
+      user,
     } = this.props;
 
     return (
@@ -74,6 +83,7 @@ class User extends Component {
         <Head>
           <title>{`${router.query.username}’s packages on PkgStats - npm package discovery and stats viewer.`}</title>
         </Head>
+        <UserInfo user={user} />
         {!!packages.objects.length && (
           <PackageGrid
             items={packages.objects}
@@ -95,20 +105,24 @@ class User extends Component {
 const mapStateToProps = (state, props) => {
   const {
     searches,
+    users,
   } = state;
 
   const {
     router,
   } = props;
 
-  const searchKey = `text:maintainer:${router.query.username}`;
+  const username = router.query.username;
+  const searchKey = `text:maintainer:${username}`;
 
+  const user = users.items[username];
   const packages = searches.hasOwnProperty(searchKey)
     ? searches[searchKey]
     : { fetching: true, objects: [], total: 0 };
 
   return {
     packages,
+    user,
   };
 };
 
@@ -116,6 +130,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     actions: bindActionCreators({
       searchNpm,
+      fetchUser,
     }, dispatch),
   };
 };
