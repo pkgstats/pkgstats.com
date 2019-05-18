@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: 1rem 2rem;
 
@@ -43,12 +46,6 @@ const Wrapper = styled.section`
 
   .user__link + .user__link {
     margin-left: 1.5rem;
-  }
-
-  @media all and (min-width: 768px) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 `;
 
