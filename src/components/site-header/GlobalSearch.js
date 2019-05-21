@@ -8,7 +8,7 @@ const SearchInput = styled.input`
   border: 0;
   border-radius: 0;
   margin: 0;
-  padding: 1rem 2rem;
+  padding: 1rem;
   height: 6rem;
 
   flex: 1;
@@ -50,6 +50,10 @@ const SearchInput = styled.input`
   &:focus {
     outline: none;
     background-color: #111;
+  }
+
+  @media all and (min-width: 768px) {
+    padding: 1rem 2rem;
   }
 `;
 

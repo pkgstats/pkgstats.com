@@ -6,7 +6,7 @@ const Wrapper = styled.section`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 1rem;
 
   .user__info {
     display: flex;
@@ -28,12 +28,12 @@ const Wrapper = styled.section`
 
   .user__link {
     display: block;
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
 
     svg {
       fill: #999;
-      transition: fill 0.2s ease-in-out;
+      transition: fill 0.5s ease-in-out;
     }
   }
 
@@ -46,6 +46,10 @@ const Wrapper = styled.section`
 
   .user__link + .user__link {
     margin-left: 1.5rem;
+  }
+
+  @media all and (min-width: 768px) {
+    padding: 1rem 2rem;
   }
 `;
 

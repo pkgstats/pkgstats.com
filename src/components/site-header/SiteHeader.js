@@ -14,7 +14,6 @@ const Header = styled.header`
   right: 0;
   background-color: var(--color-black);
   display: flex;
-  justify-content: space-between;
   align-items: center;
   height: 6rem;
   z-index: 100;
@@ -54,12 +53,12 @@ const InfoButton = styled.button`
   padding: 0;
   background: transparent;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   font-size: 1.6rem;
   font-weight: 600;
+  line-height: 2.5rem;
   // font-style: italic;
+  text-align: center;
   color: #000;
   background-color: #999;
   width: 2.5rem;
