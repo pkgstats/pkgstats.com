@@ -65,7 +65,7 @@ class Index extends Component {
 `;
     console.log(pkgStats, 'font-family:monospace;');
     console.log(`%c— npm package discovery and stats viewer.`, 'font-family:monospace;');
-    console.log(`%cWelcome, 👋, you’re our kind of people.`, 'font-family:monospace;');
+    console.log(`%cWelcome, 👋, you’re my kind of people.`, 'font-family:monospace;');
     console.log(`%cIf you like this, you might like my other app, https://optimizetoolset.com.`, 'font-family:monospace;');
 
     this.setState({

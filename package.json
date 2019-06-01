@@ -47,6 +47,7 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "rollbar": "^2.7.1",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {

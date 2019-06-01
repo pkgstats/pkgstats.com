@@ -14,6 +14,14 @@ const secureRedirect = require('./middleware/secureRedirect');
 const app = nextJS({ dev, dir: './src' });
 const handler = routes.getRequestHandler(app);
 
+// include and initialize the rollbar library with your access token
+var Rollbar = require("rollbar");
+var rollbar = new Rollbar({
+  accessToken: '8464c744b2074f008c9e2f155d44792a',
+  captureUncaught: true,
+  captureUnhandledRejections: true
+});
+
 app.prepare().then(() => {
   const server = express();
 
@@ -27,19 +35,6 @@ app.prepare().then(() => {
 
   // Static assets
   server.use('/static', express.static(path.join(__dirname, 'src', 'static')));
-
-  // server.use((req, res, next) => {
-  //   const {
-  //     hostname,
-  //     protocol,
-  //   } = req;
-
-  //   NPMService.origin = `${protocol}://${hostname}:${port}/npm`;
-
-  //   // console.debug(NPMService.origin);
-
-  //   next();
-  // });
 
   // NPM routes
   server.use('/npm', npm);
