@@ -81,7 +81,12 @@ class User extends Component {
     return (
       <ViewWrapper className="app-view app-view--home" packages={packages}>
         <Head>
-          <title>{`${router.query.username}’s packages on PkgStats - npm package discovery and stats viewer.`}</title>
+          <title>{`${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`}</title>
+          <meta name="description" content={`Explore ${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
+          <meta property="og:title" content={`${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
+          <meta property="og:description" content={`Explore ${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
+          <meta name="twitter:title" content={`${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
+          <meta name="twitter:description" content={`Explore ${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
         </Head>
         <UserInfo user={user} />
         {!!packages.objects.length && (

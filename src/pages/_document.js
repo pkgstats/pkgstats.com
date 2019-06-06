@@ -34,6 +34,22 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href="/static/css/fonts.css" />
           {this.props.styles}
           <link rel="icon" type="image/png" href="/favicon.ico" />
+
+          {/* Open Graph Tags */}
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="Pkg Stats - npm package discovery and stats viewer." />
+          <meta property="og:description" content="Quickly browse and discover the best packages on npm for your next project or application." />
+          <meta property="og:site_name" content="Pkg Stats" />
+          <meta property="og:url" content="https:///www.pkgstats.com" />
+          <meta property="og:image" content="https://www.pkgstats.com/static/images/share/pkgstats-share-image.png" />
+
+          {/* Twitter Card Tags */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@PkgStats" />
+          <meta name="twitter:creator" content="@ryanhefner" />
+          <meta name="twitter:title" content="Pkg Stats - npm package discovery and stats viewer." />
+          <meta name="twitter:description" content="Quickly browse and discover the best packages on npm for your next project or application." />
+          <meta name="twitter:image" content="https://www.pkgstats.com/static/images/share/pkgstats-share-image.png" />
         </Head>
         <body>
           <Main />

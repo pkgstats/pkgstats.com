@@ -477,8 +477,12 @@ class Pkg extends Component {
     return (
       <main className="app-view app-view--user">
         <Head>
-          <title>{`${pkg.name} on PkgStats - npm package discovery and stats viewer.`}</title>
+          <title>{`${pkg.name} on Pkg Stats - npm package discovery and stats viewer.`}</title>
           <meta name="description" content={pkg.description} />
+          <meta property="og:title" content={`${pkg.name} on Pkg Stats - npm package discovery and stats viewer.`} />
+          <meta property="og:description" content={pkg.description} />
+          <meta name="twitter:title" content={`${pkg.name} on Pkg Stats - npm package discovery and stats viewer.`} />
+          <meta name="twitter:description" content={pkg.description} />
           {pkg.keywords && <meta name="keywords" content={pkg.keywords.join(', ')} />}
         </Head>
         <HeaderInfo>

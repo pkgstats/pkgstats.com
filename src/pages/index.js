@@ -101,7 +101,7 @@ class Index extends Component {
     return (
       <ViewWrapper className="app-view app-view--home" packages={packages}>
         <Head>
-          <title>PkgStats - npm package discovery and stats viewer.</title>
+          <title>Pkg Stats - npm package discovery and stats viewer.</title>
           <meta name="description" content="Quickly browse and discover the best packages on npm for your next project or application." />
           <meta name="keywords" content="npm, packages, repository, discovery, statistics, browse, search" />
         </Head>
