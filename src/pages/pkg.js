@@ -13,6 +13,7 @@ import PackageGraph from 'components/packages/PackageGraph';
 import PackageGrid from 'components/packages/PackageGrid';
 import { fetchDownloads } from 'store/actions/DownloadsActions';
 import { fetchPackage } from 'store/actions/PackageActions';
+import { fetchReadme } from 'store/actions/ReadmeActions';
 
 const uriTransformer = require('react-markdown').uriTransformer;
 
@@ -288,12 +289,45 @@ class Pkg extends Component {
     if (!downloads[downloadsKey]) {
       await store.dispatch(fetchDownloads(pkg));
     }
+
+    if (packages[pkg] && packages[pkg].readme === '') {
+      await store.dispatch(fetchReadme(pkg));
+    }
   }
 
   constructor(props) {
     super(props);
 
     this.parseTransformLinkUri = this.parseTransformLinkUri.bind(this);
+  }
+
+  componentDidMount() {
+    const {
+      pkg,
+    } = this.props;
+
+    if (pkg && pkg.readme === '') {
+      this.requestReadme();
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const {
+      pkg,
+    } = this.props;
+
+    if (pkg && prevProps.pkg.name !== pkg.name && pkg.readme === '') {
+      this.requestReadme();
+    }
+  }
+
+  requestReadme() {
+    const {
+      actions,
+      pkg,
+    } = this.props;
+
+    actions.fetchReadme(pkg);
   }
 
   parseTransformLinkUri(uri) {
@@ -433,6 +467,7 @@ class Pkg extends Component {
     const {
       pkg,
       pkgDownloads,
+      readme,
     } = this.props;
 
     return (
@@ -481,7 +516,7 @@ class Pkg extends Component {
               <h3 className="details__header">Readme</h3>
               <ReactMarkdown
                 className="details__readme__src"
-                source={pkg.readme}
+                source={pkg.readme || readme}
                 linkTarget="_blank"
                 escapeHtml={false}
                 transformLinkUri={this.parseTransformLinkUri}
@@ -498,6 +533,7 @@ const mapStateToProps = (state, props) => {
   const {
     downloads,
     packages,
+    readmes,
   } = state;
 
   const {
@@ -505,6 +541,7 @@ const mapStateToProps = (state, props) => {
   } = props;
 
   const pkg = packages[router.query.pkg];
+  const readme = readmes[router.query.pkg];
 
   const downloadsKey = `packages:${router.query.pkg}:type:range:timeframe:last-month`;
   const pkgDownloads = downloads[downloadsKey];
@@ -512,6 +549,7 @@ const mapStateToProps = (state, props) => {
   return {
     pkg,
     pkgDownloads,
+    readme: readme && readme.response ? readme.response : null,
   };
 };
 
@@ -519,6 +557,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     actions: bindActionCreators({
       fetchPackage,
+      fetchReadme,
     }, dispatch),
   };
 };
