@@ -294,7 +294,8 @@ class InfoPanel extends Component {
                 <h4>CSS / Styling</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:styled-components"><a>styled-components</a></Link>
+                    <Link route="/pkg:next-page-transitions"><a>next-page-transitions</a></Link>
+                    &nbsp;/ <Link route="/pkg:styled-components"><a>styled-components</a></Link>
                   </code>
                 </p>
               </li>

@@ -470,6 +470,10 @@ class Pkg extends Component {
       readme,
     } = this.props;
 
+    if (!pkg) {
+      return null;
+    }
+
     return (
       <main className="app-view app-view--user">
         <Head>

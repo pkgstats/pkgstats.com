@@ -59,6 +59,27 @@ const base = `
     flex-direction: column;
     margin-top: 6rem;
   }
+
+  .page-transition {
+
+    &-enter {
+      opacity: 0;
+    }
+
+    &-enter-active {
+      opacity: 1;
+      transition: opacity 300ms ease-out;
+    }
+
+    &-exit {
+      opacity: 1;
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transition: opacity 300ms ease-in;
+    }
+  }
 `;
 
 export default base;
