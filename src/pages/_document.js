@@ -40,7 +40,7 @@ export default class MyDocument extends Document {
           <meta property="og:title" content="Pkg Stats - npm package discovery and stats viewer." />
           <meta property="og:description" content="Quickly browse and discover the best packages on npm for your next project or application." />
           <meta property="og:site_name" content="Pkg Stats" />
-          <meta property="og:url" content="https:///www.pkgstats.com" />
+          <meta property="og:url" content="https://www.pkgstats.com" />
           <meta property="og:image" content="https://www.pkgstats.com/static/images/pkgstats-share-image.png" />
 
           {/* Twitter Card Tags */}
