@@ -61,7 +61,6 @@ const base = `
   }
 
   .page-transition {
-
     &-enter {
       opacity: 0;
     }

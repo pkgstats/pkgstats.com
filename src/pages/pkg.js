@@ -164,6 +164,12 @@ const DetailsSection = styled.section`
     img {
       max-width: 100%;
     }
+
+    code {
+      display: inline-block;
+      width: 100%;
+      overflow-x: scroll;
+    }
   }
 
   .details__links {
