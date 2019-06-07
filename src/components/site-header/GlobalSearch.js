@@ -8,44 +8,44 @@ const SearchInput = styled.input`
   border: 0;
   border-radius: 0;
   margin: 0;
-  padding: 1rem;
+  padding: 1rem 0;
   height: 6rem;
 
-  flex: 1;
   font-family: var(--font-family-mono);
   font-size: 1.6rem;
   color: var(--color-white);
-  // width: 100%;
+  width: 100%;
   height: 6rem;
   transition: background-color 0.2s ease-in-out;
 
-  // &::-webkit-search-cancel-button {
-  //   position: relative;
-  //   -webkit-appearance: none;
-  //   height: 2rem;
-  //   width: 2rem;
-  //   border-radius: 2rem;
-  //   background: white;
+  &::-webkit-search-cancel-button {
+    position: relative;
+    -webkit-appearance: none;
+    display: none;
+    // height: 2rem;
+    // width: 2rem;
+    // border-radius: 2rem;
+    // background: white;
 
-  //   &::before,
-  //   &::after {
-  //     content: '';
-  //     background-color: black;
-  //     position: absolute;
-  //     top: 50%;
-  //     left: 50%;
-  //     width: 0.2rem;
-  //     height: 1.5rem;
-  //   }
+    // &::before,
+    // &::after {
+    //   content: '';
+    //   background-color: black;
+    //   position: absolute;
+    //   top: 50%;
+    //   left: 50%;
+    //   width: 0.2rem;
+    //   height: 1.5rem;
+    // }
 
-  //   &::before {
-  //     transform: rotate(-45deg);
-  //   }
+    // &::before {
+    //   transform: rotate(-45deg);
+    // }
 
-  //   &::after {
-  //     transform: rotate(45deg);
-  //   }
-  // }
+    // &::after {
+    //   transform: rotate(45deg);
+    // }
+  }
 
   &:focus {
     outline: none;
@@ -90,6 +90,9 @@ class GlobalSearch extends Component {
         type="search"
         name="text"
         placeholder="Search packages | pkg:[package-name] | @[username]"
+        autocapitalize="none"
+        autocomplete="off"
+        autocorrect="off"
         ref={forwardedRef}
         value={text}
         onChange={this.onInputChange}

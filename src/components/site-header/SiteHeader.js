@@ -46,6 +46,16 @@ const Header = styled.header`
   }
 `;
 
+const SearchForm = styled.form`
+  flex: 1;
+  margin: 0;
+  padding: 0;
+`;
+
+const SearchButton = styled.button`
+  display: none;
+`;
+
 const InfoButton = styled.button`
   appearance: none;
   border: 0;
@@ -63,14 +73,19 @@ const InfoButton = styled.button`
   background-color: #999;
   width: 2.5rem;
   height: 2.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   border-radius: 50%;
-  margin-right: 2rem;
-  margin-left: 2rem;
   transition: background-color 0.2s ease-in-out;
 
   &:active,
   &:hover {
     background-color: #fff;
+  }
+
+  @media all and (min-width: 768px) {
+    margin-right: 2rem;
+    margin-left: 2rem;
   }
 `;
 
@@ -88,6 +103,7 @@ class SiteHeader extends Component {
 
     this.state = {
       showPanel: false,
+      search: '',
     };
 
     this.searchInput = null;
@@ -97,6 +113,7 @@ class SiteHeader extends Component {
     };
 
     this.searchTimeout = null;
+    this.onSearchSubmit = this.onSearchSubmit.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
     this.onInfoButtonClick = this.onInfoButtonClick.bind(this);
     this.onPanelDismiss = this.onPanelDismiss.bind(this);
@@ -131,31 +148,53 @@ class SiteHeader extends Component {
     Router.pushRoute(route);
   }
 
+  performSearch() {
+    const {
+      search,
+    } = this.state;
+
+    if (search !== '') {
+      const packageCheck = checkPackage(search);
+      if (packageCheck) {
+        this.setRoute(`/pkg:${packageCheck[1]}`);
+        return;
+      }
+
+      const userCheck = checkUser(search);
+      if (userCheck) {
+        this.setRoute(`/@${userCheck[1]}`);
+        return;
+      }
+
+      this.setRoute(`/?search=${search}`);
+      return;
+    }
+
+    this.setRoute('/');
+  }
+
+  onSearchSubmit(evt) {
+    evt.preventDefault();
+
+    if (this.searchTimeout) {
+      clearTimeout(this.searchTimeout);
+    }
+
+    this.performSearch();
+  }
+
   onSearchChange(text = '') {
     if (this.searchTimeout) {
       clearTimeout(this.searchTimeout);
     }
 
-    this.searchTimeout = setTimeout(() => {
-      if (text !== '') {
-        const packageCheck = checkPackage(text);
-        if (packageCheck) {
-          this.setRoute(`/pkg:${packageCheck[1]}`);
-          return;
-        }
-
-        const userCheck = checkUser(text);
-        if (userCheck) {
-          this.setRoute(`/@${userCheck[1]}`);
-          return;
-        }
-
-        this.setRoute(`/?search=${text}`);
-        return;
-      }
-
-      this.setRoute('/');
-    }, 1000);
+    this.setState({
+      search: text,
+    }, () => {
+      this.searchTimeout = setTimeout(() => {
+        this.performSearch();
+      }, 'ontouchstart' in document.documentElement ? 1500 : 1000);
+    });
   }
 
   onInfoButtonClick() {
@@ -188,11 +227,14 @@ class SiteHeader extends Component {
             </a>
           </Link>
         </div>
-        <GlobalSearch
-          forwardedRef={this.setSearchInput}
-          search={search}
-          onChange={this.onSearchChange}
-        />
+        <SearchForm onSubmit={this.onSearchSubmit}>
+          <GlobalSearch
+            forwardedRef={this.setSearchInput}
+            search={search}
+            onChange={this.onSearchChange}
+          />
+          <SearchButton type="submit">Enter</SearchButton>
+        </SearchForm>
         <InfoButton onClick={this.onInfoButtonClick}>?</InfoButton>
         <InfoPanel show={showPanel} onDismiss={this.onPanelDismiss} />
       </Header>
