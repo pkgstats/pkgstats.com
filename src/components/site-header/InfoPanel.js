@@ -239,7 +239,7 @@ class InfoPanel extends Component {
             <h3>Open Software &amp; Tools</h3>
             <p>
               This site wouldn’t be possible without the immense generosity and
-              tireless efforts from the people make contributions to the world
+              tireless efforts from the people who make contributions to the world
               and share their work via open source initiatives. Thank you 🙏
             </p>
             <ul>
