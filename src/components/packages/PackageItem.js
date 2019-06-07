@@ -45,10 +45,14 @@ const Package = styled.div`
   }
 
   .package-item__name {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     margin: 0;
     margin-bottom: 0.7rem;
     padding-right: 2rem;
+
+    @media all and (min-width: 768px) {
+      font-size: 1.4rem;
+    }
   }
 
   .package-item__author {
@@ -73,7 +77,11 @@ const Package = styled.div`
     border-radius: 0.2rem;
     padding: 0.2rem 0.5rem;
     margin: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
+
+    @media all and (min-width: 768px) {
+      margin-bottom: 0.5rem;
+    }
   }
 
   .package-item__date {
