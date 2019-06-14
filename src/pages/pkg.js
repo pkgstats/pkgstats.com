@@ -275,6 +275,24 @@ const DetailsSection = styled.section`
   }
 `;
 
+const EmptyWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const EmptyResults = styled.p`
+  font-size: 1.6rem;
+  text-align: center;
+  color: #999;
+  width: 100%;
+
+  em {
+    font-style: normal;
+    color: white;
+  }
+`;
 
 class Pkg extends Component {
   static async getInitialProps({ query, store }) {
@@ -474,14 +492,28 @@ class Pkg extends Component {
       pkg,
       pkgDownloads,
       readme,
+      router,
     } = this.props;
 
     if (!pkg) {
       return null;
     }
 
+    if (pkg.error) {
+      return (
+        <main className="app-view app-view--pkg">
+          <EmptyWrapper>
+            <EmptyResults>
+              <span>No package found for: </span>
+              <em>{router.query.pkg}</em>
+            </EmptyResults>
+          </EmptyWrapper>
+        </main>
+      );
+    }
+
     return (
-      <main className="app-view app-view--user">
+      <main className="app-view app-view--pkg">
         <Head>
           <title>{`${pkg.name} on Pkg Stats - npm package discovery and stats viewer.`}</title>
           <meta name="description" content={pkg.description} />
