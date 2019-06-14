@@ -62,19 +62,37 @@ const base = `
 
   .page-transition {
     &-enter {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       opacity: 0;
     }
 
     &-enter-active {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       opacity: 1;
       transition: opacity 300ms ease-out;
     }
 
+    &-enter-done {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
     &-exit {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       opacity: 1;
     }
 
     &-exit-active {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       opacity: 0;
       transition: opacity 300ms ease-in;
     }

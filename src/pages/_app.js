@@ -42,6 +42,7 @@ class MyApp extends App {
       Component,
       locale,
       pageProps,
+      router,
       store,
     } = this.props;
 
@@ -52,7 +53,7 @@ class MyApp extends App {
           <div className="site-wrapper">
             <SiteHeader />
             <PageTransition timeout={300} classNames="page-transition">
-              <Component {...pageProps} />
+              <Component key={router.asPath} {...pageProps} />
             </PageTransition>
           </div>
           <SiteFooter />
