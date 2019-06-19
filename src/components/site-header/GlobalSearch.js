@@ -8,7 +8,7 @@ const SearchInput = styled.input`
   border: 0;
   border-radius: 0;
   margin: 0;
-  padding: 1rem 0;
+  padding: 1rem 0 1rem 1rem;
   height: 6rem;
 
   font-family: var(--font-family-mono);
