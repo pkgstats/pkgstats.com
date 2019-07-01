@@ -165,7 +165,7 @@ const DetailsSection = styled.section`
       max-width: 100%;
     }
 
-    code {
+    pre > code {
       display: inline-block;
       width: 100%;
       overflow-x: scroll;
