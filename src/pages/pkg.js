@@ -20,7 +20,7 @@ const uriTransformer = require('react-markdown').uriTransformer;
 const HeaderInfo = styled.header`
   display: flex;
   justify-content: space-between;
-  padding: 5rem 2rem 0;
+  padding: 5rem 1rem 0;
 
   .header-info__name {
     font-size: 2.8rem;
@@ -34,10 +34,14 @@ const HeaderInfo = styled.header`
     border: 1px solid #222;
     border-radius: 0.2rem;
   }
+
+  @media all and (min-width: 768px) {
+    padding: 5rem 2rem 0;
+  }
 `;
 
 const InfoSection = styled.section`
-  padding: 0 2rem 5rem;
+  padding: 0 1rem 5rem;
 
   .info__desc {
     font-size: 1.8rem;
@@ -91,6 +95,7 @@ const InfoSection = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 2rem 5rem;
 
     .info__install__button {
       &::before {
