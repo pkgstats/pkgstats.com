@@ -165,8 +165,14 @@ const DetailsSection = styled.section`
       max-width: 100%;
     }
 
-    pre > code {
+    code {
       display: inline-block;
+      padding: 0.2rem 1rem;
+      border-radius: 0.2rem;
+      background-color: #111;
+    }
+
+    pre > code {
       width: 100%;
       overflow-x: scroll;
     }
