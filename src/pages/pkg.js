@@ -172,9 +172,9 @@ const DetailsSection = styled.section`
 
     code {
       display: inline-block;
-      padding: 0.2rem 1rem;
+      padding: 0.2rem 0.5rem;
       border-radius: 0.2rem;
-      background-color: #111;
+      background-color: #222;
     }
 
     pre > code {
