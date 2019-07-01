@@ -180,6 +180,7 @@ const DetailsSection = styled.section`
     pre > code {
       width: 100%;
       overflow-x: scroll;
+      padding: 1rem;
     }
   }
 
