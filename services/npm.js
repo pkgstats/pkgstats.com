@@ -2,7 +2,7 @@ require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
 const express = require('express');
-const npmUser = require('npm-user');
+const npmUser = require('@pkgstats/npm-user');
 const router = express.Router();
 
 /**
