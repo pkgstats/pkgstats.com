@@ -267,7 +267,7 @@ class PackageItem extends Component {
       downloads,
     } = this.props;
 
-    if (!downloads || !downloads.response) {
+    if (!downloads || !downloads.response || !downloads.response.downloads) {
       return null;
     }
 
