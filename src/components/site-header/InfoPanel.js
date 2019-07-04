@@ -161,7 +161,7 @@ class InfoPanel extends Component {
         <CloseButton onClick={onDismiss} />
         <ScrollArea>
           <section>
-            <p>NPM package discovery and stats viewer.</p>
+            <p>npm package discovery and stats viewer.</p>
           </section>
           <section>
             <h3>Discover Tips</h3>
