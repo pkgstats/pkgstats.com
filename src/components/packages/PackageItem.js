@@ -212,7 +212,7 @@ class PackageItem extends Component {
     } = this.props;
 
     const linkTarget = evt.target;
-    console.debug(evt.target, linkTarget.classList.contains('package-link'), linkTarget.classList.contains('package-item__aurhor-link'));
+    // console.debug(evt.target, linkTarget.classList.contains('package-link'), linkTarget.classList.contains('package-item__aurhor-link'));
 
     if (linkTarget.classList.contains('package-link') || linkTarget.classList.contains('package-item__author-link')) {
       return true;
@@ -302,14 +302,14 @@ class PackageItem extends Component {
         <div className="package-item__link" ref={this.linkItem}>
           <div className="package-item__header-info">
             <div className="package-item__column">
-              <Link route={`/pkg:${pkg.package.name}`}>
+              <Link href="pkg:[pkg]" as={`/pkg:${pkg.package.name}`}>
                 <a>
                   <h3 className="package-item__name">{pkg.package.name}</h3>
                 </a>
               </Link>
               {!!(pkg.package.publisher && pkg.package.publisher.username) && (
                 <p className="package-item__author">
-                  <Link route={`/@${pkg.package.publisher.username}`}>
+                  <Link href="@[username]" as={`/@${pkg.package.publisher.username}`}>
                     <a className="package-item__author-link">
                       {pkg.package.publisher.username}
                     </a>

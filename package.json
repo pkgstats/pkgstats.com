@@ -14,10 +14,10 @@
   "homepage": "https://pkgstats.com",
   "main": "server.js",
   "scripts": {
-    "dev": "node server.js",
-    "build": "NODE_ENV=production next build src",
+    "dev": "next ./src",
+    "build": "next build ./src",
+    "start": "next start ./src",
     "now-build": "next build src",
-    "start": "NODE_ENV=production node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -33,7 +33,7 @@
     "express": "^4.17.1",
     "gravatar": "^1.8.0",
     "isomorphic-fetch": "^2.2.1",
-    "next": "^8.1.0",
+    "next": "^9.0.2",
     "next-page-transitions": "^1.0.0-beta.2",
     "next-redux-wrapper": "^3.0.0-alpha.3",
     "next-routes": "^1.4.2",

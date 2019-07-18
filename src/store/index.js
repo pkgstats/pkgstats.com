@@ -67,7 +67,7 @@ export default function configureStore(initialState = {}, {
       origin,
     } = window.location;
 
-    NPMService.origin = `${origin}/npm`;
+    NPMService.origin = `${origin}/api/npm`;
   }
 
   return store;

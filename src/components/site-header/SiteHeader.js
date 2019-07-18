@@ -221,7 +221,7 @@ class SiteHeader extends Component {
     return (
       <Header>
         <div className="site-header__logo">
-          <Link route="/">
+          <Link href="index" as="/">
             <a className="site-header__logo__link">
               <h1 className="site-header__logo__type">Pkg <br />Stats</h1>
             </a>

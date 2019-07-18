@@ -471,7 +471,7 @@ class Pkg extends Component {
     }
 
     return pkg.keywords.map(keyword => (
-      <Link route={`/?search=${keyword}`} key={`package-keywords-${pkg.name}-${keyword}`}>
+      <Link href="index" as={`/?search=${keyword}`} key={`package-keywords-${pkg.name}-${keyword}`}>
         <a>{keyword}</a>
       </Link>
     ));
@@ -488,7 +488,8 @@ class Pkg extends Component {
 
     return pkg.maintainers.map(maintainer => (
       <Link
-        route={`/@${maintainer.name}`}
+        href="@[username]"
+        as={`/@${maintainer.name}`}
         key={`package-maintainers-${pkg.name}-${maintainer.name}`}
       >
         <a className="maintainer-link">

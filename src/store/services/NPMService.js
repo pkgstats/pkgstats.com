@@ -1,6 +1,9 @@
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
+
 let _origin = process.env.NODE_ENV !== 'production'
-  ? 'http://192.168.1.198:3000/npm'
-  : 'https://www.pkgstats.com/npm';
+  ? 'http://192.168.1.198:3000/api/npm'
+  : 'https://www.pkgstats.com/api/npm';
 
 class NPMService {
   static get origin() {
@@ -45,7 +48,7 @@ class NPMService {
 
   static getPackage(pkg, version = null) {
     if (version) {
-      return this.makeRequest(`/pkg/${pkg}/${version}`);
+      return this.makeRequest(`/pkg/${pkg}?version=${version}`);
     }
 
     return this.makeRequest(`/pkg/${pkg}`);
@@ -98,7 +101,7 @@ class NPMService {
   }
 
   static getDownloads(packages, type = 'range', timeframe = 'last-month') {
-    return this.makeRequest(`/downloads/${type}/${timeframe}/${packages}`);
+    return this.makeRequest(`/downloads?type=${type}&timeframe=${timeframe}&packages=${packages}`);
   }
 }
 

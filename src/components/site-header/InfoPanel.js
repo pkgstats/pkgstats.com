@@ -215,7 +215,7 @@ class InfoPanel extends Component {
             </p>
             <p>
               I am also working on a Twitter bot for this site to tweet the most
-              popular, newest, random packages from <a href="https://npmjs.com" target="_blank" rel="noreferrer noopener">npm</a>.
+              popular, newest, random packages from <a href="https://npmjs.com" target="_blank" rel="nofollow noreferrer noopener">npm</a>.
               Please follow that account now and it will start sending out
               packages soon–ish.
             </p>
@@ -250,7 +250,7 @@ class InfoPanel extends Component {
                 <h4>Typeface</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:@ibm/plex"><a>@ibm/plex</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:@ibm/plex"><a>@ibm/plex</a></Link>
                   </code>
                 </p>
               </li>
@@ -258,9 +258,9 @@ class InfoPanel extends Component {
                 <h4>Server</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:next"><a>next</a></Link>
-                    &nbsp;/ <Link route="/pkg:express"><a>express</a></Link>
-                    &nbsp;/ <Link route="/pkg:next-routes"><a>next-routes</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:next"><a>next</a></Link>
+                    &nbsp;/ <Link href="pkg:[pkg]" as="/pkg:express"><a>express</a></Link>
+                    &nbsp;/ <Link href="pkg:[pkg]" as="/pkg:next-routes"><a>next-routes</a></Link>
                   </code>
                 </p>
               </li>
@@ -268,8 +268,8 @@ class InfoPanel extends Component {
                 <h4>Framework</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:react"><a>react</a></Link>
-                    &nbsp;/ <Link route="/pkg:react-dom"><a>react-dom</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:react"><a>react</a></Link>
+                    &nbsp;/ <Link href="pkg:[pkg]" as="/pkg:react-dom"><a>react-dom</a></Link>
                   </code>
                 </p>
               </li>
@@ -277,7 +277,7 @@ class InfoPanel extends Component {
                 <h4>Types</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:prop-types"><a>prop-types</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:prop-types"><a>prop-types</a></Link>
                   </code>
                 </p>
               </li>
@@ -285,11 +285,11 @@ class InfoPanel extends Component {
                 <h4>Data Store</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:redux"><a>redux</a></Link>
-                    &nbsp;/ <Link route="/pkg:react-redux"><a>react-redux</a></Link>
-                    &nbsp;/ <Link route="/pkg:next-redux-wrapper"><a>next-redux-wrapper</a></Link>
-                    &nbsp;/ <Link route="/pkg:redux-thunk"><a>redux-thunk</a></Link>
-                    &nbsp;/ <Link route="/pkg:redux-logger"><a>redux-logger</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:redux"><a>redux</a></Link>
+                    &nbsp;/ <Link href="pkg:[pkg]" as="/pkg:react-redux"><a>react-redux</a></Link>
+                    &nbsp;/ <Link href="pkg:[pkg]" as="/pkg:next-redux-wrapper"><a>next-redux-wrapper</a></Link>
+                    &nbsp;/ <Link href="pkg:[pkg]" as="/pkg:redux-thunk"><a>redux-thunk</a></Link>
+                    &nbsp;/ <Link href="pkg:[pkg]" as="/pkg:redux-logger"><a>redux-logger</a></Link>
                   </code>
                 </p>
               </li>
@@ -297,8 +297,8 @@ class InfoPanel extends Component {
                 <h4>CSS / Styling</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:next-page-transitions"><a>next-page-transitions</a></Link>
-                    &nbsp;/ <Link route="/pkg:styled-components"><a>styled-components</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:next-page-transitions"><a>next-page-transitions</a></Link>
+                    &nbsp;/ <Link href="pkg:[pkg]" as="/pkg:styled-components"><a>styled-components</a></Link>
                   </code>
                 </p>
               </li>
@@ -306,7 +306,7 @@ class InfoPanel extends Component {
                 <h4>Avatars</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:gravatar"><a>gravatar</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:gravatar"><a>gravatar</a></Link>
                   </code>
                 </p>
               </li>
@@ -314,7 +314,7 @@ class InfoPanel extends Component {
                 <h4>Charts</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:chart.js"><a>chart.js</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:chart.js"><a>chart.js</a></Link>
                   </code>
                 </p>
               </li>
@@ -322,7 +322,7 @@ class InfoPanel extends Component {
                 <h4>Date formatting</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:dayjs"><a>dayjs</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:dayjs"><a>dayjs</a></Link>
                   </code>
                 </p>
               </li>
@@ -330,7 +330,7 @@ class InfoPanel extends Component {
                 <h4>Infinite scrolling</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:react-scroll-trigger"><a>react-scroll-trigger</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:react-scroll-trigger"><a>react-scroll-trigger</a></Link>
                   </code>
                 </p>
               </li>
@@ -338,7 +338,7 @@ class InfoPanel extends Component {
                 <h4>Markdown rendering</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:react-markdown"><a>react-markdown</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:react-markdown"><a>react-markdown</a></Link>
                   </code>
                 </p>
               </li>
@@ -346,7 +346,7 @@ class InfoPanel extends Component {
                 <h4>Repository url parsing</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:@hutson/parse-repository-url"><a>@hutson/parse-repository-url</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:@hutson/parse-repository-url"><a>@hutson/parse-repository-url</a></Link>
                   </code>
                 </p>
               </li>
@@ -354,7 +354,7 @@ class InfoPanel extends Component {
                 <h4>Sparklines</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:react-sparklines"><a>react-sparklines</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:react-sparklines"><a>react-sparklines</a></Link>
                   </code>
                 </p>
               </li>
@@ -362,7 +362,7 @@ class InfoPanel extends Component {
                 <h4>User data</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:npm-user"><a>npm-user</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:npm-user"><a>npm-user</a></Link>
                   </code>
                 </p>
               </li>
@@ -370,8 +370,8 @@ class InfoPanel extends Component {
                 <h4>Compiling</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:babel-plugin-module-resolver"><a>babel-plugin-module-resolver</a></Link>
-                    &nbsp;/ <Link route="/pkg:babel-plugin-styled-components"><a>babel-plugin-styled-components</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:babel-plugin-module-resolver"><a>babel-plugin-module-resolver</a></Link>
+                    &nbsp;/ <Link href="pkg:[pkg]" as="/pkg:babel-plugin-styled-components"><a>babel-plugin-styled-components</a></Link>
                   </code>
                 </p>
               </li>
@@ -379,8 +379,8 @@ class InfoPanel extends Component {
                 <h4>Odds &amp; Ends</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:es6-promise"><a>es6-promise</a></Link>
-                    &nbsp;/ <Link route="/pkg:isomorphic-fetch"><a>isomorphic-fetch</a></Link>
+                    <Link href="pkg:[pkg]" as="/pkg:es6-promise"><a>es6-promise</a></Link>
+                    &nbsp;/ <Link href="pkg:[pkg]" as="/pkg:isomorphic-fetch"><a>isomorphic-fetch</a></Link>
                   </code>
                 </p>
               </li>
