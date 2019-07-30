@@ -93,6 +93,7 @@ class GlobalSearch extends Component {
         autocapitalize="none"
         autocomplete="off"
         autocorrect="off"
+        autoFocus
         ref={forwardedRef}
         value={text}
         onChange={this.onInputChange}
