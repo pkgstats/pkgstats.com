@@ -7,7 +7,7 @@
     "url": "git+https://github.com/ryanhefner/pkgstats.git"
   },
   "author": "Ryan Hefner <hi@ryanhefner.com> (https://www.ryanhefner.com)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ryanhefner/pkgstats/issues"
   },
