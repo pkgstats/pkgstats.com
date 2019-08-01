@@ -1,6 +1,6 @@
 import App, { Container } from 'next/app';
 import getConfig from 'next/config';
-import { PageTransition } from 'next-page-transitions';
+import { PageTransition } from '@ryanhefner/next-page-transitions';
 import React from 'react';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
@@ -52,7 +52,11 @@ class MyApp extends App {
         <Provider store={store}>
           <div className="site-wrapper">
             <SiteHeader />
-            <PageTransition timeout={300} classNames="page-transition">
+            <PageTransition
+              timeout={300}
+              classNames="page-transition"
+              monkeyPatchScrolling
+            >
               <Component key={router.asPath} {...pageProps} />
             </PageTransition>
           </div>
