@@ -225,6 +225,10 @@ class InfoPanel extends Component {
                 <p><code><a href="https://twitter.com/pkgstats" target="_blank" rel="noreferrer noopener">@PkgStats</a></code></p>
               </li>
               <li>
+                <h4>GitHub</h4>
+                <p><code><a href="https://github.com/pkgstats" target="_blank" rel="noreferrer noopener">pkgstats</a></code></p>
+              </li>
+              <li>
                 <h4>Twitter</h4>
                 <p><code><a href="https://twitter.com/ryanhefner" target="_blank" rel="noreferrer noopener">@ryanhefner</a></code></p>
               </li>
