@@ -1,10 +1,12 @@
 import App, { Container } from 'next/app';
 import getConfig from 'next/config';
+import Router from 'next/router';
 import { PageTransition } from '@ryanhefner/next-page-transitions';
 import React from 'react';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import Rollbar from 'rollbar';
+
 import SiteHeader from 'components/site-header/SiteHeader';
 import SiteFooter from 'components/site-footer/SiteFooter';
 import configureStore from 'store';
@@ -35,6 +37,21 @@ class MyApp extends App {
       captureUncaught: true,
       captureUnhandledRejections: true
     });
+
+    Router.onRouteChangeComplete = url => {
+      this.trackPageView(url);
+    };
+  }
+
+  trackPageView(url) {
+    try {
+      window.gtag('config', 'UA-145149808-1', {
+        page_location: url
+      });
+    } catch (error) {
+      // silences the error in dev mode
+      // and/or if gtag fails to load
+    }
   }
 
   render() {
