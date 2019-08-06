@@ -4,6 +4,7 @@ import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
+    const isProduction = process.env.NODE_ENV === 'production';
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
 
@@ -15,6 +16,7 @@ export default class MyDocument extends Document {
       const initialProps = await Document.getInitialProps(ctx)
       return {
         ...initialProps,
+        isProduction,
         styles: (
           <React.Fragment>
             {initialProps.styles}
@@ -27,7 +29,23 @@ export default class MyDocument extends Document {
     }
   }
 
+  renderGoogleTag() {
+    return {
+      __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-145149808-1');
+      `
+    };
+  }
+
   render() {
+    const {
+      isProduction,
+    } = this.props;
+
     return (
       <html lang="en">
         <Head>
@@ -54,6 +72,13 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          {isProduction && (
+            /* Global site tag (gtag.js) - Google Analytics */
+            <React.Fragment>
+              <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145149808-1" />
+              <script dangerouslySetInnerHtml={this.renderGoogleTag()} />
+            </React.Fragment>
+          )}
         </body>
       </html>
     );
