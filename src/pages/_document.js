@@ -76,7 +76,7 @@ export default class MyDocument extends Document {
             /* Global site tag (gtag.js) - Google Analytics */
             <React.Fragment>
               <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145149808-1" />
-              <script dangerouslySetInnerHtml={this.renderGoogleTag()} />
+              <script dangerouslySetInnerHTML={this.renderGoogleTag()} />
             </React.Fragment>
           )}
         </body>
