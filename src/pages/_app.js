@@ -63,12 +63,14 @@ class MyApp extends App {
       store,
     } = this.props;
 
+    const isShare = /\/share/.test(router.asPath);
+
     return (
       <Container>
         <GlobalStyles />
         <Provider store={store}>
           <div className="site-wrapper">
-            <SiteHeader />
+            {!isShare && <SiteHeader />}
             <PageTransition
               timeout={300}
               classNames="page-transition"
@@ -77,7 +79,7 @@ class MyApp extends App {
               <Component key={router.asPath} {...pageProps} />
             </PageTransition>
           </div>
-          <SiteFooter />
+          {!isShare && <SiteFooter />}
         </Provider>
       </Container>
     );
