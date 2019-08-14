@@ -17,7 +17,7 @@ import { fetchDownloads } from 'store/actions/DownloadsActions';
 import { fetchPackage } from 'store/actions/PackageActions';
 import { fetchReadme } from 'store/actions/ReadmeActions';
 
-import * as Styled from './pkg.styled';
+import * as Styled from 'components/page-styles/pkg.styled';
 
 const uriTransformer = require('react-markdown').uriTransformer;
 
