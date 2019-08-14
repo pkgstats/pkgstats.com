@@ -32,9 +32,9 @@ const HeaderPrimary = styled.h1`
   margin: 0;
 `;
 
-const HeaderSecondary = styled.h2`
+const HeaderSecondary = styled.a`
   font-size: 6vh;
-  margin: 0;
+  text-decoration: none;
 `;
 
 const Content = styled.section`
@@ -143,8 +143,8 @@ class Share extends Component {
       pageType = 'user';
       headerCopy = query[0];
     }
-    else if (/pkg::/.test(query[0])) {
-      const pkg = query[0].replace('pkg::', '');
+    else if (/pkg:/.test(query[0])) {
+      const pkg = query[0].replace('pkg:', '');
 
       const {
         packages,
@@ -252,7 +252,11 @@ class Share extends Component {
       <ViewWrapper>
         <Header>
           <HeaderPrimary>Pkg Stats</HeaderPrimary>
-          {headerCopy && <HeaderSecondary>{headerCopy}</HeaderSecondary>}
+          {headerCopy && (
+            <HeaderSecondary href={pageType === 'user' ? `/${headerCopy}` : `/pkg:${headerCopy}`}>
+              {headerCopy}
+            </HeaderSecondary>
+          )}
         </Header>
         <Content>
           {this.renderContent()}
@@ -280,7 +284,7 @@ const mapStateToProps = (state, props) => {
   } = props;
 
   if (pageType === 'pkg') {
-    const pkgName = router.query[0].replace('pkg::', '');
+    const pkgName = router.query[0].replace('pkg:', '');
     const pkg = packages[pkgName];
 
     const downloadsKey = `packages:${pkgName}:type:range:timeframe:last-month`;
