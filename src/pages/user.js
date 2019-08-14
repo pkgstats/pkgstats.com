@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
 import styled from 'styled-components';
+
 import PackageGrid from 'components/packages/PackageGrid';
 import UserInfo from 'components/users/UserInfo';
+
 import { searchNpm } from 'store/actions/SearchNpmActions';
 import { fetchUser } from 'store/actions/UserActions';
 

@@ -5,4 +5,6 @@ module.exports = routes()
   .add('/pkg\::pkg(.*)', 'pkg')
   .add('/org\::organization', 'org')
   .add('/compare/:packages', 'compare')
+  .add('/share/(.*)', 'share')
+  .add('/share', 'share')
   .add('/', 'index');
