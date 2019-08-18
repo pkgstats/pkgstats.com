@@ -87,8 +87,10 @@ class User extends Component {
           <meta name="description" content={`Explore ${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
           <meta property="og:title" content={`${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
           <meta property="og:description" content={`Explore ${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
+          <meta property="og:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath}`)}.jpg`} />
           <meta name="twitter:title" content={`${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
           <meta name="twitter:description" content={`Explore ${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
+          <meta name="twitter:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath}`)}.jpg`} />
         </Head>
         <UserInfo user={user} />
         {!!packages.objects.length && (
