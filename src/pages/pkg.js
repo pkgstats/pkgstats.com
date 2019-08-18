@@ -244,6 +244,7 @@ class Pkg extends Component {
         <Head>
           <title>{`${pkg.name} on Pkg Stats - npm package discovery and stats viewer.`}</title>
           <meta name="description" content={pkg.description} />
+          <meta property="og:url" content={`https://www.pkgstats.com${router.asPath}`} />
           <meta property="og:title" content={`${pkg.name} on Pkg Stats - npm package discovery and stats viewer.`} />
           <meta property="og:description" content={pkg.description} />
           <meta property="og:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg`} />
