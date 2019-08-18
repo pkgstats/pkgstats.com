@@ -1,5 +1,6 @@
 import App, { Container } from 'next/app';
 import getConfig from 'next/config';
+import Head from 'next/head';
 import Router from 'next/router';
 import { PageTransition } from '@ryanhefner/next-page-transitions';
 import React from 'react';
@@ -68,6 +69,23 @@ class MyApp extends App {
     return (
       <Container>
         <GlobalStyles />
+        <Head>
+          {/* Open Graph Tags */}
+          <meta property="og:type" key="og:type" content="website" />
+          <meta property="og:title" key="og:title" content="Pkg Stats - npm package discovery and stats viewer." />
+          <meta property="og:description" key="og:description" content="Quickly browse and discover the best packages on npm for your next project or application." />
+          <meta property="og:site_name" key="og:site_name" content="Pkg Stats" />
+          <meta property="og:url" key="og:url" content="https://www.pkgstats.com" />
+          <meta property="og:image" key="og:image" content="https://www.pkgstats.com/static/images/pkgstats-share-image.png" />
+
+          {/* Twitter Card Tags */}
+          <meta name="twitter:card" key="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" key="twitter:site" content="@PkgStats" />
+          <meta name="twitter:creator" key="twitter:creator" content="@ryanhefner" />
+          <meta name="twitter:title" key="twitter:title" content="Pkg Stats - npm package discovery and stats viewer." />
+          <meta name="twitter:description" key="twitter:description" content="Quickly browse and discover the best packages on npm for your next project or application." />
+          <meta name="twitter:image" key="twitter:image" content="https://www.pkgstats.com/static/images/pkgstats-share-image.png" />
+        </Head>
         <Provider store={store}>
           <div className="site-wrapper">
             {!isShare && <SiteHeader />}

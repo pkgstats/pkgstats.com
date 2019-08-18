@@ -243,15 +243,15 @@ class Pkg extends Component {
       <main className="app-view app-view--pkg">
         <Head>
           <title>{`${pkg.name} on Pkg Stats - npm package discovery and stats viewer.`}</title>
-          <meta name="description" content={pkg.description} />
-          <meta property="og:url" content={`https://www.pkgstats.com${router.asPath}`} />
-          <meta property="og:title" content={`${pkg.name} on Pkg Stats - npm package discovery and stats viewer.`} />
-          <meta property="og:description" content={pkg.description} />
-          <meta property="og:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg?url=https://www.pkgstats.com${router.asPath}`} />
-          <meta name="twitter:title" content={`${pkg.name} on Pkg Stats - npm package discovery and stats viewer.`} />
-          <meta name="twitter:description" content={pkg.description} />
-          <meta name="twitter:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg?url=https://www.pkgstats.com${router.asPath}`} />
-          {pkg.keywords && <meta name="keywords" content={pkg.keywords.join(', ')} />}
+          <meta name="description" key="description" content={pkg.description} />
+          {pkg.keywords && <meta name="keywords" key="keywords" content={pkg.keywords.join(', ')} />}
+          <meta property="og:url" key="og:url" content={`https://www.pkgstats.com${router.asPath}`} />
+          <meta property="og:title" key="og:title" content={`${pkg.name} on Pkg Stats - npm package discovery and stats viewer.`} />
+          <meta property="og:description" key="og:description" content={pkg.description} />
+          <meta property="og:image" key="og:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg?url=https://www.pkgstats.com${router.asPath}`} />
+          <meta name="twitter:title" key="twitter:title" content={`${pkg.name} on Pkg Stats - npm package discovery and stats viewer.`} />
+          <meta name="twitter:description" key="twitter:description" content={pkg.description} />
+          <meta name="twitter:image" key="twitter:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg?url=https://www.pkgstats.com${router.asPath}`} />
         </Head>
         <Styled.HeaderInfo>
           <div className="header-info__basic">

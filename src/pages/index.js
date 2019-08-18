@@ -102,8 +102,8 @@ class Index extends Component {
       <ViewWrapper className="app-view app-view--home" packages={packages}>
         <Head>
           <title>Pkg Stats - npm package discovery and stats viewer.</title>
-          <meta name="description" content="Quickly browse and discover the best packages on npm for your next project or application." />
-          <meta name="keywords" content="npm, packages, repository, discovery, statistics, browse, search" />
+          <meta name="description" key="description" content="Quickly browse and discover the best packages on npm for your next project or application." />
+          <meta name="keywords" key="keywords" content="npm, packages, repository, discovery, statistics, browse, search" />
         </Head>
         {!!packages.objects.length && (
           <PackageGrid
