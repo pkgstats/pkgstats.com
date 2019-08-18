@@ -247,10 +247,10 @@ class Pkg extends Component {
           <meta property="og:url" content={`https://www.pkgstats.com${router.asPath}`} />
           <meta property="og:title" content={`${pkg.name} on Pkg Stats - npm package discovery and stats viewer.`} />
           <meta property="og:description" content={pkg.description} />
-          <meta property="og:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg`} />
+          <meta property="og:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg?url=https://www.pkgstats.com${router.asPath}`} />
           <meta name="twitter:title" content={`${pkg.name} on Pkg Stats - npm package discovery and stats viewer.`} />
           <meta name="twitter:description" content={pkg.description} />
-          <meta name="twitter:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg`} />
+          <meta name="twitter:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg?url=https://www.pkgstats.com${router.asPath}`} />
           {pkg.keywords && <meta name="keywords" content={pkg.keywords.join(', ')} />}
         </Head>
         <Styled.HeaderInfo>
