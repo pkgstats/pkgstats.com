@@ -88,10 +88,10 @@ class User extends Component {
           <meta property="og:url" key="og:url" content={`https://www.pkgstats.com${router.asPath}`} />
           <meta property="og:title" key="og:title" content={`${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
           <meta property="og:description" key="og:description" content={`Explore ${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
-          <meta property="og:image" key="og:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg?url=https://www.pkgstats.com${router.asPath}`} />
+          <meta property="og:image" key="og:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg?url=${encodeURIComponent(`https://www.pkgstats.com${router.asPath}`)}`} />
           <meta name="twitter:title" key="twitter:title" content={`${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
           <meta name="twitter:description" key="twitter:description" content={`Explore ${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
-          <meta name="twitter:image" key="twitter:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg?url=https://www.pkgstats.com${router.asPath}`} />
+          <meta name="twitter:image" key="twitter:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg?url=${encodeURIComponent(`https://www.pkgstats.com${router.asPath}`)}`} />
         </Head>
         <UserInfo user={user} />
         {!!packages.objects.length && (
