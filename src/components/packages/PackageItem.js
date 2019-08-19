@@ -212,7 +212,7 @@ class PackageItem extends Component {
     } = this.props;
 
     const linkTarget = evt.target;
-    console.debug(evt.target, linkTarget.classList.contains('package-link'), linkTarget.classList.contains('package-item__aurhor-link'));
+    // console.debug(evt.target, linkTarget.classList.contains('package-link'), linkTarget.classList.contains('package-item__aurhor-link'));
 
     if (linkTarget.classList.contains('package-link') || linkTarget.classList.contains('package-item__author-link')) {
       return true;

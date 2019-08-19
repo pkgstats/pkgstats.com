@@ -105,7 +105,7 @@ class Pkg extends Component {
       pkgDownloads,
     } = this.props;
 
-    if (!pkgDownloads || !pkgDownloads.response) {
+    if (!pkgDownloads || !pkgDownloads.response || !pkgDownloads.response.downloads) {
       return null;
     }
 
