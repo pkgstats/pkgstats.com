@@ -52,6 +52,8 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href="/static/css/fonts.css" />
           {this.props.styles}
           <link rel="icon" type="image/png" href="/favicon.ico" />
+          <link rel="preconnect" href="https://www.googletagmanager.com" />
+          <link rel="preconnect" href="https://www.google-analytics.com" />
         </Head>
         <body>
           <Main />
