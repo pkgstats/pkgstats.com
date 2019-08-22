@@ -56,7 +56,7 @@ const Package = styled.div`
   }
 
   .package-item__author {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin: 0;
   }
 
@@ -117,7 +117,7 @@ const Package = styled.div`
 
   .package-item__links {
     // background-color: #333;
-    padding: 1.5rem 2.6rem 1.5rem 2rem;
+    padding: 1rem 2rem 1rem 1.5rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -126,8 +126,12 @@ const Package = styled.div`
       transition: fill 0.2s ease-in-out, stroke 0.2s ease-in-out;
     }
 
-    a + a {
-      margin-left: 1rem;
+    .package-link {
+      padding: 0.7rem;
+
+      & + .package-link {
+        margin-left: 0.5rem;
+      }
     }
 
     .package-link--npm {
