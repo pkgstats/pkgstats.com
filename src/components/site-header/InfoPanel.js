@@ -158,7 +158,7 @@ class InfoPanel extends Component {
 
     return (
       <Panel show={show}>
-        <CloseButton onClick={onDismiss} />
+        <CloseButton onClick={onDismiss} title="Close" />
         <ScrollArea>
           <section>
             <p>npm package discovery and stats viewer.</p>
@@ -182,7 +182,9 @@ class InfoPanel extends Component {
           </section>
           <section>
             <h3>Sponsor</h3>
-            <a href="https://optimizetoolset.com?ref=pkgstats.com" target="_blank" rel="noreferrer noopener"><img src="/static/images/optimize-toolset.png" /></a>
+            <a href="https://optimizetoolset.com?ref=pkgstats.com" target="_blank" rel="noreferrer noopener">
+              <img src="/static/images/optimize-toolset.png" alt="Optimize Toolset" loading="lazy" />
+            </a>
             <p>
               I’ve always been into building performant and accessible sites, but
               lately I’ve been taking it extremely seriously. So much so that

@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+const SearchLabel = styled.label`
+  position: absolute;
+  top: -100%;
+  left: 0;
+`;
+
 const SearchInput = styled.input`
   appearance: none;
   background: transparent;
@@ -86,18 +92,22 @@ class GlobalSearch extends Component {
     } = this.state;
 
     return (
-      <SearchInput
-        type="search"
-        name="text"
-        placeholder="Search packages | pkg:[package-name] | @[username]"
-        autocapitalize="none"
-        autocomplete="off"
-        autocorrect="off"
-        autoFocus
-        ref={forwardedRef}
-        value={text}
-        onChange={this.onInputChange}
-      />
+      <React.Fragment>
+        <SearchLabel htmlFor="search">Search</SearchLabel>
+        <SearchInput
+          type="search"
+          name="text"
+          id="search"
+          placeholder="Search packages | pkg:[package-name] | @[username]"
+          autocapitalize="none"
+          autocomplete="off"
+          autocorrect="off"
+          autoFocus
+          ref={forwardedRef}
+          value={text}
+          onChange={this.onInputChange}
+        />
+      </React.Fragment>
     );
   }
 }
