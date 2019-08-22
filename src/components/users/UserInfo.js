@@ -69,7 +69,7 @@ const UserInfo = ({ user }) => {
   return (
     <Wrapper>
       <div className="user__info">
-        {avatar && <img className="user__image" src={avatar} />}
+        {avatar && <img className="user__image" src={avatar} alt={name} />}
         {name && <h1 className="user__name">{name}</h1>}
       </div>
       <div className="user__links">

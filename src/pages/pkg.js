@@ -207,7 +207,7 @@ class Pkg extends Component {
         key={`package-maintainers-${pkg.name}-${maintainer.name}`}
       >
         <a className="maintainer-link">
-          {maintainer.email && <img className="maintainer-link__image" src={gravatar.url(maintainer.email)} />}
+          {maintainer.email && <img className="maintainer-link__image" src={gravatar.url(maintainer.email)} alt={maintainer.name} />}
           <span className="maintainer-link__name">{maintainer.name}</span>
         </a>
       </Link>
