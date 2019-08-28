@@ -124,7 +124,7 @@ class Share extends Component {
     let pageType;
     let headerCopy;
 
-    if (/@/.test(query[0])) {
+    if (query[0].startsWith('@')) {
       const username = query[0].replace('@', '');
 
       const {
