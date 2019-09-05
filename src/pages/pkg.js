@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
 import styled from 'styled-components';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import gravatar from 'gravatar';
 import ReactMarkdown from 'react-markdown/with-html';
 import parseRepositoryURL from '@hutson/parse-repository-url';
@@ -263,6 +265,19 @@ class Pkg extends Component {
             </div>
           )}
         </Styled.HeaderInfo>
+        <Styled.PublishedSection>
+          {pkg.time && (
+            <React.Fragment>
+              <h3 className="published__date__label">Published</h3>
+              <time
+                className="published__date__time"
+                dateTime={pkg.time.modified || pkg.time.created}
+              >
+                {dayjs().to(dayjs(pkg.time.modified || pkg.time.created))}
+              </time>
+            </React.Fragment>
+          )}
+        </Styled.PublishedSection>
         <Styled.InfoSection>
           <p className="info__desc">{pkg.description}</p>
           <CopyButton className="info__install__button" target="#install-script">

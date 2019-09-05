@@ -23,6 +23,31 @@ export const HeaderInfo = styled.header`
   }
 `;
 
+export const PublishedSection = styled.section`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+
+  .published__date__label {
+    font-size: 1.4rem;
+    color: #999;
+    margin: 0;
+    margin-right: 1rem;
+  }
+
+  .published__date__time {
+    display: block;
+    font-family: var(--font-family-mono);
+    font-size: 1.8rem;
+  }
+
+  @media all and (min-width: 768px) {
+    justify-content: flex-end;
+    padding: 0 2rem 1rem;
+  }
+`;
+
 export const InfoSection = styled.section`
   padding: 0 1rem 5rem;
 
@@ -94,7 +119,7 @@ export const GraphSection = styled.section`
 
 export const GraphHolder = styled.div`
   .graph__info {
-    padding: 0 2rem 3rem;
+    padding: 0 1rem 3rem;
   }
 
   .graph__info__label {
@@ -108,6 +133,12 @@ export const GraphHolder = styled.div`
     font-family: var(--font-family-mono);
     font-size: 2.4rem;
     margin: 0;
+  }
+
+  @media all and (min-width: 768px) {
+    .graph__info {
+      padding: 0 2rem 3rem;
+    }
   }
 `;
 
