@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,6 +12,24 @@ const Wrapper = styled.section`
   .user__info {
     display: flex;
     align-items: center;
+  }
+
+  .user__pkgs {
+    display: none;
+    color: #999;
+    margin: 0;
+
+    span {
+      color: white;
+    }
+
+    @media all and (min-width: 768px) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      transform: translateX(-50%) translateY(-50%);
+    }
   }
 
   .user__image {
@@ -53,7 +72,7 @@ const Wrapper = styled.section`
   }
 `;
 
-const UserInfo = ({ user }) => {
+const UserInfo = ({ count, user }) => {
   if (!user) {
     return null;
   }
@@ -72,6 +91,7 @@ const UserInfo = ({ user }) => {
         {avatar && <img className="user__image" src={avatar} alt={name} />}
         {name && <h1 className="user__name">{name}</h1>}
       </div>
+      <h2 className="user__pkgs"><span>{count}</span> packages</h2>
       <div className="user__links">
         {github && (
           <a href={`https://github.com/${github}?ref=pkgstats.com`} className="user__link" title={`View ${github} on GitHub`} target="_blank" rel="">
