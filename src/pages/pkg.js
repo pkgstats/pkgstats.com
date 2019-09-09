@@ -21,6 +21,8 @@ import { fetchReadme } from 'store/actions/ReadmeActions';
 
 import * as Styled from 'components/page-styles/pkg.styled';
 
+dayjs.extend(relativeTime);
+
 const uriTransformer = require('react-markdown').uriTransformer;
 
 class Pkg extends Component {
