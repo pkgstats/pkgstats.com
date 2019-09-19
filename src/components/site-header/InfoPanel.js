@@ -317,6 +317,14 @@ class InfoPanel extends Component {
                 </p>
               </li>
               <li>
+                <h4>Caching</h4>
+                <p>
+                  <code>
+                    <Link route="/pkg:node-cache"><a>node-cache</a></Link>
+                  </code>
+                </p>
+              </li>
+              <li>
                 <h4>Charts</h4>
                 <p>
                   <code>

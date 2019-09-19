@@ -1,9 +1,20 @@
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
+const NodeCache = require('node-cache');
 const express = require('express');
 const npmUser = require('@pkgstats/npm-user');
 const router = express.Router();
+
+/**
+ * Cache requests for 3 hours
+ *
+ * @var NodeCache
+ */
+const cache = new NodeCache({
+  stdTTL: 3 * 60 * 60,
+  checkperiod: (3 * 60 * 60) + 100
+});
 
 /**
  * Origin for api.x requests.
@@ -21,13 +32,28 @@ const registryOrigin = 'https://registry.npmjs.org';
 
 
 router.get('/users/:username', async (req, res) => {
+  const cachedResponse = cache.get(req.url);
+
+  if (cachedResponse) {
+    res.json(cachedResponse);
+    return;
+  }
+
   const user = await npmUser(req.params.username);
+  cache.set(req.url, user);
 
   res.json(user);
 });
 
 router.get('/downloads/:type/:timeframe/:packages*', async (req, res) => {
   try {
+    const cachedResponse = cache.get(req.url);
+
+    if (cachedResponse) {
+      res.json(cachedResponse);
+      return;
+    }
+
     const {
       packages,
       timeframe,
@@ -37,6 +63,7 @@ router.get('/downloads/:type/:timeframe/:packages*', async (req, res) => {
     const url = `${apiOrigin}/downloads/${type}/${timeframe}/${packages}${req.params[0] ? `/${req.params[0]}` : ''}`;
     const response = await fetch(url);
     const json = await response.json();
+    cache.set(req.url, json);
 
     res.json(json);
   }
@@ -50,6 +77,13 @@ router.get('/downloads/:type/:timeframe/:packages*', async (req, res) => {
 
 router.get('/pkg/:pkg/:version?', async (req, res) => {
   try {
+    const cachedResponse = cache.get(req.url);
+
+    if (cachedResponse) {
+      res.json(cachedResponse);
+      return;
+    }
+
     const {
       pkg,
       version,
@@ -61,6 +95,7 @@ router.get('/pkg/:pkg/:version?', async (req, res) => {
 
     const response = await fetch(url);
     const json = await response.json();
+    cache.set(req.url, json);
 
     res.json(json);
   }
@@ -78,6 +113,13 @@ router.get('/org/:organization', async (req, res) => {
 
 router.get('/search', async (req, res) => {
   try {
+    const cachedResponse = cache.get(req.url);
+
+    if (cachedResponse) {
+      res.json(cachedResponse);
+      return;
+    }
+
     const {
       query,
     } = req;
@@ -90,6 +132,7 @@ router.get('/search', async (req, res) => {
     const url = `${registryOrigin}/-/v1/search?${queryParams}`;
     const response = await fetch(url);
     const json = await response.json();
+    cache.set(req.url, json);
 
     res.json(json);
   }
