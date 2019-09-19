@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
+
 import Link from 'components/base/Link';
 import Router from 'components/base/Router';
 import { fetchDownloads } from 'store/actions/DownloadsActions';
