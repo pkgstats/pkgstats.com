@@ -12,8 +12,8 @@ const router = express.Router();
  * @var NodeCache
  */
 const cache = new NodeCache({
-  stdTTL: 3 * 60 * 60,
-  checkperiod: (3 * 60 * 60) + 100
+  stdTTL: 6 * 60 * 60,
+  checkperiod: (6 * 60 * 60) + 100
 });
 
 /**
