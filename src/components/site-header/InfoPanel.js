@@ -253,10 +253,11 @@ class InfoPanel extends Component {
             </p>
             <ul>
               <li>
-                <h4>Typeface</h4>
+                <h4>Framework</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:@ibm/plex"><a>@ibm/plex</a></Link>
+                    <Link route="/pkg:react"><a>react</a></Link>
+                    &nbsp;/ <Link route="/pkg:react-dom"><a>react-dom</a></Link>
                   </code>
                 </p>
               </li>
@@ -267,23 +268,6 @@ class InfoPanel extends Component {
                     <Link route="/pkg:next"><a>next</a></Link>
                     &nbsp;/ <Link route="/pkg:express"><a>express</a></Link>
                     &nbsp;/ <Link route="/pkg:next-routes"><a>next-routes</a></Link>
-                  </code>
-                </p>
-              </li>
-              <li>
-                <h4>Framework</h4>
-                <p>
-                  <code>
-                    <Link route="/pkg:react"><a>react</a></Link>
-                    &nbsp;/ <Link route="/pkg:react-dom"><a>react-dom</a></Link>
-                  </code>
-                </p>
-              </li>
-              <li>
-                <h4>Types</h4>
-                <p>
-                  <code>
-                    <Link route="/pkg:prop-types"><a>prop-types</a></Link>
                   </code>
                 </p>
               </li>
@@ -300,11 +284,27 @@ class InfoPanel extends Component {
                 </p>
               </li>
               <li>
+                <h4>Caching</h4>
+                <p>
+                  <code>
+                    <Link route="/pkg:lru-cache"><a>lru-cache</a></Link>
+                  </code>
+                </p>
+              </li>
+              <li>
                 <h4>CSS / Styling</h4>
                 <p>
                   <code>
                     <Link route="/pkg:next-page-transitions"><a>next-page-transitions</a></Link>
                     &nbsp;/ <Link route="/pkg:styled-components"><a>styled-components</a></Link>
+                  </code>
+                </p>
+              </li>
+              <li>
+                <h4>Typeface</h4>
+                <p>
+                  <code>
+                    <Link route="/pkg:@ibm/plex"><a>@ibm/plex</a></Link>
                   </code>
                 </p>
               </li>
@@ -317,18 +317,11 @@ class InfoPanel extends Component {
                 </p>
               </li>
               <li>
-                <h4>Caching</h4>
-                <p>
-                  <code>
-                    <Link route="/pkg:lru-cache"><a>lru-cache</a></Link>
-                  </code>
-                </p>
-              </li>
-              <li>
-                <h4>Charts</h4>
+                <h4>Data Viz</h4>
                 <p>
                   <code>
                     <Link route="/pkg:chart.js"><a>chart.js</a></Link>
+                    &nbsp;/ <Link route="/pkg:react-sparklines"><a>react-sparklines</a></Link>
                   </code>
                 </p>
               </li>
@@ -365,14 +358,6 @@ class InfoPanel extends Component {
                 </p>
               </li>
               <li>
-                <h4>Sparklines</h4>
-                <p>
-                  <code>
-                    <Link route="/pkg:react-sparklines"><a>react-sparklines</a></Link>
-                  </code>
-                </p>
-              </li>
-              <li>
                 <h4>User data</h4>
                 <p>
                   <code>
@@ -386,6 +371,14 @@ class InfoPanel extends Component {
                   <code>
                     <Link route="/pkg:babel-plugin-module-resolver"><a>babel-plugin-module-resolver</a></Link>
                     &nbsp;/ <Link route="/pkg:babel-plugin-styled-components"><a>babel-plugin-styled-components</a></Link>
+                  </code>
+                </p>
+              </li>
+              <li>
+                <h4>Types</h4>
+                <p>
+                  <code>
+                    <Link route="/pkg:prop-types"><a>prop-types</a></Link>
                   </code>
                 </p>
               </li>
