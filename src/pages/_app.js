@@ -1,4 +1,4 @@
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import getConfig from 'next/config';
 import Head from 'next/head';
 import Router from 'next/router';
@@ -67,7 +67,7 @@ class MyApp extends App {
     const isShare = /\/share/.test(router.asPath);
 
     return (
-      <Container>
+      <React.Fragment>
         <GlobalStyles />
         <Head>
           {/* Open Graph Tags */}
@@ -99,7 +99,7 @@ class MyApp extends App {
           </div>
           {!isShare && <SiteFooter />}
         </Provider>
-      </Container>
+      </React.Fragment>
     );
   }
 }
