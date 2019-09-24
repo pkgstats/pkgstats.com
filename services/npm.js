@@ -17,7 +17,7 @@ const router = express.Router();
 //   checkperiod: (6 * 60 * 60) + 100
 // });
 const cache = new LRU({
-  max: 0,
+  max: 1000,
   maxAge: 7 * 60 * 60 * 1000,
 });
 
