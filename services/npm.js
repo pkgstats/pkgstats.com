@@ -19,7 +19,6 @@ const router = express.Router();
 const cache = new LRU({
   max: 0,
   maxAge: 7 * 60 * 60 * 1000,
-  updateAgeOnGet: true,
 });
 
 /**
