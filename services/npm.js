@@ -1,7 +1,8 @@
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
-const NodeCache = require('node-cache');
+// const NodeCache = require('node-cache');
+const LRU = require('lru-cache');
 const express = require('express');
 const npmUser = require('@pkgstats/npm-user');
 const router = express.Router();
@@ -11,9 +12,14 @@ const router = express.Router();
  *
  * @var NodeCache
  */
-const cache = new NodeCache({
-  stdTTL: 6 * 60 * 60,
-  checkperiod: (6 * 60 * 60) + 100
+// const cache = new NodeCache({
+//   stdTTL: 6 * 60 * 60,
+//   checkperiod: (6 * 60 * 60) + 100
+// });
+const cache = new LRU({
+  max: 0,
+  maxAge: 7 * 60 * 60 * 1000,
+  updateAgeOnGet: true,
 });
 
 /**
