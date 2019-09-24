@@ -320,7 +320,7 @@ class InfoPanel extends Component {
                 <h4>Caching</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:node-cache"><a>node-cache</a></Link>
+                    <Link route="/pkg:lru-cache"><a>lru-cache</a></Link>
                   </code>
                 </p>
               </li>
