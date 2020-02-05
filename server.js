@@ -31,10 +31,10 @@ app.prepare().then(() => {
   }
 
   // Favicon
-  server.use('/favicon.ico', express.static(path.join(__dirname, 'src', 'static', 'images', 'favicon.ico')));
+  server.use('/favicon.ico', express.static(path.join(__dirname, 'public', 'static', 'images', 'favicon.ico')));
 
   // Static assets
-  server.use('/static', express.static(path.join(__dirname, 'src', 'static')));
+  server.use('/static', express.static(path.join(__dirname, 'public', 'static')));
 
   // NPM routes
   server.use('/npm', npm);
