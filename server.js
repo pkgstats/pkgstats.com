@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const nextJS = require('next');
+const compression = require('compression');
 const routes = require('./routes');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
@@ -30,11 +31,17 @@ app.prepare().then(() => {
     server.use(secureRedirect);
   }
 
+  // Compress responses
+  server.use(compression());
+
   // Favicon
   server.use('/favicon.ico', express.static(path.join(__dirname, 'public', 'static', 'images', 'favicon.ico')));
 
   // Static assets
-  server.use('/static', express.static(path.join(__dirname, 'public', 'static')));
+  server.use('/static', express.static(path.join(__dirname, 'public', 'static'), {
+    immutable: true,
+    maxAge: 2592000
+  }));
 
   // NPM routes
   server.use('/npm', npm);
