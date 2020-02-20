@@ -46,9 +46,9 @@ class User extends Component {
       await store.dispatch(searchNpm(`maintainer:${username}`));
     }
 
-    if (!users[username]) {
-      await store.dispatch(fetchUser(username));
-    }
+    // if (!users[username]) {
+    //   await store.dispatch(fetchUser(username));
+    // }
   }
 
   constructor(props) {
@@ -93,7 +93,7 @@ class User extends Component {
           <meta name="twitter:description" key="twitter:description" content={`Explore ${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
           <meta name="twitter:image" key="twitter:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg?url=${encodeURIComponent(`https://www.pkgstats.com${router.asPath}`)}`} />
         </Head>
-        <UserInfo count={packages.total} user={user} />
+        {user && <UserInfo count={packages.total} user={user} />}
         {!!packages.objects.length && (
           <PackageGrid
             items={packages.objects}
