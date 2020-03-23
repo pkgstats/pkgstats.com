@@ -353,7 +353,7 @@ class InfoPanel extends Component {
                 <h4>Repository url parsing</h4>
                 <p>
                   <code>
-                    <Link route="/pkg:@hutson/parse-repository-url"><a>@hutson/parse-repository-url</a></Link>
+                    <Link route="/pkg:hosted-git-info"><a>hosted-git-info</a></Link>
                   </code>
                 </p>
               </li>
