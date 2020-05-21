@@ -10,7 +10,7 @@ npm package discovery and stats viewer.
 
 ## Sponsors
 
-[![Optimize Toolset](https://www.pkgstats.com/static/images/optimize-toolset.png "Optimize Toolset")](https://optimizetoolset.com)
+[<img src="https://www.pkgstats.com/static/images/optimize-toolset.png" alt="Optimize Toolset" height="50" />](https://optimizetoolset.com)
 
 ## Maintainers
 
