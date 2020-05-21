@@ -2,11 +2,15 @@
 
 npm package discovery and stats viewer.
 
+![GitHub](https://img.shields.io/github/license/pkgstats/pkgstats.com?style=flat-square)
+![PRs welcome](https://img.shields.io/badge/PRs-welcome-green)
+![Twitter Follow](https://img.shields.io/twitter/follow/pkgstats?style=social)
+
 ## Goals
 
-* Quick way to search/browse npm packages
-* Surface relevant information like downloads and last published date in order to help vet the package for use
-* Generally, make a cool way to view/explore packages and provide a nice/smart experience while doing so
+* Quick way to __explore npm packages__
+* Surface relevant information like downloads and last published date in order to __help evaluate packages to use__
+* Generally, try to make a __great experience__ and an excuse to further __explore [Node](https://github.com/nodejs/node) / [NextJS](https://github.com/zeit/next.js) / [React](https://github.com/facebook/react)__
 
 ## Sponsors
 
@@ -18,4 +22,4 @@ npm package discovery and stats viewer.
 
 ## License
 
-[MIT](LICENSE) © PkgStats
+Licensed under the [MIT License](LICENSE)
