@@ -2,7 +2,7 @@
 
 npm package discovery and stats viewer.
 
-![GitHub](https://img.shields.io/github/license/pkgstats/pkgstats.com?style=flat-square)
+![GitHub](https://img.shields.io/github/license/pkgstats/pkgstats.com)
 ![PRs welcome](https://img.shields.io/badge/PRs-welcome-green)
 ![Twitter Follow](https://img.shields.io/twitter/follow/pkgstats?style=social)
 
