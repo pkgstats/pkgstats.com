@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const path = require('path');
 const express = require('express');
 const nextJS = require('next');
@@ -18,7 +20,7 @@ const handler = routes.getRequestHandler(app);
 // include and initialize the rollbar library with your access token
 var Rollbar = require("rollbar");
 var rollbar = new Rollbar({
-  accessToken: '8464c744b2074f008c9e2f155d44792a',
+  accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
   captureUncaught: true,
   captureUnhandledRejections: true
 });
@@ -48,6 +50,9 @@ app.prepare().then(() => {
 
   // Routes
   server.use(handler);
+
+  // Rollbar error handling
+  server.use(rollbar.errorHandler());
 
   server.listen(port, (err) => {
     if (err) throw err;

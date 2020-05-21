@@ -30,6 +30,7 @@
     "clipboard": "^2.0.6",
     "compression": "^1.7.4",
     "dayjs": "^1.8.27",
+    "dotenv": "^8.2.0",
     "es6-promise": "^4.2.8",
     "express": "^4.17.1",
     "gravatar": "^1.8.0",

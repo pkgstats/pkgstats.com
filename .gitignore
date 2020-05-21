@@ -2,3 +2,4 @@
 /src/.next
 .DS_Store
 dist/
+.env
