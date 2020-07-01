@@ -97,7 +97,7 @@ class MyApp extends App {
               <Component key={router.asPath} {...pageProps} />
             </PageTransition>
           </div>
-          {!isShare && <SiteFooter />}
+          {/* {!isShare && <SiteFooter />} */}
         </Provider>
       </React.Fragment>
     );
