@@ -53,6 +53,8 @@ export const InfoSection = styled.section`
 
   .info__desc {
     font-size: 1.8rem;
+    line-height: 1.6;
+    max-width: 75rem;
   }
 
   .info__install__button {
