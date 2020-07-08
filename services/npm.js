@@ -7,6 +7,9 @@ const express = require('express');
 const npmUser = require('@pkgstats/npm-user');
 const router = express.Router();
 
+const Rollbar = require("rollbar");
+const rollbar = new Rollbar(process.env.ROLLBAR_ACCESS_TOKEN);
+
 /**
  * Cache requests for 3 hours
  *
@@ -44,10 +47,18 @@ router.get('/users/:username', async (req, res) => {
     return;
   }
 
-  const user = await npmUser(req.params.username);
-  cache.set(req.url, user);
+  try {
+    const user = await npmUser(req.params.username);
+    cache.set(req.url, user);
 
-  res.json(user);
+    res.json(user);
+  }
+  catch (e) {
+    rollbar.error(e);
+    res.status(500).json({
+      error: 'Error fetching user'
+    });
+  }
 });
 
 router.get('/downloads/:type/:timeframe/:packages*', async (req, res) => {
@@ -73,6 +84,7 @@ router.get('/downloads/:type/:timeframe/:packages*', async (req, res) => {
     res.json(json);
   }
   catch (e) {
+    rollbar.error(e);
     console.error(e);
     res.status(500).json({
       error: 'Error fetching download stats',
@@ -105,6 +117,7 @@ router.get('/pkg/:pkg/:version?', async (req, res) => {
     res.json(json);
   }
   catch (e) {
+    rollbar.error(e);
     console.error(e);
     res.status(500).json({
       error: 'Error fetching package info',
@@ -142,6 +155,7 @@ router.get('/search', async (req, res) => {
     res.json(json);
   }
   catch (e) {
+    rollbar.error(e);
     console.error(e);
     res.status(500).json({
       error: 'Error performing search',
