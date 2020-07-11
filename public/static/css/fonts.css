@@ -76,9 +76,9 @@
   font-style: italic;
   font-weight: 400;
   src: local('IBM Plex Sans Regular Italic'),
-    local('IBMPlexSans-RegularItalic'),
-    url('/static/fonts/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-RegularItalic.woff2') format('woff2'),
-    url('/static/fonts/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-RegularItalic.woff') format('woff');
+    local('IBMPlexSans-Italic'),
+    url('/static/fonts/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Italic.woff2') format('woff2'),
+    url('/static/fonts/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Italic.woff') format('woff');
 }
 
 @font-face {
@@ -239,9 +239,9 @@
   font-style: italic;
   font-weight: 400;
   src: local('IBM Plex Mono Regular Italic'),
-    local('IBMPlexMono-RegularItalic'),
-    url('/static/fonts/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-RegularItalic.woff2') format('woff2'),
-    url('/static/fonts/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-RegularItalic.woff') format('woff');
+    local('IBMPlexMono-Italic'),
+    url('/static/fonts/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Italic.woff2') format('woff2'),
+    url('/static/fonts/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Italic.woff') format('woff');
 }
 
 @font-face {
@@ -323,4 +323,3 @@
     url('/static/fonts/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-BoldItalic.woff2') format('woff2'),
     url('/static/fonts/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-BoldItalic.woff') format('woff');
 }
-

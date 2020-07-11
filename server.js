@@ -18,12 +18,8 @@ const app = nextJS({ dev, dir: './src' });
 const handler = routes.getRequestHandler(app);
 
 // include and initialize the rollbar library with your access token
-var Rollbar = require("rollbar");
-var rollbar = new Rollbar({
-  accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
-  captureUncaught: true,
-  captureUnhandledRejections: true
-});
+const Rollbar = require("rollbar");
+const rollbar = new Rollbar(process.env.ROLLBAR_ACCESS_TOKEN);
 
 app.prepare().then(() => {
   const server = express();

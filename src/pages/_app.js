@@ -34,7 +34,7 @@ class MyApp extends App {
   componentDidMount() {
     // include and initialize the rollbar library with your access token
     window.rollbar = new Rollbar({
-      accessToken: '8464c744b2074f008c9e2f155d44792a',
+      accessToken: 'fd325ed9e173422082d1cff6a069e418',
       captureUncaught: true,
       captureUnhandledRejections: true
     });
