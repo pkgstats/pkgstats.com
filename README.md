@@ -3,7 +3,6 @@
 npm package discovery and stats viewer.
 
 [![GitHub](https://img.shields.io/github/license/pkgstats/pkgstats.com)](LICENSE)
-![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/pkgstats/pkgstats.com)
 [![Twitter Follow](https://img.shields.io/twitter/follow/pkgstats?style=social)](https://twitter.com/pkgstats)
 
 ## Goals
