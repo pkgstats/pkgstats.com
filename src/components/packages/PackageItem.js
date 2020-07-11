@@ -121,7 +121,7 @@ const Package = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-  
+
     svg {
       transition: fill 0.2s ease-in-out, stroke 0.2s ease-in-out;
     }
@@ -239,7 +239,6 @@ class PackageItem extends Component {
     } = this.props;
 
     const linkTarget = evt.target;
-    // console.debug(evt.target, linkTarget.classList.contains('package-link'), linkTarget.classList.contains('package-item__aurhor-link'));
 
     if (linkTarget.classList.contains('package-link') || linkTarget.classList.contains('package-item__author-link')) {
       return true;
