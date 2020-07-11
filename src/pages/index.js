@@ -51,7 +51,7 @@ class Index extends Component {
   }
 
   logConsole() {
-    if (this.state.consoleLogged) {
+    if (typeof window === undefined || this.state.consoleLogged) {
       return;
     }
 
