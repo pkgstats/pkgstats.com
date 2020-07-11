@@ -2,7 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
-  position: relative;
+  position: fixed;
+  top: 6rem;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  background-color: var(--color-black);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,6 +44,7 @@ const Wrapper = styled.section`
 
   .user__name {
     font-size: 2rem;
+    margin: 0;
   }
 
   .user__links {
