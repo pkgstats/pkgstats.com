@@ -41,7 +41,11 @@ const Package = styled.div`
   .package-item__header-info {
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
+
+    @media all and (min-width: 768px) {
+      padding: 2rem;
+    }
   }
 
   .package-item__name {

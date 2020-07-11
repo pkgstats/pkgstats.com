@@ -23,7 +23,7 @@ const Header = styled.header`
     flex-direction: column;
     justify-content: center;
     text-decoration: none;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     background-color: var(--color-white);
     color: var(--color-black);
     height: 6rem;
@@ -74,7 +74,7 @@ const InfoButton = styled.button`
   width: 2.5rem;
   height: 2.5rem;
   margin-left: 1rem;
-  margin-right: 1rem;
+  margin-right: 1.5rem;
   border-radius: 50%;
   transition: background-color 0.2s ease-in-out;
 

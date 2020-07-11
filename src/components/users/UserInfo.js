@@ -12,7 +12,7 @@ const Wrapper = styled.section`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
 
   .user__info {
     display: flex;

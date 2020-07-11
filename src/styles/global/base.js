@@ -60,7 +60,7 @@ const base = `
     margin-top: 6rem;
   }
 
-  .app-view--user {
+  .app-view--user--active {
     margin-top: 13rem;
   }
 
