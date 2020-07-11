@@ -6,6 +6,7 @@ const LRU = require('lru-cache');
 const express = require('express');
 const npmUser = require('@pkgstats/npm-user');
 const router = express.Router();
+const hostedGitInfo = require('hosted-git-info');
 
 const Rollbar = require("rollbar");
 const rollbar = new Rollbar(process.env.ROLLBAR_ACCESS_TOKEN);
@@ -112,6 +113,20 @@ router.get('/pkg/:pkg/:version?', async (req, res) => {
 
     const response = await fetch(url);
     const json = await response.json();
+
+    if (json.hasOwnProperty('repository') && json.repository.url) {
+      try {
+        const gitInfo = hostedGitInfo.fromUrl(json.repository.url);
+        if (gitInfo) {
+          json.repository.url = gitInfo.browse();
+        }
+      }
+      catch (e) {
+        rollbar.error('Error parsing repository url', e);
+        console.error('Error parsing repository url', e);
+      }
+    }
+
     cache.set(req.url, json);
 
     res.json(json);
