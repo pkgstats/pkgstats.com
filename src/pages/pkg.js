@@ -312,6 +312,7 @@ class Pkg extends Component {
                   source={pkg.readme || readme}
                   linkTarget="_blank"
                   escapeHtml={false}
+                  skipHtml
                   transformLinkUri={this.parseTransformLinkUri}
                 />
               )}
