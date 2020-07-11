@@ -85,7 +85,7 @@ class User extends Component {
     } = this.props;
 
     return (
-      <ViewWrapper className="app-view app-view--home" packages={packages}>
+      <ViewWrapper className="app-view app-view--user" packages={packages}>
         <Head>
           <title>{`${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`}</title>
           <meta name="description" key="description" content={`Explore ${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
