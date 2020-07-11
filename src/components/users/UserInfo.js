@@ -72,7 +72,7 @@ const Wrapper = styled.section`
   }
 `;
 
-const UserInfo = ({ count, user }) => {
+const UserInfo = ({ count, user, username }) => {
   if (!user) {
     return null;
   }
@@ -88,8 +88,8 @@ const UserInfo = ({ count, user }) => {
   return (
     <Wrapper>
       <div className="user__info">
-        {avatar && <img className="user__image" src={avatar} alt={name} />}
-        {name && <h1 className="user__name">{name}</h1>}
+        {avatar && <img className="user__image" src={avatar} alt={name || username} />}
+        {!!(name || username) && <h1 className="user__name">{name || username}</h1>}
       </div>
       <h2 className="user__pkgs"><span>{count}</span> packages</h2>
       <div className="user__links">
