@@ -46,13 +46,14 @@ class User extends Component {
       await store.dispatch(searchNpm(`maintainer:${username}`));
     }
 
-    if (!users[username]) {
-      try {
-        await store.dispatch(fetchUser(username));
-      } catch (e) {
-        console.error('Error fetching user info', e);
-      }
-    }
+    // @todo Re-enable once errors are not an issue with this - Ryan
+    // if (!users[username]) {
+    //   try {
+    //     await store.dispatch(fetchUser(username));
+    //   } catch (e) {
+    //     console.error('Error fetching user info', e);
+    //   }
+    // }
   }
 
   constructor(props) {
