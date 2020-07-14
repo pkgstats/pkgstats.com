@@ -391,6 +391,10 @@ export const DetailsSection = styled.section`
     }
 
     .details--side {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 6rem;
+      align-self: flex-start;
       flex-basis: 28%;
       width: 28%;
     }
