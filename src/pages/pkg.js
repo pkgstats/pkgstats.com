@@ -116,9 +116,9 @@ class Pkg extends Component {
 
   parseTransformLinkUri(uri) {
     uri = uriTransformer(uri);
-    const slashIndex = uri.indexOf('\/\/');
+    const slashIndex = uri && uri.indexOf('\/\/');
 
-    if (slashIndex >= 0 && slashIndex <= 6) {
+    if (uri && slashIndex >= 0 && slashIndex <= 6) {
       return uri;
     }
 
@@ -126,7 +126,7 @@ class Pkg extends Component {
       pkg,
     } = this.props;
 
-    const readmeOrigin = pkg.homepage.indexOf('#') > -1
+    const readmeOrigin = pkg.homepage && pkg.homepage.indexOf('#') > -1
       ? pkg.homepage.substring(0, pkg.homepage.indexOf('#'))
       : pkg.homepage;
 
@@ -344,19 +344,21 @@ class Pkg extends Component {
         </Styled.GraphSection>
         <Styled.DetailsSection>
           <div className="details--side">
-            <div className="details__section details__vulnerabilities">
-              <div className="details__header">
-                <h3 className="details__header__title">Vulnerabilities</h3>
-                <a href={vulnerabilities && vulnerabilities.url} target="_blank" rel="nofollow noopener noreferrer" className="details__vulnerabilities__link">
-                  <span>Powered by</span>
-                  <img
-                    src="/static/svgs/snyk-wordmark-white.svg"
-                    alt="Powered by Snyk"
-                    height="30"
-                  />
-                </a>
-              </div>
-              {this.renderVulnerabilities()}
+            <div className={`details__section details__vulnerabilities ${vulnerabilities && !vulnerabilities.vulns && 'details__vulnerabilities--clear'}`}>
+              <a href={vulnerabilities && vulnerabilities.url} target="_blank" rel="nofollow noopener noreferrer" className="details__vulnerabilities__link">
+                <div className="details__header">
+                  <h3 className="details__header__title">Vulnerabilities</h3>
+                  <div className="details__vulnerabilities__powered-by">
+                    <span>Powered by</span>
+                    <img
+                      src="/static/svgs/snyk-wordmark-white.svg"
+                      alt="Powered by Snyk"
+                      height="30"
+                    />
+                  </div>
+                </div>
+                {this.renderVulnerabilities()}
+              </a>
             </div>
             <div className="details__section details__links">
               <div className="details__header">

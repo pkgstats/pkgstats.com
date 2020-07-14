@@ -303,27 +303,45 @@ export const DetailsSection = styled.section`
       bottom: 0;
       left: 0;
       height: 0.8rem;
-      background-image: linear-gradient(90deg, red, yellow);
+      background-image: url("/static/images/pixel-grid.png"), linear-gradient(90deg, red, yellow);
+      background-repeat: repeat, no-repeat;
+      background-size: 0.2rem 0.2rem, 100% 100%;
+      background-position: top left;
+      transition: background-image 0.2s ease-in-out;
     }
 
-    .details__vulnerabilities__link {
+    &--clear {
+      &::after {
+        background-image: url("/static/images/pixel-grid.png"), linear-gradient(90deg, #24d61c, #24d61c);
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+
+      .details__vulnerabilities__powered-by {
+        transition: color 0.2s ease-in-out;
+        color: #999;
+      }
+
+      &:hover {
+        .details__vulnerabilities__powered-by {
+          color: white;
+        }
+      }
+    }
+
+    &__powered-by {
       display: flex;
       align-items: center;
-      font-size: 1.4rem;
-      color: #999;
-      text-decoration: none;
-      transition: color 0.2s ease-in-out;
 
       span {
+        font-size: 1.4rem;
         white-space: nowrap;
       }
 
       img {
         margin-left: 1rem;
-      }
-
-      &:hover {
-        color: white;
       }
     }
 
