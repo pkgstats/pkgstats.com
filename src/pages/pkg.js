@@ -199,7 +199,7 @@ class Pkg extends Component {
             className={`package-link package-link--${linkType}`}
             key={`package-link-${pkg.name}-${linkType}`}
             target="_blank"
-            rel="noreferrer noopener"
+            rel="noopener noreferrer"
             title={linkType}
           >{linkString}</a>
         ));
@@ -345,7 +345,7 @@ class Pkg extends Component {
         <Styled.DetailsSection>
           <div className="details--side">
             <div className={`details__section details__vulnerabilities ${vulnerabilities && !vulnerabilities.vulns && 'details__vulnerabilities--clear'}`}>
-              <a href={vulnerabilities && vulnerabilities.url} target="_blank" rel="nofollow noopener noreferrer" className="details__vulnerabilities__link" title="View details at snyk.io">
+              <a href={vulnerabilities && vulnerabilities.url} target="_blank" rel="noopener noreferrer" className="details__vulnerabilities__link" title="View details at snyk.io">
                 <div className="details__header">
                   <h3 className="details__header__title">Vulnerabilities</h3>
                   <div className="details__vulnerabilities__powered-by">
@@ -392,6 +392,13 @@ class Pkg extends Component {
                   escapeHtml={false}
                   skipHtml
                   transformLinkUri={this.parseTransformLinkUri}
+                  renderers={{
+                    link: ({ children, href, target }) => (
+                      <a href={href} target={target} rel="nofollow noopener noreferrer">
+                        {children}
+                      </a>
+                    ),
+                  }}
                 />
               )}
             </div>
