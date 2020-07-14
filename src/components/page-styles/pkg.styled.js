@@ -148,9 +148,15 @@ export const DetailsSection = styled.section`
   padding: 5rem 2rem;
 
   .details__header {
-    font-size: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-top: 0.3rem solid #222;
     padding-top: 2rem;
+  }
+
+  .details__header__title {
+    font-size: 1.8rem;
   }
 
   .details__section + .details__section {
@@ -283,6 +289,76 @@ export const DetailsSection = styled.section`
     a:active,
     a:hover {
       border-color: #666;
+    }
+  }
+
+  .details__vulnerabilities {
+    position: relative;
+    padding-bottom: 3.6rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 0.8rem;
+      background-image: linear-gradient(90deg, red, yellow);
+    }
+
+    .details__vulnerabilities__link {
+      display: flex;
+      align-items: center;
+      font-size: 1.4rem;
+      color: #999;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+
+      span {
+        white-space: nowrap;
+      }
+
+      img {
+        margin-left: 1rem;
+      }
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    .vulnerabilities__list {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    .vulnerabilities__list__item {
+      flex: 1;
+      text-align: center;
+    }
+
+    .vulnerabilities__desc,
+    .vulnerabilities__title {
+      display: block;
+    }
+
+    .vulnerabilities__desc {
+      font-family: var(--font-family-mono);
+      font-size: 3.2rem;
+      color: #999;
+      transition: color 0.2s ease-in-out;
+
+      &--loaded {
+        color: white;
+      }
+    }
+
+    .vulnerabilities__title {
+      font-size: 1.6rem;
+      color: #999;
     }
   }
 
