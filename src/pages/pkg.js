@@ -345,7 +345,7 @@ class Pkg extends Component {
         <Styled.DetailsSection>
           <div className="details--side">
             <div className={`details__section details__vulnerabilities ${vulnerabilities && !vulnerabilities.vulns && 'details__vulnerabilities--clear'}`}>
-              <a href={vulnerabilities && vulnerabilities.url} target="_blank" rel="nofollow noopener noreferrer" className="details__vulnerabilities__link">
+              <a href={vulnerabilities && vulnerabilities.url} target="_blank" rel="nofollow noopener noreferrer" className="details__vulnerabilities__link" title="View details at snyk.io">
                 <div className="details__header">
                   <h3 className="details__header__title">Vulnerabilities</h3>
                   <div className="details__vulnerabilities__powered-by">
