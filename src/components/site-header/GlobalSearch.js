@@ -2,6 +2,30 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+const SearchWrapper = styled.div`
+  display: flex;
+`;
+
+const ProviderDropdown = styled.select`
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: var(--font-family-base);
+  font-size: 1.6rem;
+  text-align: center;
+  text-align-last: center;
+  color: #fff;
+  padding: 1rem;
+  margin: 0;
+  border-radius: 0;
+  height: 6rem;
+  background-color: #111;
+  border: 0;
+
+  option {
+    text-align: center;
+  }
+`;
+
 const SearchLabel = styled.label`
   position: absolute;
   top: -100%;
@@ -92,7 +116,11 @@ class GlobalSearch extends Component {
     } = this.state;
 
     return (
-      <React.Fragment>
+      <SearchWrapper>
+        <ProviderDropdown>
+          <option value="npm">NPM</option>
+          <option value="packagist">Packagist</option>
+        </ProviderDropdown>
         <SearchLabel htmlFor="search">Search</SearchLabel>
         <SearchInput
           type="search"
@@ -107,7 +135,7 @@ class GlobalSearch extends Component {
           value={text}
           onChange={this.onInputChange}
         />
-      </React.Fragment>
+      </SearchWrapper>
     );
   }
 }
