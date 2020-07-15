@@ -39,12 +39,14 @@ class MyApp extends App {
       captureUnhandledRejections: true
     });
 
-    Router.onRouteChangeComplete = url => {
-      this.trackPageView(url);
-    };
+    Router.events.on('routeChangeComplete', this.handleRouteChange);
   }
 
-  trackPageView(url) {
+  componentWillUnmount() {
+    Router.events.off('routeChangeComplete', this.handleRouteChange);
+  }
+
+  handleRouteChange(url) {
     try {
       window.gtag('config', 'UA-145149808-1', {
         page_location: url
