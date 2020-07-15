@@ -28,7 +28,8 @@ export default function configureStore(initialState = {}, {
     ];
   }
 
-  const enhancer = compose(
+  const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+  const enhancer = composeEnhancers(
     applyMiddleware(...middleware)
   );
 

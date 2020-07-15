@@ -9,8 +9,8 @@ const routes = require('./routes');
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 
-const NPMService = require('./src/store/services/NPMService');
 const npm = require('./services/npm');
+const snyk = require('./services/snyk');
 
 const secureRedirect = require('./middleware/secureRedirect');
 
@@ -43,6 +43,9 @@ app.prepare().then(() => {
 
   // NPM routes
   server.use('/npm', npm);
+
+  // Snyk routes
+  server.use('/snyk', snyk);
 
   // Routes
   server.use(handler);
