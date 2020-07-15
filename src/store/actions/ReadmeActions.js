@@ -17,7 +17,7 @@ export const fetchReadme = (pkg) => {
         return;
       }
 
-      const repoRegex = /\w*\+\w*:\/\/github\.com\/(.*)\.\w*/.exec(repository.url);
+      const repoRegex = /\w*:\/\/github\.com\/(.*)\.\w*/.exec(repository.url);
 
       if (!repoRegex) {
         return;
