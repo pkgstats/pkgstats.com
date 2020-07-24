@@ -73,10 +73,10 @@ const fonts = `
 
 @font-face {
     font-family: 'IBM Plex Sans';
-    src:    url('/static/fonts/ibm-plex-sans/eot/IBMPlexSans-RegularItalic.eot');
-    src:    url('/static/fonts/ibm-plex-sans/eot/IBMPlexSans-RegularItalic.eot?#iefix') format('embedded-opentype'),
-            url('/static/fonts/ibm-plex-sans/woff/IBMPlexSans-RegularItalic-Latin1.woff') format('woff'),
-            url('/static/fonts/ibm-plex-sans/woff2/IBMPlexSans-RegularItalic-Latin1.woff2') format('woff2');
+    src:    url('/static/fonts/ibm-plex-sans/eot/IBMPlexSans-Italic.eot');
+    src:    url('/static/fonts/ibm-plex-sans/eot/IBMPlexSans-Italic.eot?#iefix') format('embedded-opentype'),
+            url('/static/fonts/ibm-plex-sans/woff/IBMPlexSans-Italic-Latin1.woff') format('woff'),
+            url('/static/fonts/ibm-plex-sans/woff2/IBMPlexSans-Italic-Latin1.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
 }
@@ -234,10 +234,10 @@ const fonts = `
 
 @font-face {
     font-family: 'IBM Plex Mono';
-    src:    url('/static/fonts/ibm-plex-mono/eot/IBMPlexMono-RegularItalic.eot');
-    src:    url('/static/fonts/ibm-plex-mono/eot/IBMPlexMono-RegularItalic.eot?#iefix') format('embedded-opentype'),
-            url('/static/fonts/ibm-plex-mono/woff/IBMPlexMono-RegularItalic-Latin1.woff') format('woff'),
-            url('/static/fonts/ibm-plex-mono/woff2/IBMPlexMono-RegularItalic-Latin1.woff2') format('woff2');
+    src:    url('/static/fonts/ibm-plex-mono/eot/IBMPlexMono-Italic.eot');
+    src:    url('/static/fonts/ibm-plex-mono/eot/IBMPlexMono-Italic.eot?#iefix') format('embedded-opentype'),
+            url('/static/fonts/ibm-plex-mono/woff/IBMPlexMono-Italic-Latin1.woff') format('woff'),
+            url('/static/fonts/ibm-plex-mono/woff2/IBMPlexMono-Italic-Latin1.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
 }

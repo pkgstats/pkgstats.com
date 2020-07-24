@@ -51,11 +51,14 @@ class Index extends Component {
   }
 
   logConsole() {
-    if (this.state.consoleLogged) {
+    if (typeof window === 'undefined' || this.state.consoleLogged) {
       return;
     }
 
-    const pkgStats = `%c
+    this.setState({
+      consoleLogged: true,
+    }, () => {
+      const pkgStats = `%c
            __              __        __
     ____  / /______ ______/ /_____ _/ /______
    / __ \\/ //_/ __ \`/ ___/ __/ __ \`/ __/ ___/
@@ -63,13 +66,11 @@ class Index extends Component {
  / .___/_/|_|\\__, /____/\\__/\\__,_/\\__/____/
 /_/         /____/
 `;
-    console.log(pkgStats, 'font-family:monospace;');
-    console.log(`%c— npm package discovery and stats viewer.`, 'font-family:monospace;');
-    console.log(`%cWelcome, 👋, you’re my kind of people.`, 'font-family:monospace;');
-    console.log(`%cIf you like this, you might like my other app, https://optimizetoolset.com.`, 'font-family:monospace;');
+      console.log(pkgStats, 'font-family:monospace;');
+      console.log(`%c— npm package discovery and stats viewer.`, 'font-family:monospace;');
+      console.log(`%cWelcome, 👋, you’re my kind of people.`, 'font-family:monospace;');
+      console.log(`%cIf you like this, you might like my other app, https://optimizetoolset.com.`, 'font-family:monospace;');
 
-    this.setState({
-      consoleLogged: true,
     });
   }
 

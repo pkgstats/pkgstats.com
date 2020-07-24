@@ -182,7 +182,7 @@ class InfoPanel extends Component {
           </section>
           <section>
             <h3>Sponsor</h3>
-            <a href="https://optimizetoolset.com?ref=pkgstats.com" target="_blank" rel="noreferrer noopener">
+            <a href="https://optimizetoolset.com?ref=pkgstats.com" target="_blank" rel="noopener noreferrer">
               <img src="/static/images/optimize-toolset.png" alt="Optimize Toolset" loading="lazy" />
             </a>
             <p>
@@ -192,7 +192,7 @@ class InfoPanel extends Component {
               that I build to make sure that I’m making an attempt
               to offer the best experience to those who visit them. If you’re into
               performant, accessible and SEO friendly sites, you might like it too!
-              You can check it out at <a href="https://optimizetoolset.com?ref=pkgstats.com" target="_blank" rel="noreferrer noopener">Optimize Toolset</a>.
+              You can check it out at <a href="https://optimizetoolset.com?ref=pkgstats.com" target="_blank" rel="noopener noreferrer">Optimize Toolset</a>.
             </p>
           </section>
           <section>
@@ -217,30 +217,30 @@ class InfoPanel extends Component {
             </p>
             <p>
               I am also working on a Twitter bot for this site to tweet the most
-              popular, newest, random packages from <a href="https://npmjs.com" target="_blank" rel="noreferrer noopener">npm</a>.
+              popular, newest, random packages from <a href="https://npmjs.com" target="_blank" rel="noopener noreferrer">npm</a>.
               Please follow that account now and it will start sending out
               packages soon–ish.
             </p>
             <ul>
               <li>
                 <h4>Twitter</h4>
-                <p><code><a href="https://twitter.com/pkgstats" target="_blank" rel="noreferrer noopener">@PkgStats</a></code></p>
+                <p><code><a href="https://twitter.com/pkgstats" target="_blank" rel="noopener noreferrer">@PkgStats</a></code></p>
               </li>
               <li>
                 <h4>GitHub</h4>
-                <p><code><a href="https://github.com/pkgstats" target="_blank" rel="noreferrer noopener">pkgstats</a></code></p>
+                <p><code><a href="https://github.com/pkgstats" target="_blank" rel="noopener noreferrer">pkgstats</a></code></p>
               </li>
               <li>
                 <h4>Twitter</h4>
-                <p><code><a href="https://twitter.com/ryanhefner" target="_blank" rel="noreferrer noopener">@ryanhefner</a></code></p>
+                <p><code><a href="https://twitter.com/ryanhefner" target="_blank" rel="noopener noreferrer">@ryanhefner</a></code></p>
               </li>
               <li>
                 <h4>GitHub</h4>
-                <p><code><a href="https://github.com/ryanhefner" target="_blank" rel="noreferrer noopener">ryanhefner</a></code></p>
+                <p><code><a href="https://github.com/ryanhefner" target="_blank" rel="noopener noreferrer">ryanhefner</a></code></p>
               </li>
               <li>
                 <h4>Site</h4>
-                <p><code><a href="https://www.ryanhefner.com" target="_blank" rel="noreferrer noopener">ryanhefner.com</a></code></p>
+                <p><code><a href="https://www.ryanhefner.com" target="_blank" rel="noopener noreferrer">ryanhefner.com</a></code></p>
               </li>
             </ul>
           </section>

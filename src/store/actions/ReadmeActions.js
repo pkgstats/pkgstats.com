@@ -17,7 +17,7 @@ export const fetchReadme = (pkg) => {
         return;
       }
 
-      const repoRegex = /\w*\+\w*:\/\/github\.com\/(.*)\.\w*/.exec(repository.url);
+      const repoRegex = /\w*:\/\/github\.com\/(.*)(\.\w*)?/.exec(repository.url);
 
       if (!repoRegex) {
         return;
@@ -26,8 +26,13 @@ export const fetchReadme = (pkg) => {
       const readmeInfoResponse = await fetch(`https://api.github.com/repos/${repoRegex[1]}/readme`);
       const readmeInfo = await readmeInfoResponse.json();
 
-      const readmeResponse = await fetch(readmeInfo.download_url);
-      const response = await readmeResponse.text();
+      let readmeResponse = await fetch(readmeInfo.download_url);
+      let response = await readmeResponse.text();
+
+      if (response.match(/^\S+.md/)) {
+        readmeResponse = await fetch(`${readmeInfo.download_url.replace('readme.md', response)}`);
+        response = await readmeResponse.text();
+      }
 
       dispatch({
         type: FETCH_README_REQUEST,

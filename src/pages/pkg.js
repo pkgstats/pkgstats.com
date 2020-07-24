@@ -8,7 +8,6 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import gravatar from 'gravatar';
 import ReactMarkdown from 'react-markdown/with-html';
-import hostedGitInfo from 'hosted-git-info';
 
 import Link from 'components/base/Link';
 import CopyButton from 'components/packages/CopyButton';
@@ -18,6 +17,7 @@ import PackageGrid from 'components/packages/PackageGrid';
 import { fetchDownloads } from 'store/actions/DownloadsActions';
 import { fetchPackage } from 'store/actions/PackageActions';
 import { fetchReadme } from 'store/actions/ReadmeActions';
+import { fetchVulnerabilities } from 'store/actions/VulnerabilitiesActions';
 
 import * as Styled from 'components/page-styles/pkg.styled';
 
@@ -36,7 +36,9 @@ class Pkg extends Component {
       downloads,
     } = store.getState();
 
-    if (!packages[pkg]) {
+    const curPkg = packages[pkg];
+
+    if (!curPkg) {
       await store.dispatch(fetchPackage(pkg));
     }
 
@@ -45,8 +47,14 @@ class Pkg extends Component {
       await store.dispatch(fetchDownloads(pkg));
     }
 
-    if (packages[pkg] && packages[pkg].readme === '') {
+    if (curPkg?.readme === '') {
       await store.dispatch(fetchReadme(pkg));
+    }
+
+    const pkgVersion = curPkg && curPkg['dist-tags'] && curPkg['dist-tags'].latest;
+
+    if (pkgVersion) {
+      await store.dispatch(fetchVulnerabilities(pkg, pkgVersion));
     }
   }
 
@@ -59,20 +67,32 @@ class Pkg extends Component {
   componentDidMount() {
     const {
       pkg,
+      vulnerabilities,
     } = this.props;
 
     if (pkg && pkg.readme === '') {
       this.requestReadme();
+    }
+
+    if (pkg && !vulnerabilities) {
+      this.requestVulnerabilities();
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
     const {
       pkg,
+      vulnerabilities,
     } = this.props;
 
-    if (pkg && prevProps.pkg.name !== pkg.name && pkg.readme === '') {
-      this.requestReadme();
+    if (pkg && prevProps.pkg.name !== pkg.name) {
+      if (pkg.readme === '') {
+        this.requestReadme();
+      }
+
+      if (!vulnerabilities) {
+        this.requestVulnerabilities();
+      }
     }
   }
 
@@ -85,11 +105,20 @@ class Pkg extends Component {
     actions.fetchReadme(pkg);
   }
 
+  requestVulnerabilities() {
+    const {
+      actions,
+      pkg,
+    } = this.props;
+
+    actions.fetchVulnerabilities(pkg.name, pkg['dist-tags'].latest);
+  }
+
   parseTransformLinkUri(uri) {
     uri = uriTransformer(uri);
-    const slashIndex = uri.indexOf('\/\/');
+    const slashIndex = uri && uri.indexOf('\/\/');
 
-    if (slashIndex >= 0 && slashIndex <= 6) {
+    if (uri && slashIndex >= 0 && slashIndex <= 6) {
       return uri;
     }
 
@@ -97,7 +126,7 @@ class Pkg extends Component {
       pkg,
     } = this.props;
 
-    const readmeOrigin = pkg.homepage.indexOf('#') > -1
+    const readmeOrigin = pkg.homepage && pkg.homepage.indexOf('#') > -1
       ? pkg.homepage.substring(0, pkg.homepage.indexOf('#'))
       : pkg.homepage;
 
@@ -152,7 +181,7 @@ class Pkg extends Component {
             break;
 
           case 'repository':
-            linkUrl = `${hostedGitInfo.fromUrl(pkg.repository.url).browse()}?ref=pkgstats.com`;
+            linkUrl = `${pkg.repository.url}?ref=pkgstats.com`;
             linkString = <svg viewBox="0 0 92 92" version="1.1" xmlns="http://www.w3.org/2000/svg"><title>Git</title><g stroke="none"><path d="M90.155,41.965 L50.036,1.847 C47.726,-0.464 43.979,-0.464 41.667,1.847 L33.336,10.179 L43.904,20.747 C46.36,19.917 49.176,20.474 51.133,22.431 C53.102,24.401 53.654,27.241 52.803,29.706 L62.989,39.891 C65.454,39.041 68.295,39.59 70.264,41.562 C73.014,44.311 73.014,48.768 70.264,51.519 C67.512,54.271 63.056,54.271 60.303,51.519 C58.235,49.449 57.723,46.409 58.772,43.861 L49.272,34.362 L49.272,59.358 C49.942,59.69 50.575,60.133 51.133,60.69 C53.883,63.44 53.883,67.896 51.133,70.65 C48.383,73.399 43.924,73.399 41.176,70.65 C38.426,67.896 38.426,63.44 41.176,60.69 C41.856,60.011 42.643,59.497 43.483,59.153 L43.483,33.925 C42.643,33.582 41.858,33.072 41.176,32.389 C39.093,30.307 38.592,27.249 39.661,24.691 L29.243,14.271 L1.733,41.779 C-0.578,44.092 -0.578,47.839 1.733,50.15 L41.854,90.268 C44.164,92.578 47.91,92.578 50.223,90.268 L90.155,50.336 C92.466,48.025 92.466,44.275 90.155,41.965"></path></g></svg>;
             break;
 
@@ -170,7 +199,7 @@ class Pkg extends Component {
             className={`package-link package-link--${linkType}`}
             key={`package-link-${pkg.name}-${linkType}`}
             target="_blank"
-            rel="noreferrer noopener"
+            rel="noopener noreferrer"
             title={linkType}
           >{linkString}</a>
         ));
@@ -194,6 +223,29 @@ class Pkg extends Component {
         <a>{keyword}</a>
       </Link>
     ));
+  }
+
+  renderVulnerabilities() {
+    const {
+      vulnerabilities,
+    } = this.props;
+
+    return (
+      <ul className="vulnerabilities__list">
+        <li className="vulnerabilities__list__item">
+          <span className={`vulnerabilities__desc ${vulnerabilities && vulnerabilities.url && 'vulnerabilities__desc--loaded'}`}>{(vulnerabilities && vulnerabilities.high) || 0}</span>
+          <span className="vulnerabilities__title">High</span>
+        </li>
+        <li className="vulnerabilities__list__item">
+          <span className={`vulnerabilities__desc ${vulnerabilities && vulnerabilities.url && 'vulnerabilities__desc--loaded'}`}>{(vulnerabilities && vulnerabilities.medium) || 0}</span>
+          <span className="vulnerabilities__title">Medium</span>
+        </li>
+        <li className="vulnerabilities__list__item">
+          <span className={`vulnerabilities__desc ${vulnerabilities && vulnerabilities.url && 'vulnerabilities__desc--loaded'}`}>{(vulnerabilities && vulnerabilities.low) || 0}</span>
+          <span className="vulnerabilities__title">Low</span>
+        </li>
+      </ul>
+    );
   }
 
   renderMaintainers() {
@@ -224,6 +276,7 @@ class Pkg extends Component {
       pkgDownloads,
       readme,
       router,
+      vulnerabilities,
     } = this.props;
 
     if (!pkg) {
@@ -291,29 +344,63 @@ class Pkg extends Component {
         </Styled.GraphSection>
         <Styled.DetailsSection>
           <div className="details--side">
+            <div className={`details__section details__vulnerabilities ${vulnerabilities && !vulnerabilities.vulns && 'details__vulnerabilities--clear'}`}>
+              <a href={vulnerabilities && vulnerabilities.url} target="_blank" rel="noopener noreferrer" className="details__vulnerabilities__link" title="View details at snyk.io">
+                <div className="details__header">
+                  <h3 className="details__header__title">Vulnerabilities</h3>
+                  <div className="details__vulnerabilities__powered-by">
+                    <span>Powered by</span>
+                    <img
+                      src="/static/svgs/snyk-wordmark-white.svg"
+                      alt="Powered by Snyk"
+                      height="30"
+                    />
+                  </div>
+                </div>
+                {this.renderVulnerabilities()}
+              </a>
+            </div>
             <div className="details__section details__links">
-              <h3 className="details__header">Links</h3>
+              <div className="details__header">
+                <h3 className="details__header__title">Links</h3>
+              </div>
               {this.renderLinks()}
             </div>
             <div className="details__section details__maintainers">
-              <h3 className="details__header">Maintainers</h3>
+              <h3 className="details__header">
+                <h3 className="details__header__title">Maintainers</h3>
+              </h3>
               {this.renderMaintainers()}
             </div>
             <div className="details__section details__keywords">
-              <h3 className="details__header">Keywords</h3>
+              <div className="details__header">
+                <h3 className="details__header__title">Keywords</h3>
+              </div>
               {this.renderKeywords()}
             </div>
           </div>
           <div className="details--main">
             <div className="details__readme">
-              <h3 className="details__header">Readme</h3>
-              <ReactMarkdown
-                className="details__readme__src"
-                source={pkg.readme || readme}
-                linkTarget="_blank"
-                escapeHtml={false}
-                transformLinkUri={this.parseTransformLinkUri}
-              />
+              <div className="details__header">
+                <h3 className="details__header__title">Readme</h3>
+              </div>
+              {!!(pkg.readme || readme) && (
+                <ReactMarkdown
+                  className="details__readme__src"
+                  source={pkg.readme || readme}
+                  linkTarget="_blank"
+                  escapeHtml={false}
+                  skipHtml
+                  transformLinkUri={this.parseTransformLinkUri}
+                  renderers={{
+                    link: ({ children, href, target }) => (
+                      <a href={href} target={target} rel="nofollow noopener noreferrer">
+                        {children}
+                      </a>
+                    ),
+                  }}
+                />
+              )}
             </div>
           </div>
         </Styled.DetailsSection>
@@ -327,6 +414,7 @@ const mapStateToProps = (state, props) => {
     downloads,
     packages,
     readmes,
+    vulnerabilities,
   } = state;
 
   const {
@@ -339,10 +427,13 @@ const mapStateToProps = (state, props) => {
   const downloadsKey = `packages:${router.query.pkg}:type:range:timeframe:last-month`;
   const pkgDownloads = downloads[downloadsKey];
 
+  const pkgVulnerabilities = pkg && vulnerabilities[`${pkg.name}:${pkg['dist-tags'].latest}`];
+
   return {
     pkg,
     pkgDownloads,
     readme: readme && readme.response ? readme.response : null,
+    vulnerabilities: pkgVulnerabilities,
   };
 };
 
@@ -351,6 +442,7 @@ const mapDispatchToProps = (dispatch, props) => {
     actions: bindActionCreators({
       fetchPackage,
       fetchReadme,
+      fetchVulnerabilities,
     }, dispatch),
   };
 };

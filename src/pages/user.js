@@ -46,8 +46,13 @@ class User extends Component {
       await store.dispatch(searchNpm(`maintainer:${username}`));
     }
 
+    // @todo Re-enable once errors are not an issue with this - Ryan
     // if (!users[username]) {
-    //   await store.dispatch(fetchUser(username));
+    //   try {
+    //     await store.dispatch(fetchUser(username));
+    //   } catch (e) {
+    //     console.error('Error fetching user info', e);
+    //   }
     // }
   }
 
@@ -81,7 +86,7 @@ class User extends Component {
     } = this.props;
 
     return (
-      <ViewWrapper className="app-view app-view--home" packages={packages}>
+      <ViewWrapper className={`app-view app-view--user ${user && 'app-view--user--active'}`} packages={packages}>
         <Head>
           <title>{`${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`}</title>
           <meta name="description" key="description" content={`Explore ${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
@@ -93,7 +98,7 @@ class User extends Component {
           <meta name="twitter:description" key="twitter:description" content={`Explore ${router.query.username}’s packages on Pkg Stats - npm package discovery and stats viewer.`} />
           <meta name="twitter:image" key="twitter:image" content={`https://pkgstats.linkcards.io/${encodeURIComponent(`https://www.pkgstats.com/share/${router.asPath.replace('/', '')}`)}.jpg?url=${encodeURIComponent(`https://www.pkgstats.com${router.asPath}`)}`} />
         </Head>
-        {user && <UserInfo count={packages.total} user={user} />}
+        {user && <UserInfo count={packages.total} user={user} username={router.query.username} />}
         {!!packages.objects.length && (
           <PackageGrid
             items={packages.objects}

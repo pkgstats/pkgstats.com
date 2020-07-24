@@ -53,6 +53,8 @@ export const InfoSection = styled.section`
 
   .info__desc {
     font-size: 1.8rem;
+    line-height: 1.6;
+    max-width: 75rem;
   }
 
   .info__install__button {
@@ -146,9 +148,15 @@ export const DetailsSection = styled.section`
   padding: 5rem 2rem;
 
   .details__header {
-    font-size: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-top: 0.3rem solid #222;
     padding-top: 2rem;
+  }
+
+  .details__header__title {
+    font-size: 1.8rem;
   }
 
   .details__section + .details__section {
@@ -284,6 +292,94 @@ export const DetailsSection = styled.section`
     }
   }
 
+  .details__vulnerabilities {
+    position: relative;
+    padding-bottom: 3.6rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 0.8rem;
+      background-image: url("/static/images/pixel-grid.png"), linear-gradient(90deg, red, yellow);
+      background-repeat: repeat, no-repeat;
+      background-size: 0.2rem 0.2rem, 100% 100%;
+      background-position: top left;
+      transition: background-image 0.2s ease-in-out;
+    }
+
+    &--clear {
+      &::after {
+        background-image: url("/static/images/pixel-grid.png"), linear-gradient(90deg, #24d61c, #24d61c);
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+
+      .details__vulnerabilities__powered-by {
+        transition: color 0.2s ease-in-out;
+        color: #999;
+      }
+
+      &:hover {
+        .details__vulnerabilities__powered-by {
+          color: white;
+        }
+      }
+    }
+
+    &__powered-by {
+      display: flex;
+      align-items: center;
+
+      span {
+        font-size: 1.4rem;
+        white-space: nowrap;
+      }
+
+      img {
+        margin-left: 1rem;
+      }
+    }
+
+    .vulnerabilities__list {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    .vulnerabilities__list__item {
+      flex: 1;
+      text-align: center;
+    }
+
+    .vulnerabilities__desc,
+    .vulnerabilities__title {
+      display: block;
+    }
+
+    .vulnerabilities__desc {
+      font-family: var(--font-family-mono);
+      font-size: 3.2rem;
+      color: #999;
+      transition: color 0.2s ease-in-out;
+
+      &--loaded {
+        color: white;
+      }
+    }
+
+    .vulnerabilities__title {
+      font-size: 1.6rem;
+      color: #999;
+    }
+  }
+
   @media all and (min-width: 768px) {
     display: flex;
     flex-direction: row-reverse;
@@ -295,6 +391,10 @@ export const DetailsSection = styled.section`
     }
 
     .details--side {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 6rem;
+      align-self: flex-start;
       flex-basis: 28%;
       width: 28%;
     }

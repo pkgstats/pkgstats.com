@@ -60,6 +60,10 @@ const base = `
     margin-top: 6rem;
   }
 
+  .app-view--user--active {
+    margin-top: 13rem;
+  }
+
   .page-transition {
     &-enter {
       flex: 1;

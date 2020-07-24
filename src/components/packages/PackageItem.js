@@ -41,7 +41,11 @@ const Package = styled.div`
   .package-item__header-info {
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
+
+    @media all and (min-width: 768px) {
+      padding: 2rem;
+    }
   }
 
   .package-item__name {
@@ -121,7 +125,7 @@ const Package = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-  
+
     svg {
       transition: fill 0.2s ease-in-out, stroke 0.2s ease-in-out;
     }
@@ -239,7 +243,6 @@ class PackageItem extends Component {
     } = this.props;
 
     const linkTarget = evt.target;
-    // console.debug(evt.target, linkTarget.classList.contains('package-link'), linkTarget.classList.contains('package-item__aurhor-link'));
 
     if (linkTarget.classList.contains('package-link') || linkTarget.classList.contains('package-item__author-link')) {
       return true;
