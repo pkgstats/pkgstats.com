@@ -1,3 +1,4 @@
+/*
 const fonts = `
 // IBM Plex Sans
 @font-face {
@@ -320,6 +321,11 @@ const fonts = `
     font-weight: 800;
     font-style: italic;
 }
+`;
+*/
+const fonts = `
+$font-prefix: './custom/path/to/font/files';
+@import 'node_modules/@ibm/plex/scss/ibm-plex.scss';
 `;
 
 export default fonts;
