@@ -10,7 +10,7 @@ const Grid = styled.div`
   width: 100%;
 `;
 
-export default ({
+const PackageGrid = ({
   items = [],
   fetching = false,
   total = 0,
@@ -38,4 +38,6 @@ export default ({
       )}
     </Grid>
   );
-}
+};
+
+export default PackageGrid;
