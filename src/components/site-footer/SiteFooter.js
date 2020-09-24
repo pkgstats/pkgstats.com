@@ -18,7 +18,7 @@ const Footer = styled.footer`
   }
 `;
 
-export default () => (
+const SiteFooter = () => (
   <Footer>
     <div className="credits">
       <p>Built by <a href="https://www.ryanhefner.com">Ryan Hefner</a></p>
@@ -28,3 +28,5 @@ export default () => (
     </div>
   </Footer>
 );
+
+export default SiteFooter;
