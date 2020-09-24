@@ -1,7 +1,7 @@
 {
   "name": "pkgstats.com",
   "version": "0.1.0",
-  "description": "",
+  "description": "Quickly browse and discover the best packages on npm for your next project or application.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ryanhefner/pkgstats.git"
@@ -21,15 +21,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@ibm/plex": "^5.0.0",
+    "@ibm/plex": "^5.1.3",
     "@pkgstats/npm-user": "^4.1.1",
-    "@ryanhefner/next-page-transitions": "^1.0.0-beta.2-1",
+    "@ryanhefner/next-page-transitions": "^1.0.0-beta.2-2",
     "@zeit/next-sass": "^1.0.1",
     "chart.js": "^2.9.3",
     "clean-react-props": "^0.4.0",
     "clipboard": "^2.0.6",
     "compression": "^1.7.4",
-    "dayjs": "^1.8.29",
+    "dayjs": "^1.8.36",
     "dotenv": "^8.2.0",
     "es6-promise": "^4.2.8",
     "express": "^4.17.1",
@@ -37,7 +37,7 @@
     "hosted-git-info": "^3.0.5",
     "isomorphic-fetch": "^3.0.0",
     "lru-cache": "^6.0.0",
-    "next": "^9.4.4",
+    "next": "^9.5.3",
     "next-redux-wrapper": "^5.0.0",
     "next-routes": "^1.4.2",
     "node-cache": "^5.1.2",
@@ -46,17 +46,17 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-markdown": "^4.3.1",
-    "react-redux": "^7.2.0",
-    "react-scroll-trigger": "^0.6.5",
+    "react-redux": "^7.2.1",
+    "react-scroll-trigger": "^0.6.9",
     "react-sparklines": "^1.7.0",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "rollbar": "^2.18.0",
-    "styled-components": "^5.1.1"
+    "rollbar": "^2.19.3",
+    "styled-components": "^5.2.0"
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "^4.0.0",
-    "babel-plugin-styled-components": "^1.10.7"
+    "babel-plugin-styled-components": "^1.11.1"
   }
 }
