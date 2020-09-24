@@ -10,7 +10,7 @@ export const Base = createGlobalStyle`${base}`;
 export const Reset = createGlobalStyle`${reset}`;
 export const Vars = createGlobalStyle`${vars}`;
 
-export default () => (
+const GlobalStyles = () => (
   <Fragment>
     {/*
     <Fonts />
@@ -20,3 +20,5 @@ export default () => (
     <Base />
   </Fragment>
 );
+
+export default GlobalStyles;
