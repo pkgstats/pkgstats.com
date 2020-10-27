@@ -367,9 +367,9 @@ class Pkg extends Component {
               {this.renderLinks()}
             </div>
             <div className="details__section details__maintainers">
-              <h3 className="details__header">
+              <div className="details__header">
                 <h3 className="details__header__title">Maintainers</h3>
-              </h3>
+              </div>
               {this.renderMaintainers()}
             </div>
             <div className="details__section details__keywords">
