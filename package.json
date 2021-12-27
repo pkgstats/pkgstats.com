@@ -41,7 +41,7 @@
     "next-redux-wrapper": "^5.0.0",
     "next-routes": "^1.4.2",
     "node-cache": "^5.1.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
