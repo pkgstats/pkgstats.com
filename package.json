@@ -32,7 +32,7 @@
     "dayjs": "^1.9.4",
     "dotenv": "^8.2.0",
     "es6-promise": "^4.2.8",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "gravatar": "^1.8.1",
     "hosted-git-info": "^3.0.7",
     "isomorphic-fetch": "^3.0.0",
